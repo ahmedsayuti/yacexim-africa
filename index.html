@@ -1,0 +1,717 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>YACEXIM AFRICA LTD - Coming Soon</title>
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.4.0/css/all.min.css">
+    <link href="https://fonts.googleapis.com/css2?family=Montserrat:wght@400;600;700;800&family=Open+Sans:wght@300;400;600&display=swap" rel="stylesheet">
+    <style>
+        * {
+            margin: 0;
+            padding: 0;
+            box-sizing: border-box;
+        }
+        
+        body {
+            font-family: 'Open Sans', sans-serif;
+            background-color: #0a192f;
+            color: #fff;
+            overflow-x: hidden;
+            min-height: 100vh;
+            position: relative;
+        }
+        
+        .container {
+            max-width: 1200px;
+            margin: 0 auto;
+            padding: 0 20px;
+            position: relative;
+            z-index: 10;
+        }
+        
+        /* Background Animation */
+        .bg-animation {
+            position: fixed;
+            top: 0;
+            left: 0;
+            width: 100%;
+            height: 100%;
+            z-index: 1;
+            overflow: hidden;
+        }
+        
+        .shape {
+            position: absolute;
+            border-radius: 50%;
+            opacity: 0.2;
+            animation: float 15s infinite linear;
+        }
+        
+        .shape-1 {
+            width: 300px;
+            height: 300px;
+            background: linear-gradient(45deg, #1d976c, #93f9b9);
+            top: 10%;
+            left: 5%;
+            animation-delay: 0s;
+        }
+        
+        .shape-2 {
+            width: 200px;
+            height: 200px;
+            background: linear-gradient(45deg, #f5af19, #f12711);
+            bottom: 15%;
+            right: 10%;
+            animation-delay: 3s;
+        }
+        
+        .shape-3 {
+            width: 150px;
+            height: 150px;
+            background: linear-gradient(45deg, #6a11cb, #2575fc);
+            top: 60%;
+            left: 15%;
+            animation-delay: 6s;
+        }
+        
+        .shape-4 {
+            width: 250px;
+            height: 250px;
+            background: linear-gradient(45deg, #00b4db, #0083b0);
+            bottom: 5%;
+            left: 70%;
+            animation-delay: 9s;
+        }
+        
+        .shape-5 {
+            width: 100px;
+            height: 100px;
+            background: linear-gradient(45deg, #ff7e5f, #feb47b);
+            top: 20%;
+            right: 20%;
+            animation-delay: 12s;
+        }
+        
+        /* Header */
+        header {
+            padding: 30px 0;
+            position: relative;
+            z-index: 100;
+        }
+        
+        .logo {
+            display: flex;
+            align-items: center;
+            animation: slideDown 1s ease-out;
+        }
+        
+        .logo-icon {
+            font-size: 2.5rem;
+            color: #1d976c;
+            margin-right: 15px;
+            text-shadow: 0 0 10px rgba(29, 151, 108, 0.5);
+        }
+        
+        .logo-text {
+            font-family: 'Montserrat', sans-serif;
+            font-weight: 800;
+            font-size: 1.8rem;
+            background: linear-gradient(to right, #1d976c, #f5af19);
+            -webkit-background-clip: text;
+            background-clip: text;
+            color: transparent;
+            text-transform: uppercase;
+            letter-spacing: 1px;
+        }
+        
+        .logo-tagline {
+            font-size: 0.9rem;
+            color: #a8b2d1;
+            margin-top: 5px;
+            letter-spacing: 3px;
+        }
+        
+        /* Main Content */
+        .main-content {
+            display: flex;
+            flex-direction: column;
+            align-items: center;
+            justify-content: center;
+            min-height: calc(100vh - 200px);
+            text-align: center;
+            padding: 40px 0;
+            position: relative;
+            z-index: 10;
+        }
+        
+        .title {
+            font-family: 'Montserrat', sans-serif;
+            font-weight: 800;
+            font-size: 4rem;
+            margin-bottom: 20px;
+            background: linear-gradient(to right, #1d976c, #f5af19, #00b4db);
+            -webkit-background-clip: text;
+            background-clip: text;
+            color: transparent;
+            animation: glow 2s infinite alternate;
+            line-height: 1.2;
+        }
+        
+        .subtitle {
+            font-size: 1.5rem;
+            color: #a8b2d1;
+            margin-bottom: 40px;
+            max-width: 800px;
+            line-height: 1.6;
+        }
+        
+        /* Company Info Cards */
+        .info-cards {
+            display: flex;
+            flex-wrap: wrap;
+            justify-content: center;
+            gap: 25px;
+            margin: 40px 0;
+            max-width: 1200px;
+        }
+        
+        .info-card {
+            background: rgba(255, 255, 255, 0.08);
+            backdrop-filter: blur(10px);
+            border-radius: 15px;
+            padding: 25px;
+            width: 350px;
+            text-align: left;
+            box-shadow: 0 10px 30px rgba(0, 0, 0, 0.3);
+            border: 1px solid rgba(255, 255, 255, 0.1);
+            transition: transform 0.3s ease, box-shadow 0.3s ease;
+        }
+        
+        .info-card:hover {
+            transform: translateY(-10px);
+            box-shadow: 0 15px 35px rgba(29, 151, 108, 0.2);
+        }
+        
+        .card-title {
+            font-family: 'Montserrat', sans-serif;
+            font-size: 1.4rem;
+            color: #f5af19;
+            margin-bottom: 15px;
+            display: flex;
+            align-items: center;
+        }
+        
+        .card-title i {
+            margin-right: 10px;
+            font-size: 1.2rem;
+        }
+        
+        .card-content {
+            color: #a8b2d1;
+            line-height: 1.6;
+        }
+        
+        .card-content ul {
+            padding-left: 20px;
+            margin-top: 10px;
+        }
+        
+        .card-content li {
+            margin-bottom: 8px;
+        }
+        
+        /* Countdown Timer */
+        .countdown-container {
+            margin: 50px 0;
+            width: 100%;
+            max-width: 800px;
+        }
+        
+        .countdown-title {
+            font-family: 'Montserrat', sans-serif;
+            font-size: 1.8rem;
+            margin-bottom: 30px;
+            color: #f5af19;
+        }
+        
+        .countdown {
+            display: flex;
+            justify-content: center;
+            flex-wrap: wrap;
+            gap: 20px;
+        }
+        
+        .countdown-item {
+            background: rgba(255, 255, 255, 0.1);
+            backdrop-filter: blur(10px);
+            border-radius: 15px;
+            padding: 25px 15px;
+            min-width: 150px;
+            box-shadow: 0 10px 30px rgba(0, 0, 0, 0.3);
+            border: 1px solid rgba(255, 255, 255, 0.1);
+            transition: transform 0.3s ease, box-shadow 0.3s ease;
+            animation: pulse 2s infinite;
+        }
+        
+        .countdown-item:hover {
+            transform: translateY(-10px);
+            box-shadow: 0 15px 35px rgba(29, 151, 108, 0.2);
+            animation: none;
+        }
+        
+        .countdown-number {
+            font-family: 'Montserrat', sans-serif;
+            font-weight: 800;
+            font-size: 3.5rem;
+            color: #1d976c;
+            line-height: 1;
+            margin-bottom: 5px;
+        }
+        
+        .countdown-label {
+            font-size: 1rem;
+            color: #a8b2d1;
+            text-transform: uppercase;
+            letter-spacing: 2px;
+        }
+        
+        /* Notify Form */
+        .notify-container {
+            margin: 40px 0;
+            width: 100%;
+            max-width: 600px;
+        }
+        
+        .notify-title {
+            font-family: 'Montserrat', sans-serif;
+            font-size: 1.8rem;
+            margin-bottom: 20px;
+            color: #00b4db;
+        }
+        
+        .notify-form {
+            display: flex;
+            flex-wrap: wrap;
+            justify-content: center;
+            gap: 15px;
+        }
+        
+        .notify-input {
+            flex-grow: 1;
+            min-width: 250px;
+            padding: 18px 25px;
+            border-radius: 50px;
+            border: 2px solid rgba(255, 255, 255, 0.1);
+            background: rgba(255, 255, 255, 0.05);
+            color: white;
+            font-size: 1rem;
+            transition: all 0.3s ease;
+        }
+        
+        .notify-input:focus {
+            outline: none;
+            border-color: #1d976c;
+            box-shadow: 0 0 15px rgba(29, 151, 108, 0.3);
+        }
+        
+        .notify-btn {
+            padding: 18px 40px;
+            border-radius: 50px;
+            border: none;
+            background: linear-gradient(to right, #1d976c, #f5af19);
+            color: #0a192f;
+            font-family: 'Montserrat', sans-serif;
+            font-weight: 600;
+            font-size: 1rem;
+            cursor: pointer;
+            transition: all 0.3s ease;
+            text-transform: uppercase;
+            letter-spacing: 1px;
+        }
+        
+        .notify-btn:hover {
+            transform: translateY(-3px);
+            box-shadow: 0 10px 20px rgba(29, 151, 108, 0.3);
+        }
+        
+        /* Footer */
+        footer {
+            padding: 40px 0;
+            text-align: center;
+            position: relative;
+            z-index: 10;
+        }
+        
+        .social-links {
+            display: flex;
+            justify-content: center;
+            gap: 25px;
+            margin-bottom: 30px;
+        }
+        
+        .social-link {
+            width: 50px;
+            height: 50px;
+            border-radius: 50%;
+            background: rgba(255, 255, 255, 0.05);
+            display: flex;
+            align-items: center;
+            justify-content: center;
+            color: #1d976c;
+            font-size: 1.3rem;
+            transition: all 0.3s ease;
+        }
+        
+        .social-link:hover {
+            background: #1d976c;
+            color: #0a192f;
+            transform: translateY(-5px);
+        }
+        
+        .copyright {
+            color: #a8b2d1;
+            font-size: 0.9rem;
+            letter-spacing: 1px;
+        }
+        
+        .copyright a {
+            color: #f5af19;
+            text-decoration: none;
+        }
+        
+        /* Animations */
+        @keyframes float {
+            0%, 100% {
+                transform: translateY(0) rotate(0deg);
+            }
+            25% {
+                transform: translateY(-20px) rotate(90deg);
+            }
+            50% {
+                transform: translateY(0) rotate(180deg);
+            }
+            75% {
+                transform: translateY(20px) rotate(270deg);
+            }
+        }
+        
+        @keyframes slideDown {
+            from {
+                opacity: 0;
+                transform: translateY(-50px);
+            }
+            to {
+                opacity: 1;
+                transform: translateY(0);
+            }
+        }
+        
+        @keyframes glow {
+            from {
+                text-shadow: 0 0 10px rgba(29, 151, 108, 0.3);
+            }
+            to {
+                text-shadow: 0 0 20px rgba(29, 151, 108, 0.6), 0 0 30px rgba(245, 175, 25, 0.4);
+            }
+        }
+        
+        @keyframes pulse {
+            0%, 100% {
+                transform: scale(1);
+            }
+            50% {
+                transform: scale(1.05);
+            }
+        }
+        
+        /* Responsive Design */
+        @media (max-width: 992px) {
+            .title {
+                font-size: 3rem;
+            }
+            
+            .info-card {
+                width: 300px;
+            }
+            
+            .countdown-item {
+                min-width: 120px;
+            }
+            
+            .countdown-number {
+                font-size: 2.8rem;
+            }
+        }
+        
+        @media (max-width: 768px) {
+            .title {
+                font-size: 2.5rem;
+            }
+            
+            .subtitle {
+                font-size: 1.2rem;
+            }
+            
+            .info-cards {
+                flex-direction: column;
+                align-items: center;
+            }
+            
+            .info-card {
+                width: 100%;
+                max-width: 500px;
+            }
+            
+            .countdown {
+                gap: 10px;
+            }
+            
+            .countdown-item {
+                min-width: 100px;
+                padding: 20px 10px;
+            }
+            
+            .countdown-number {
+                font-size: 2.2rem;
+            }
+            
+            .notify-form {
+                flex-direction: column;
+                align-items: center;
+            }
+            
+            .notify-input, .notify-btn {
+                width: 100%;
+                max-width: 350px;
+            }
+        }
+        
+        @media (max-width: 576px) {
+            .title {
+                font-size: 2rem;
+            }
+            
+            .countdown-item {
+                min-width: 80px;
+                padding: 15px 5px;
+            }
+            
+            .countdown-number {
+                font-size: 1.8rem;
+            }
+            
+            .countdown-label {
+                font-size: 0.8rem;
+            }
+            
+            .card-title {
+                font-size: 1.2rem;
+            }
+        }
+    </style>
+</head>
+<body>
+    <!-- Background Animation -->
+    <div class="bg-animation">
+        <div class="shape shape-1"></div>
+        <div class="shape shape-2"></div>
+        <div class="shape shape-3"></div>
+        <div class="shape shape-4"></div>
+        <div class="shape shape-5"></div>
+    </div>
+    
+    <div class="container">
+        <!-- Header with Logo -->
+        <header>
+            <div class="logo">
+                <div class="logo-icon">
+                    <i class="fas fa-leaf"></i>
+                </div>
+                <div>
+                    <div class="logo-text">YACEXIM AFRICA LTD</div>
+                    <div class="logo-tagline">Leading African Agribusiness & Commodities Trading</div>
+                </div>
+            </div>
+        </header>
+        
+        <!-- Main Content -->
+        <main class="main-content">
+            <h1 class="title">YACEXIM AFRICA LTD</h1>
+            <p class="subtitle">A dynamic agribusiness and commodities trading company, delivering quality food products to local and international markets while supporting sustainable farming and rural livelihoods across Africa.</p>
+            
+            <!-- Company Info Cards -->
+            <div class="info-cards">
+                <div class="info-card">
+                    <div class="card-title"><i class="fas fa-bullseye"></i> Our Vision</div>
+                    <div class="card-content">
+                        To become a leading African agribusiness and export-import company, recognized globally for quality, sustainability, and value creation across the agricultural supply chain.
+                    </div>
+                </div>
+                
+                <div class="info-card">
+                    <div class="card-title"><i class="fas fa-tasks"></i> Our Mission</div>
+                    <div class="card-content">
+                        To deliver high-quality agricultural and food products to local and international markets while empowering farmers, promoting sustainable agriculture, and contributing to Africa's economic growth through efficient trade and innovation.
+                    </div>
+                </div>
+                
+                <div class="info-card">
+                    <div class="card-title"><i class="fas fa-seedling"></i> Core Activities</div>
+                    <div class="card-content">
+                        <ul>
+                            <li>Importation of food items for food security</li>
+                            <li>Export of agricultural commodities</li>
+                            <li>Commercial farming & support services</li>
+                            <li>Animal husbandry & dairy production</li>
+                            <li>Agricultural value chain development</li>
+                        </ul>
+                    </div>
+                </div>
+            </div>
+            
+            <!-- Countdown Timer -->
+            <div class="countdown-container">
+                <h2 class="countdown-title">Launching Our New Platform In</h2>
+                <div class="countdown">
+                    <div class="countdown-item">
+                        <div class="countdown-number" id="days">00</div>
+                        <div class="countdown-label">Days</div>
+                    </div>
+                    <div class="countdown-item">
+                        <div class="countdown-number" id="hours">00</div>
+                        <div class="countdown-label">Hours</div>
+                    </div>
+                    <div class="countdown-item">
+                        <div class="countdown-number" id="minutes">00</div>
+                        <div class="countdown-label">Minutes</div>
+                    </div>
+                    <div class="countdown-item">
+                        <div class="countdown-number" id="seconds">00</div>
+                        <div class="countdown-label">Seconds</div>
+                    </div>
+                </div>
+            </div>
+            
+            <!-- Notify Form -->
+            <div class="notify-container">
+                <h2 class="notify-title">Get Notified When We Launch</h2>
+                <form class="notify-form" id="notifyForm">
+                    <input type="email" class="notify-input" placeholder="Enter your email address" required>
+                    <button type="submit" class="notify-btn">Notify Me <i class="fas fa-paper-plane"></i></button>
+                </form>
+                <p style="margin-top: 15px; color: #a8b2d1; font-size: 0.9rem;">We respect your privacy. No spam, ever.</p>
+            </div>
+        </main>
+        
+        <!-- Footer -->
+        <footer>
+            <div class="social-links">
+                <a href="#" class="social-link"><i class="fab fa-twitter"></i></a>
+                <a href="#" class="social-link"><i class="fab fa-linkedin-in"></i></a>
+                <a href="#" class="social-link"><i class="fab fa-facebook-f"></i></a>
+                <a href="#" class="social-link"><i class="fab fa-instagram"></i></a>
+                <a href="#" class="social-link"><i class="fas fa-envelope"></i></a>
+            </div>
+            <div class="copyright">
+                <p>YACEXIM AFRICA LTD - A subsidiary of YAC GROUP Holdings</p>
+                <p>&copy; 2023 YACEXIM AFRICA LTD. All Rights Reserved.</p>
+                <p>Headquarters: Lagos, Nigeria | Email: <a href="mailto:info@yaceximafrica.com">info@yaceximafrica.com</a></p>
+            </div>
+        </footer>
+    </div>
+
+    <script>
+        // Countdown Timer
+        function updateCountdown() {
+            // Set the launch date (45 days from now)
+            const launchDate = new Date();
+            launchDate.setDate(launchDate.getDate() + 45);
+            
+            const now = new Date().getTime();
+            const distance = launchDate - now;
+            
+            // Calculate days, hours, minutes, seconds
+            const days = Math.floor(distance / (1000 * 60 * 60 * 24));
+            const hours = Math.floor((distance % (1000 * 60 * 60 * 24)) / (1000 * 60 * 60));
+            const minutes = Math.floor((distance % (1000 * 60 * 60)) / (1000 * 60));
+            const seconds = Math.floor((distance % (1000 * 60)) / 1000);
+            
+            // Update the display
+            document.getElementById("days").textContent = days.toString().padStart(2, '0');
+            document.getElementById("hours").textContent = hours.toString().padStart(2, '0');
+            document.getElementById("minutes").textContent = minutes.toString().padStart(2, '0');
+            document.getElementById("seconds").textContent = seconds.toString().padStart(2, '0');
+            
+            // If the countdown is over
+            if (distance < 0) {
+                clearInterval(countdownInterval);
+                document.querySelector(".countdown-title").textContent = "We Have Launched!";
+                document.getElementById("days").textContent = "00";
+                document.getElementById("hours").textContent = "00";
+                document.getElementById("minutes").textContent = "00";
+                document.getElementById("seconds").textContent = "00";
+            }
+        }
+        
+        // Initialize countdown
+        let countdownInterval = setInterval(updateCountdown, 1000);
+        updateCountdown(); // Initial call
+        
+        // Form submission handler
+        document.getElementById("notifyForm").addEventListener("submit", function(e) {
+            e.preventDefault();
+            const emailInput = this.querySelector(".notify-input");
+            const submitBtn = this.querySelector(".notify-btn");
+            
+            // Get the original button text
+            const originalText = submitBtn.innerHTML;
+            
+            // Show loading state
+            submitBtn.innerHTML = '<i class="fas fa-spinner fa-spin"></i> Processing...';
+            submitBtn.disabled = true;
+            
+            // Simulate API call
+            setTimeout(() => {
+                // Show success message
+                submitBtn.innerHTML = '<i class="fas fa-check"></i> Successfully Subscribed!';
+                submitBtn.style.background = "linear-gradient(to right, #1d976c, #93f9b9)";
+                
+                // Reset form
+                emailInput.value = "";
+                
+                // Revert button after 3 seconds
+                setTimeout(() => {
+                    submitBtn.innerHTML = originalText;
+                    submitBtn.disabled = false;
+                    submitBtn.style.background = "linear-gradient(to right, #1d976c, #f5af19)";
+                }, 3000);
+            }, 1500);
+        });
+        
+        // Add animation to social links on hover
+        document.querySelectorAll('.social-link').forEach(link => {
+            link.addEventListener('mouseenter', function() {
+                const icon = this.querySelector('i');
+                if (icon.classList.contains('fa-twitter')) {
+                    icon.style.transform = 'rotate(15deg) scale(1.2)';
+                } else if (icon.classList.contains('fa-linkedin-in')) {
+                    icon.style.transform = 'rotate(-15deg) scale(1.2)';
+                } else {
+                    icon.style.transform = 'scale(1.2)';
+                }
+            });
+            
+            link.addEventListener('mouseleave', function() {
+                const icon = this.querySelector('i');
+                icon.style.transform = 'scale(1)';
+            });
+        });
+        
+        // Add animation to info cards
+        document.querySelectorAll('.info-card').forEach((card, index) => {
+            card.style.animationDelay = `${index * 0.2}s`;
+        });
+    </script>
+</body>
+</html>
