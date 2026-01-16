@@ -93,7 +93,7 @@
         }
         
         .logo img {
-            height: 100%;
+            height: 120%;
             width: auto;
             max-width: 220px;
             object-fit: contain;
@@ -495,7 +495,7 @@
             font-size: 1.05rem;
         }
         
-        /* Vision Mission */
+        /* VISION & MISSION SECTION - REVERTED TO ICONS */
         .vision-mission {
             background: linear-gradient(rgba(248, 249, 250, 0.88), rgba(248, 249, 250, 0.88)), url('https://images.unsplash.com/photo-1500382017468-9049fed747ef?ixlib=rb-4.0.3&auto=format&fit=crop&w=1920&q=80');
         }
@@ -513,36 +513,44 @@
             padding: 40px;
             box-shadow: 0 10px 30px rgba(0, 0, 0, 0.08);
             transition: var(--transition);
-            border-left: 5px solid var(--primary-green);
+            text-align: center;
+            border-top: 4px solid transparent;
         }
         
         .vm-card:hover {
             transform: translateY(-10px);
+            border-top-color: var(--primary-green);
             box-shadow: 0 20px 40px rgba(29, 151, 108, 0.15);
+        }
+        
+        .vm-icon {
+            font-size: 3rem;
+            color: var(--primary-green);
+            margin-bottom: 25px;
+            height: 80px;
+            width: 80px;
+            display: flex;
+            align-items: center;
+            justify-content: center;
+            background-color: rgba(29, 151, 108, 0.1);
+            border-radius: 50%;
+            margin: 0 auto 25px;
         }
         
         .vm-card h3 {
             font-size: 1.6rem;
             margin-bottom: 20px;
             color: var(--primary-dark);
-            display: flex;
-            align-items: center;
         }
         
-        .vm-card h3 i {
-            margin-right: 15px;
-            color: var(--primary-green);
-            font-size: 1.8rem;
-        }
-        
-        /* Core Values */
+        /* CORE VALUES SECTION - USING ICONS */
         .core-values {
             background: linear-gradient(rgba(255, 255, 255, 0.88), rgba(255, 255, 255, 0.88)), url('https://images.unsplash.com/photo-1416879595882-3373a0480b5b?ixlib=rb-4.0.3&auto=format&fit=crop&w=1920&q=80');
         }
         
         .values-grid {
             display: grid;
-            grid-template-columns: repeat(auto-fit, minmax(250px, 1fr));
+            grid-template-columns: repeat(auto-fit, minmax(280px, 1fr));
             gap: 30px;
             margin-top: 50px;
         }
@@ -554,12 +562,27 @@
             text-align: center;
             box-shadow: 0 10px 30px rgba(0, 0, 0, 0.08);
             transition: var(--transition);
+            border-top: 4px solid transparent;
         }
         
         .value-card:hover {
             transform: translateY(-10px);
+            border-top-color: var(--primary-green);
             box-shadow: 0 20px 40px rgba(212, 175, 55, 0.15);
-            border-top: 4px solid var(--primary-green);
+        }
+        
+        .value-icon {
+            font-size: 2.5rem;
+            color: var(--primary-green);
+            margin-bottom: 20px;
+            height: 70px;
+            width: 70px;
+            display: flex;
+            align-items: center;
+            justify-content: center;
+            background-color: rgba(29, 151, 108, 0.1);
+            border-radius: 50%;
+            margin: 0 auto 20px;
         }
         
         .value-card h4 {
@@ -568,7 +591,7 @@
             color: var(--primary-dark);
         }
         
-        /* Competitive Strengths */
+        /* Competitive Strengths with Image Cards */
         .strengths {
             background: linear-gradient(rgba(248, 249, 250, 0.88), rgba(248, 249, 250, 0.88)), url('https://images.unsplash.com/photo-1516937941344-00b4e0337589?ixlib=rb-4.0.3&auto=format&fit=crop&w=1920&q=80');
         }
@@ -583,7 +606,7 @@
         .strength-card {
             background-color: white;
             border-radius: 10px;
-            padding: 30px;
+            overflow: hidden;
             box-shadow: 0 10px 30px rgba(0, 0, 0, 0.08);
             transition: var(--transition);
         }
@@ -593,26 +616,23 @@
             box-shadow: 0 20px 40px rgba(10, 61, 31, 0.15);
         }
         
-        .strength-number {
-            display: inline-block;
-            background-color: var(--primary-green);
-            color: white;
-            width: 40px;
-            height: 40px;
-            border-radius: 50%;
-            text-align: center;
-            line-height: 40px;
-            font-weight: 700;
-            margin-bottom: 20px;
+        .strength-image {
+            height: 180px;
+            background-size: cover;
+            background-position: center;
         }
         
-        .strength-card h4 {
+        .strength-content {
+            padding: 25px;
+        }
+        
+        .strength-content h4 {
             font-size: 1.3rem;
-            margin-bottom: 15px;
+            margin-bottom: 10px;
             color: var(--primary-dark);
         }
         
-        /* Leadership */
+        /* Leadership with Image Cards */
         .leadership {
             background: linear-gradient(rgba(255, 255, 255, 0.88), rgba(255, 255, 255, 0.88)), url('https://images.unsplash.com/photo-1556761175-b413da4baf72?ixlib=rb-4.0.3&auto=format&fit=crop&w=1920&q=80');
         }
@@ -644,7 +664,7 @@
         }
         
         .leader-content {
-            padding: 30px;
+            padding: 25px;
             text-align: center;
         }
         
@@ -657,17 +677,17 @@
         .leader-title {
             color: var(--primary-green);
             font-weight: 600;
-            margin-bottom: 15px;
+            margin-bottom: 10px;
         }
         
-        /* Activities */
+        /* Activities with Image Cards */
         .activities {
             background: linear-gradient(rgba(248, 249, 250, 0.88), rgba(248, 249, 250, 0.88)), url('https://images.unsplash.com/photo-1500382017468-9049fed747ef?ixlib=rb-4.0.3&auto=format&fit=crop&w=1920&q=80');
         }
         
         .activities-grid {
             display: grid;
-            grid-template-columns: repeat(auto-fit, minmax(250px, 1fr));
+            grid-template-columns: repeat(auto-fit, minmax(280px, 1fr));
             gap: 30px;
             margin-top: 50px;
         }
@@ -675,8 +695,7 @@
         .activity-card {
             background-color: white;
             border-radius: 10px;
-            padding: 35px 30px;
-            text-align: center;
+            overflow: hidden;
             box-shadow: 0 10px 30px rgba(0, 0, 0, 0.08);
             transition: var(--transition);
         }
@@ -686,13 +705,23 @@
             box-shadow: 0 20px 40px rgba(29, 151, 108, 0.15);
         }
         
-        .activity-card h4 {
+        .activity-image {
+            height: 180px;
+            background-size: cover;
+            background-position: center;
+        }
+        
+        .activity-content {
+            padding: 25px;
+        }
+        
+        .activity-content h4 {
             font-size: 1.3rem;
-            margin-bottom: 15px;
+            margin-bottom: 10px;
             color: var(--primary-dark);
         }
         
-        /* Commitment Section - UPDATED with gold text */
+        /* Commitment Section */
         .commitment {
             background: linear-gradient(rgba(10, 61, 31, 0.88), rgba(10, 61, 31, 0.88)), url('https://images.unsplash.com/photo-1558618666-fcd25c85cd64?ixlib=rb-4.0.3&auto=format&fit=crop&w=1920&q=80');
             color: white;
@@ -707,7 +736,7 @@
         .commitment-content h3 {
             font-size: 2rem;
             margin-bottom: 20px;
-            color: var(--accent-gold); /* Gold color for headings */
+            color: var(--accent-gold);
         }
         
         .commitment-content p {
@@ -726,19 +755,28 @@
         .commitment-point {
             background-color: white;
             border-radius: 10px;
-            padding: 30px;
-            text-align: center;
+            overflow: hidden;
             box-shadow: 0 10px 30px rgba(0, 0, 0, 0.1);
         }
         
-        .commitment-point h4 {
-            font-size: 1.3rem;
-            margin-bottom: 15px;
-            color: var(--primary-dark); /* Dark text on white background */
+        .commitment-image {
+            height: 150px;
+            background-size: cover;
+            background-position: center;
         }
         
-        .commitment-point p {
-            color: #666; /* Regular text color on white background */
+        .commitment-text {
+            padding: 25px;
+        }
+        
+        .commitment-text h4 {
+            font-size: 1.3rem;
+            margin-bottom: 10px;
+            color: var(--primary-dark);
+        }
+        
+        .commitment-text p {
+            color: #666;
             font-size: 1rem;
         }
         
@@ -820,8 +858,14 @@
                 font-size: 2rem;
             }
             
-            .vm-card, .value-card, .strength-card, .activity-card, .commitment-point {
-                padding: 25px 20px;
+            .vm-card, .value-card, .strength-content, .leader-content, .activity-content, .commitment-text {
+                padding: 20px;
+            }
+            
+            .vm-icon, .value-icon {
+                height: 60px;
+                width: 60px;
+                font-size: 2rem;
             }
         }
         
@@ -855,7 +899,7 @@
             
             <ul class="nav-menu" id="nav-menu">
                 <li><a href="/">Home</a></li>
-                <li><a href="about.html" class="active">About</a></li>
+                <li><a href="/about/" class="active">About</a></li>
                 <li><a href="/#services">Services</a></li>
                 <li><a href="/#products">Products</a></li>
                 <li><a href="/#contact">Contact</a></li>
@@ -906,7 +950,7 @@
         </div>
     </section>
 
-    <!-- Vision & Mission Section -->
+    <!-- Vision & Mission with Icons -->
     <section class="vision-mission section-bg">
         <div class="container section-content">
             <div class="section-title">
@@ -916,19 +960,25 @@
             
             <div class="vm-grid">
                 <div class="vm-card animate-on-scroll">
-                    <h3><i class="fas fa-eye"></i> Our Vision</h3>
+                    <div class="vm-icon">
+                        <i class="fas fa-eye"></i>
+                    </div>
+                    <h3>Our Vision</h3>
                     <p>To become a leading African agribusiness and export-import company, recognized globally for quality, sustainability, and value creation across the agricultural supply chain.</p>
                 </div>
                 
                 <div class="vm-card animate-on-scroll delay-1">
-                    <h3><i class="fas fa-bullseye"></i> Our Mission</h3>
+                    <div class="vm-icon">
+                        <i class="fas fa-bullseye"></i>
+                    </div>
+                    <h3>Our Mission</h3>
                     <p>To deliver high-quality agricultural and food products to local and international markets while empowering farmers, promoting sustainable agriculture, and contributing to Africa's economic growth through efficient trade and innovation.</p>
                 </div>
             </div>
         </div>
     </section>
 
-    <!-- Core Values Section -->
+    <!-- Core Values Section with Icons -->
     <section class="core-values section-bg">
         <div class="container section-content">
             <div class="section-title">
@@ -938,31 +988,49 @@
             
             <div class="values-grid">
                 <div class="value-card animate-on-scroll">
+                    <div class="value-icon">
+                        <i class="fas fa-handshake"></i>
+                    </div>
                     <h4>Integrity</h4>
                     <p>We conduct business with honesty, transparency, and accountability.</p>
                 </div>
                 
                 <div class="value-card animate-on-scroll delay-1">
+                    <div class="value-icon">
+                        <i class="fas fa-medal"></i>
+                    </div>
                     <h4>Quality Excellence</h4>
                     <p>We adhere to strict quality standards across all operations.</p>
                 </div>
                 
                 <div class="value-card animate-on-scroll delay-2">
+                    <div class="value-icon">
+                        <i class="fas fa-leaf"></i>
+                    </div>
                     <h4>Sustainability</h4>
                     <p>We promote environmentally responsible and socially inclusive practices.</p>
                 </div>
                 
                 <div class="value-card animate-on-scroll">
+                    <div class="value-icon">
+                        <i class="fas fa-users"></i>
+                    </div>
                     <h4>Partnership</h4>
                     <p>We build long-term relationships with farmers, suppliers, and buyers.</p>
                 </div>
                 
                 <div class="value-card animate-on-scroll delay-1">
+                    <div class="value-icon">
+                        <i class="fas fa-lightbulb"></i>
+                    </div>
                     <h4>Innovation</h4>
                     <p>We continuously improve our processes to enhance efficiency and value.</p>
                 </div>
                 
                 <div class="value-card animate-on-scroll delay-2">
+                    <div class="value-icon">
+                        <i class="fas fa-user-check"></i>
+                    </div>
                     <h4>Customer Focus</h4>
                     <p>We prioritize reliability, consistency, and client satisfaction.</p>
                 </div>
@@ -970,7 +1038,7 @@
         </div>
     </section>
 
-    <!-- Competitive Strengths Section -->
+    <!-- Competitive Strengths with Image Cards -->
     <section class="strengths section-bg">
         <div class="container section-content">
             <div class="section-title">
@@ -980,45 +1048,57 @@
             
             <div class="strengths-grid">
                 <div class="strength-card animate-on-scroll">
-                    <div class="strength-number">1</div>
-                    <h4>Strong Group Backing</h4>
-                    <p>Backed by YAC GROUP Holdings, providing financial strength, governance, and strategic support.</p>
+                    <div class="strength-image" style="background-image: url('https://www.yacgroup.org/images/logo/logo.png');"></div>
+                    <div class="strength-content">
+                        <h4>Strong Group Backing</h4>
+                        <p>Backed by YAC GROUP Holdings, providing financial strength, governance, and strategic support.</p>
+                    </div>
                 </div>
                 
                 <div class="strength-card animate-on-scroll delay-1">
-                    <div class="strength-number">2</div>
-                    <h4>Integrated Value Chain Approach</h4>
-                    <p>From farming and sourcing to processing, export, and import logistics.</p>
+                    <div class="strength-image" style="background-image: url('https://images.unsplash.com/photo-1601171762745-71734e8f1d08?q=80&w=1170&auto=format&fit=crop&ixlib=rb-4.1.0&ixid=M3wxMjA3fDB8MHxwaG90by1wYWdlfHx8fGVufDB8fHx8fA%3D%3D');"></div>
+                    <div class="strength-content">
+                        <h4>Integrated Value Chain Approach</h4>
+                        <p>From farming and sourcing to processing, export, and import logistics.</p>
+                    </div>
                 </div>
                 
                 <div class="strength-card animate-on-scroll delay-2">
-                    <div class="strength-number">3</div>
-                    <h4>Market Access & Trade Expertise</h4>
-                    <p>Deep understanding of African and international commodity markets.</p>
+                    <div class="strength-image" style="background-image: url('https://images.unsplash.com/photo-1488459716781-31db52582fe9?q=80&w=1170&auto=format&fit=crop&ixlib=rb-4.1.0&ixid=M3wxMjA3fDB8MHxwaG90by1wYWdlfHx8fGVufDB8fHx8fA%3D%3D');"></div>
+                    <div class="strength-content">
+                        <h4>Market Access & Trade Expertise</h4>
+                        <p>Deep understanding of African and international commodity markets.</p>
+                    </div>
                 </div>
                 
                 <div class="strength-card animate-on-scroll">
-                    <div class="strength-number">4</div>
-                    <h4>Quality & Compliance Focus</h4>
-                    <p>Commitment to international standards in food safety, export requirements, and traceability.</p>
+                    <div class="strength-image" style="background-image: url('https://yaducorporation.com/wp-content/uploads/2023/10/food-safety.jpg');"></div>
+                    <div class="strength-content">
+                        <h4>Quality & Compliance Focus</h4>
+                        <p>Commitment to international standards in food safety, export requirements, and traceability.</p>
+                    </div>
                 </div>
                 
                 <div class="strength-card animate-on-scroll delay-1">
-                    <div class="strength-number">5</div>
-                    <h4>Farmer-Centric Model</h4>
-                    <p>Active engagement with farmers through input support, training, and market access.</p>
+                    <div class="strength-image" style="background-image: url('https://images.unsplash.com/photo-1727235314154-adced9445afc?q=80&w=1170&auto=format&fit=crop&ixlib=rb-4.1.0&ixid=M3wxMjA3fDB8MHxwaG90by1wYWdlfHx8fGVufDB8fHx8fA%3D%3D');"></div>
+                    <div class="strength-content">
+                        <h4>Farmer-Centric Model</h4>
+                        <p>Active engagement with farmers through input support, training, and market access.</p>
+                    </div>
                 </div>
                 
                 <div class="strength-card animate-on-scroll delay-2">
-                    <div class="strength-number">6</div>
-                    <h4>Diverse Product Portfolio</h4>
-                    <p>Reduces risk and enhances resilience across multiple agricultural segments.</p>
+                    <div class="strength-image" style="background-image: url('https://images.unsplash.com/photo-1575843401197-5fbec2bccf0f?q=80&w=1181&auto=format&fit=crop&ixlib=rb-4.1.0&ixid=M3wxMjA3fDB8MHxwaG90by1wYWdlfHx8fGVufDB8fHx8fA%3D%3D');"></div>
+                    <div class="strength-content">
+                        <h4>Diverse Product Portfolio</h4>
+                        <p>Reduces risk and enhances resilience across multiple agricultural segments.</p>
+                    </div>
                 </div>
             </div>
         </div>
     </section>
 
-    <!-- Principal Activities Section -->
+    <!-- Principal Activities with Image Cards -->
     <section class="activities section-bg">
         <div class="container section-content">
             <div class="section-title">
@@ -1028,34 +1108,49 @@
             
             <div class="activities-grid">
                 <div class="activity-card animate-on-scroll">
-                    <h4>Importation</h4>
-                    <p>Importation of food items to support food security and market stability</p>
+                    <div class="activity-image" style="background-image: url('https://images.unsplash.com/photo-1542838132-92c53300491e?ixlib=rb-4.0.3&auto=format&fit=crop&w=800&q=80');"></div>
+                    <div class="activity-content">
+                        <h4>Importation</h4>
+                        <p>Importation of food items to support food security and market stability</p>
+                    </div>
                 </div>
                 
                 <div class="activity-card animate-on-scroll delay-1">
-                    <h4>Export</h4>
-                    <p>Export of agricultural commodities including cashew nuts, cocoa beans, and cocoa products</p>
+                    <div class="activity-image" style="background-image: url('https://images.unsplash.com/photo-1578575437130-527eed3abbec?ixlib=rb-4.0.3&auto=format&fit=crop&w=800&q=80');"></div>
+                    <div class="activity-content">
+                        <h4>Export</h4>
+                        <p>Export of agricultural commodities including cashew nuts, cocoa beans, and cocoa products</p>
+                    </div>
                 </div>
                 
                 <div class="activity-card animate-on-scroll delay-2">
-                    <h4>Commercial Farming</h4>
-                    <p>Commercial farming and farming support services</p>
+                    <div class="activity-image" style="background-image: url('https://images.unsplash.com/photo-1500382017468-9049fed747ef?ixlib=rb-4.0.3&auto=format&fit=crop&w=800&q=80');"></div>
+                    <div class="activity-content">
+                        <h4>Commercial Farming</h4>
+                        <p>Commercial farming and farming support services</p>
+                    </div>
                 </div>
                 
                 <div class="activity-card animate-on-scroll">
-                    <h4>Animal Husbandry</h4>
-                    <p>Animal husbandry and dairy production</p>
+                    <div class="activity-image" style="background-image: url('https://images.unsplash.com/photo-1571938574727-cd5ea31dafbd?ixlib=rb-4.0.3&auto=format&fit=crop&w=800&q=80');"></div>
+                    <div class="activity-content">
+                        <h4>Animal Husbandry</h4>
+                        <p>Animal husbandry and dairy production</p>
+                    </div>
                 </div>
                 
                 <div class="activity-card animate-on-scroll delay-1">
-                    <h4>Value Chain Development</h4>
-                    <p>Agricultural value chain development, from farm to market</p>
+                    <div class="activity-image" style="background-image: url('https://images.unsplash.com/photo-1720643612157-e05bb98601fb?q=80&w=687&auto=format&fit=crop&ixlib=rb-4.1.0&ixid=M3wxMjA3fDB8MHxwaG90by1wYWdlfHx8fGVufDB8fHx8fA%3D%3D');"></div>
+                    <div class="activity-content">
+                        <h4>Value Chain Development</h4>
+                        <p>Agricultural value chain development, from farm to market</p>
+                    </div>
                 </div>
             </div>
         </div>
     </section>
 
-    <!-- Leadership Section -->
+    <!-- Leadership with Image Cards -->
     <section class="leadership section-bg">
         <div class="container section-content">
             <div class="section-title">
@@ -1064,23 +1159,25 @@
             </div>
             
             <div class="leadership-grid">
+                <div class="leader-card animate-on-scroll delay-1">
+                    <div class="leader-image" style="background-image: url('https://images.unsplash.com/photo-1544725176-7c40e5a71c5e?ixlib=rb-4.0.3&auto=format&fit=crop&w=800&q=80');"></div>
+                    <div class="leader-content">
+                        <h4>Yussif Alhassan Chibsah</h4>
+                        <div class="leader-title">Member of Board of Directors</div>
+                        <p>Strategic oversight and governance leadership</p>
+                    </div>
+                </div>
+
                 <div class="leader-card animate-on-scroll">
                     <div class="leader-image" style="background-image: url('https://images.unsplash.com/photo-1560250097-0b93528c311a?ixlib=rb-4.0.3&auto=format&fit=crop&w=800&q=80');"></div>
                     <div class="leader-content">
                         <h4>Joseph Jojan</h4>
-                        <div class="leader-title">Board of Directors</div>
+                        <div class="leader-title">Member of Board of Directors</div>
                         <p>Strategic oversight and governance leadership</p>
                     </div>
                 </div>
                 
-                <div class="leader-card animate-on-scroll delay-1">
-                    <div class="leader-image" style="background-image: url('https://images.unsplash.com/photo-1544725176-7c40e5a71c5e?ixlib=rb-4.0.3&auto=format&fit=crop&w-800&q=80');"></div>
-                    <div class="leader-content">
-                        <h4>Yussif Alhassan Chibsah</h4>
-                        <div class="leader-title">Board of Directors</div>
-                        <p>Strategic oversight and governance leadership</p>
-                    </div>
-                </div>
+
                 
                 <div class="leader-card animate-on-scroll delay-2">
                     <div class="leader-image" style="background-image: url('https://images.unsplash.com/photo-1551830412-1f4e6c8d6a32?ixlib=rb-4.0.3&auto=format&fit=crop&w=800&q=80');"></div>
@@ -1103,30 +1200,42 @@
             </div>
             
             <div class="commitment-content animate-on-scroll">
-                <h3 style="color: var(--accent-gold);">Creating Sustainable Value Across Africa</h3>
+                <h3>Creating Sustainable Value Across Africa</h3>
                 <p>At YAC EXIM AFRICA LTD, we are committed to building a resilient agribusiness that supports food security, enhances export competitiveness, and creates sustainable value for stakeholders across Africa and beyond.</p>
                 <p>Through our integrated approach, farmer-centric model, and commitment to quality and sustainability, we are transforming African agriculture one partnership at a time.</p>
             </div>
             
             <div class="commitment-points">
                 <div class="commitment-point animate-on-scroll">
-                    <h4>Quality Assurance</h4>
-                    <p>Commitment to international standards in food safety, export requirements, and traceability</p>
+                    <div class="commitment-image" style="background-image: url('https://www.newfoodmagazine.com/wp-content/uploads/shutterstock_379853683-750x500.jpg');"></div>
+                    <div class="commitment-text">
+                        <h4>Quality Assurance</h4>
+                        <p>Commitment to international standards in food safety, export requirements, and traceability</p>
+                    </div>
                 </div>
                 
                 <div class="commitment-point animate-on-scroll delay-1">
-                    <h4>Sustainable Practices</h4>
-                    <p>Promoting environmentally responsible and socially inclusive agricultural practices</p>
+                    <div class="commitment-image" style="background-image: url('https://images.unsplash.com/photo-1542601906990-b4d3fb778b09?ixlib=rb-4.0.3&auto=format&fit=crop&w=800&q=80');"></div>
+                    <div class="commitment-text">
+                        <h4>Sustainable Practices</h4>
+                        <p>Promoting environmentally responsible and socially inclusive agricultural practices</p>
+                    </div>
                 </div>
                 
                 <div class="commitment-point animate-on-scroll delay-2">
-                    <h4>Farmer Empowerment</h4>
-                    <p>Active engagement with farmers through input support, training, and market access</p>
+                    <div class="commitment-image" style="background-image: url('https://images.unsplash.com/photo-1586773860418-dc22f8b874bc?ixlib=rb-4.0.3&auto=format&fit=crop&w=800&q=80');"></div>
+                    <div class="commitment-text">
+                        <h4>Farmer Empowerment</h4>
+                        <p>Active engagement with farmers through input support, training, and market access</p>
+                    </div>
                 </div>
                 
                 <div class="commitment-point animate-on-scroll delay-3">
-                    <h4>Market Development</h4>
-                    <p>Creating sustainable value chains that benefit all stakeholders from farm to market</p>
+                    <div class="commitment-image" style="background-image: url('https://images.unsplash.com/photo-1559136555-9303baea8ebd?ixlib=rb-4.0.3&auto=format&fit=crop&w=800&q=80');"></div>
+                    <div class="commitment-text">
+                        <h4>Market Development</h4>
+                        <p>Creating sustainable value chains that benefit all stakeholders from farm to market</p>
+                    </div>
                 </div>
             </div>
         </div>
