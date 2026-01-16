@@ -1,0 +1,1281 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>About YACEXIM - Leading African Agribusiness</title>
+    <!-- Favicon using company logo -->
+    <link rel="icon" type="image/png" href="/assets/img/logo2.png">
+    <!-- External Libraries -->
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.4.0/css/all.min.css">
+    <link href="https://fonts.googleapis.com/css2?family=Montserrat:wght@300;400;500;600;700;800&family=Open+Sans:wght@300;400;500;600&display=swap" rel="stylesheet">
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/animate.css/4.1.1/animate.min.css">
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/OwlCarousel2/2.3.4/assets/owl.carousel.min.css">
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/OwlCarousel2/2.3.4/assets/owl.theme.default.min.css">
+    <style>
+        /* EXACT COPY OF CSS FROM index.html - Header, Footer, Base Styles */
+        :root {
+            --primary-dark: #0a3d1f;
+            --primary-green: #1d976c;
+            --accent-gold: #d4af37;
+            --accent-brown: #8b4513;
+            --accent-orange: #e67e22;
+            --light-bg: #f8f9fa;
+            --dark-text: #222;
+            --light-text: #f8f9fa;
+            --section-padding: 100px 0;
+            --transition: all 0.4s cubic-bezier(0.175, 0.885, 0.32, 1.275);
+        }
+        
+        * {
+            margin: 0;
+            padding: 0;
+            box-sizing: border-box;
+        }
+        
+        html {
+            scroll-behavior: smooth;
+        }
+        
+        body {
+            font-family: 'Open Sans', sans-serif;
+            color: var(--dark-text);
+            line-height: 1.6;
+            overflow-x: hidden;
+            background-color: var(--light-bg);
+        }
+        
+        h1, h2, h3, h4, h5, h6 {
+            font-family: 'Montserrat', sans-serif;
+            font-weight: 700;
+            line-height: 1.3;
+        }
+        
+        .container {
+            width: 100%;
+            max-width: 1200px;
+            margin: 0 auto;
+            padding: 0 20px;
+        }
+        
+        /* Header & Navigation - EXACT COPY from index.html */
+        header {
+            position: fixed;
+            top: 0;
+            left: 0;
+            width: 100%;
+            z-index: 1000;
+            padding: 15px 0;
+            transition: var(--transition);
+            background-color: rgba(255, 255, 255, 0.98);
+            box-shadow: 0 5px 20px rgba(10, 61, 31, 0.1);
+        }
+        
+        header.scrolled {
+            padding: 10px 0;
+            background-color: rgba(255, 255, 255, 0.99);
+            box-shadow: 0 5px 30px rgba(10, 61, 31, 0.15);
+        }
+        
+        .header-container {
+            display: flex;
+            justify-content: space-between;
+            align-items: center;
+            position: relative;
+        }
+        
+        .logo {
+            display: flex;
+            align-items: center;
+            text-decoration: none;
+            height: 110px;
+            z-index: 1001;
+        }
+        
+        .logo img {
+            height: 100%;
+            width: auto;
+            max-width: 220px;
+            object-fit: contain;
+        }
+        
+        .nav-menu {
+            display: flex;
+            list-style: none;
+            align-items: center;
+            margin-left: auto;
+        }
+        
+        .nav-menu li {
+            margin-left: 25px;
+        }
+        
+        .nav-menu a {
+            text-decoration: none;
+            color: var(--primary-dark);
+            font-weight: 600;
+            font-size: 0.95rem;
+            position: relative;
+            padding: 8px 0;
+            transition: var(--transition);
+        }
+        
+        .nav-menu a:after {
+            content: '';
+            position: absolute;
+            bottom: 0;
+            left: 0;
+            width: 0;
+            height: 2px;
+            background-color: var(--primary-green);
+            transition: var(--transition);
+        }
+        
+        .nav-menu a:hover {
+            color: var(--primary-green);
+        }
+        
+        .nav-menu a:hover:after {
+            width: 100%;
+        }
+        
+        .mobile-toggle {
+            display: none;
+            font-size: 1.5rem;
+            color: var(--primary-dark);
+            cursor: pointer;
+            z-index: 1001;
+        }
+        
+        /* Footer - EXACT COPY from index.html */
+        footer {
+            background-color: var(--primary-dark);
+            color: var(--light-text);
+            padding: 80px 0 40px;
+        }
+        
+        .footer-grid {
+            display: grid;
+            grid-template-columns: repeat(auto-fit, minmax(250px, 1fr));
+            gap: 40px;
+            margin-bottom: 50px;
+        }
+        
+        .footer-col h3 {
+            font-size: 1.4rem;
+            margin-bottom: 25px;
+            color: var(--accent-gold);
+        }
+        
+        .footer-col p, .footer-col a {
+            color: rgba(255, 255, 255, 0.8);
+            line-height: 1.8;
+        }
+        
+        .footer-col a {
+            text-decoration: none;
+            transition: var(--transition);
+        }
+        
+        .footer-col a:hover {
+            color: var(--accent-gold);
+            padding-left: 5px;
+        }
+        
+        .social-links {
+            display: flex;
+            gap: 15px;
+            margin-top: 20px;
+        }
+        
+        .social-link {
+            display: flex;
+            align-items: center;
+            justify-content: center;
+            width: 40px;
+            height: 40px;
+            background-color: rgba(255, 255, 255, 0.1);
+            border-radius: 50%;
+            color: var(--light-text);
+            font-size: 1.1rem;
+            transition: var(--transition);
+        }
+        
+        .social-link:hover {
+            background-color: var(--accent-gold);
+            color: var(--primary-dark);
+            transform: translateY(-5px);
+        }
+        
+        .email-contact {
+            margin-top: 15px;
+            padding: 10px 0;
+            border-top: 1px solid rgba(255, 255, 255, 0.1);
+        }
+        
+        .email-item {
+            margin-bottom: 8px;
+            display: flex;
+            align-items: center;
+        }
+        
+        .email-item i {
+            margin-right: 10px;
+            color: var(--accent-gold);
+            font-size: 0.9rem;
+        }
+        
+        .copyright {
+            text-align: center;
+            padding-top: 40px;
+            border-top: 1px solid rgba(255, 255, 255, 0.1);
+            color: rgba(255, 255, 255, 0.7);
+            font-size: 0.9rem;
+        }
+        
+        /* Responsive Styles - EXACT COPY from index.html */
+        @media (max-width: 992px) {
+            .logo {
+                height: 90px;
+            }
+            
+            .logo img {
+                max-width: 250px;
+            }
+        }
+        
+        @media (max-width: 768px) {
+            .nav-menu {
+                position: fixed;
+                top: 0;
+                left: -100%;
+                width: 80%;
+                height: 100vh;
+                background-color: #fff;
+                flex-direction: column;
+                align-items: flex-start;
+                justify-content: flex-start;
+                padding-top: 100px;
+                padding-left: 30px;
+                transition: var(--transition);
+                box-shadow: 0 10px 30px rgba(0, 0, 0, 0.1);
+                z-index: 1000;
+            }
+            
+            .nav-menu.active {
+                left: 0;
+            }
+            
+            .nav-menu li {
+                margin: 0 0 25px 0;
+                width: 100%;
+            }
+            
+            .nav-menu a {
+                font-size: 1.1rem;
+                padding: 10px 0;
+                display: block;
+                width: 100%;
+            }
+            
+            .mobile-toggle {
+                display: block;
+            }
+            
+            .logo {
+                height: 90px !important;
+            }
+            
+            .logo img {
+                max-width: 250px !important;
+            }
+        }
+        
+        @media (max-width: 576px) {
+            .logo {
+                height: 75px !important;
+            }
+            
+            .logo img {
+                max-width: 200px !important;
+            }
+        }
+        
+        @media (max-width: 480px) {
+            .logo {
+                height: 65px !important;
+            }
+            
+            .logo img {
+                max-width: 180px !important;
+            }
+        }
+        
+        .menu-overlay {
+            position: fixed;
+            top: 0;
+            left: 0;
+            width: 100%;
+            height: 100%;
+            background-color: rgba(0, 0, 0, 0.5);
+            z-index: 999;
+            display: none;
+        }
+        
+        .menu-overlay.active {
+            display: block;
+        }
+        
+        /* ABOUT PAGE SPECIFIC STYLES */
+        
+        /* Section Background Pattern */
+        .section-bg {
+            position: relative;
+            background-size: cover;
+            background-position: center;
+            background-attachment: fixed;
+        }
+        
+        .section-bg::before {
+            content: '';
+            position: absolute;
+            top: 0;
+            left: 0;
+            width: 100%;
+            height: 100%;
+            background: rgba(255, 255, 255, 0.88);
+            z-index: 1;
+        }
+        
+        .section-bg-dark::before {
+            background: rgba(10, 61, 31, 0.88);
+        }
+        
+        .section-content {
+            position: relative;
+            z-index: 2;
+        }
+        
+        /* About Hero */
+        .about-hero {
+            padding: 180px 0 120px;
+            min-height: 80vh;
+            display: flex;
+            align-items: center;
+            background: linear-gradient(rgba(10, 61, 31, 0.85), rgba(10, 61, 31, 0.85)), url('https://images.unsplash.com/photo-1558618666-fcd25c85cd64?ixlib=rb-4.0.3&auto=format&fit=crop&w=1920&q=80');
+            background-size: cover;
+            background-position: center;
+            color: var(--light-text);
+        }
+        
+        .about-hero .container {
+            max-width: 800px;
+            text-align: center;
+        }
+        
+        .about-hero h1 {
+            font-size: 3.5rem;
+            margin-bottom: 20px;
+            font-weight: 800;
+        }
+        
+        .about-hero p {
+            font-size: 1.2rem;
+            margin-bottom: 30px;
+            opacity: 0.9;
+        }
+        
+        .breadcrumb {
+            display: flex;
+            justify-content: center;
+            align-items: center;
+            margin-bottom: 30px;
+        }
+        
+        .breadcrumb a {
+            color: var(--accent-gold);
+            text-decoration: none;
+            transition: var(--transition);
+        }
+        
+        .breadcrumb a:hover {
+            color: white;
+        }
+        
+        .breadcrumb span {
+            margin: 0 10px;
+            color: rgba(255, 255, 255, 0.7);
+        }
+        
+        /* Section Styling */
+        section {
+            padding: var(--section-padding);
+        }
+        
+        .section-title {
+            text-align: center;
+            margin-bottom: 60px;
+        }
+        
+        .section-title h2 {
+            font-size: 2.5rem;
+            color: var(--primary-dark);
+            position: relative;
+            display: inline-block;
+            padding-bottom: 15px;
+        }
+        
+        .section-title h2:after {
+            content: '';
+            position: absolute;
+            bottom: 0;
+            left: 50%;
+            transform: translateX(-50%);
+            width: 80px;
+            height: 3px;
+            background-color: var(--primary-green);
+        }
+        
+        .section-title.white h2 {
+            color: white;
+        }
+        
+        .section-title.white h2:after {
+            background-color: var(--accent-gold);
+        }
+        
+        .section-title p {
+            max-width: 700px;
+            margin: 20px auto 0;
+            color: #666;
+            font-size: 1.1rem;
+        }
+        
+        .section-title.white p {
+            color: rgba(255, 255, 255, 0.9);
+        }
+        
+        /* Company Overview */
+        .company-overview {
+            background: linear-gradient(rgba(248, 249, 250, 0.9), rgba(248, 249, 250, 0.9)), url('https://images.unsplash.com/photo-1532094349884-543bc11b234d?ixlib=rb-4.0.3&auto=format&fit=crop&w=1920&q=80');
+        }
+        
+        .overview-content {
+            display: grid;
+            grid-template-columns: 1fr 1fr;
+            gap: 60px;
+            align-items: center;
+        }
+        
+        .overview-image {
+            border-radius: 10px;
+            overflow: hidden;
+            box-shadow: 0 20px 40px rgba(0, 0, 0, 0.1);
+        }
+        
+        .overview-image img {
+            width: 100%;
+            height: auto;
+            display: block;
+            transition: var(--transition);
+        }
+        
+        .overview-image:hover img {
+            transform: scale(1.05);
+        }
+        
+        .overview-text h3 {
+            font-size: 2rem;
+            margin-bottom: 20px;
+            color: var(--primary-dark);
+        }
+        
+        .overview-text p {
+            margin-bottom: 20px;
+            font-size: 1.05rem;
+        }
+        
+        /* Vision Mission */
+        .vision-mission {
+            background: linear-gradient(rgba(248, 249, 250, 0.88), rgba(248, 249, 250, 0.88)), url('https://images.unsplash.com/photo-1500382017468-9049fed747ef?ixlib=rb-4.0.3&auto=format&fit=crop&w=1920&q=80');
+        }
+        
+        .vm-grid {
+            display: grid;
+            grid-template-columns: repeat(auto-fit, minmax(300px, 1fr));
+            gap: 40px;
+            margin-top: 50px;
+        }
+        
+        .vm-card {
+            background-color: white;
+            border-radius: 10px;
+            padding: 40px;
+            box-shadow: 0 10px 30px rgba(0, 0, 0, 0.08);
+            transition: var(--transition);
+            border-left: 5px solid var(--primary-green);
+        }
+        
+        .vm-card:hover {
+            transform: translateY(-10px);
+            box-shadow: 0 20px 40px rgba(29, 151, 108, 0.15);
+        }
+        
+        .vm-card h3 {
+            font-size: 1.6rem;
+            margin-bottom: 20px;
+            color: var(--primary-dark);
+            display: flex;
+            align-items: center;
+        }
+        
+        .vm-card h3 i {
+            margin-right: 15px;
+            color: var(--primary-green);
+            font-size: 1.8rem;
+        }
+        
+        /* Core Values */
+        .core-values {
+            background: linear-gradient(rgba(255, 255, 255, 0.88), rgba(255, 255, 255, 0.88)), url('https://images.unsplash.com/photo-1416879595882-3373a0480b5b?ixlib=rb-4.0.3&auto=format&fit=crop&w=1920&q=80');
+        }
+        
+        .values-grid {
+            display: grid;
+            grid-template-columns: repeat(auto-fit, minmax(250px, 1fr));
+            gap: 30px;
+            margin-top: 50px;
+        }
+        
+        .value-card {
+            background-color: white;
+            border-radius: 10px;
+            padding: 35px 30px;
+            text-align: center;
+            box-shadow: 0 10px 30px rgba(0, 0, 0, 0.08);
+            transition: var(--transition);
+        }
+        
+        .value-card:hover {
+            transform: translateY(-10px);
+            box-shadow: 0 20px 40px rgba(212, 175, 55, 0.15);
+            border-top: 4px solid var(--primary-green);
+        }
+        
+        .value-card h4 {
+            font-size: 1.3rem;
+            margin-bottom: 15px;
+            color: var(--primary-dark);
+        }
+        
+        /* Competitive Strengths */
+        .strengths {
+            background: linear-gradient(rgba(248, 249, 250, 0.88), rgba(248, 249, 250, 0.88)), url('https://images.unsplash.com/photo-1516937941344-00b4e0337589?ixlib=rb-4.0.3&auto=format&fit=crop&w=1920&q=80');
+        }
+        
+        .strengths-grid {
+            display: grid;
+            grid-template-columns: repeat(auto-fit, minmax(300px, 1fr));
+            gap: 30px;
+            margin-top: 50px;
+        }
+        
+        .strength-card {
+            background-color: white;
+            border-radius: 10px;
+            padding: 30px;
+            box-shadow: 0 10px 30px rgba(0, 0, 0, 0.08);
+            transition: var(--transition);
+        }
+        
+        .strength-card:hover {
+            transform: translateY(-10px);
+            box-shadow: 0 20px 40px rgba(10, 61, 31, 0.15);
+        }
+        
+        .strength-number {
+            display: inline-block;
+            background-color: var(--primary-green);
+            color: white;
+            width: 40px;
+            height: 40px;
+            border-radius: 50%;
+            text-align: center;
+            line-height: 40px;
+            font-weight: 700;
+            margin-bottom: 20px;
+        }
+        
+        .strength-card h4 {
+            font-size: 1.3rem;
+            margin-bottom: 15px;
+            color: var(--primary-dark);
+        }
+        
+        /* Leadership */
+        .leadership {
+            background: linear-gradient(rgba(255, 255, 255, 0.88), rgba(255, 255, 255, 0.88)), url('https://images.unsplash.com/photo-1556761175-b413da4baf72?ixlib=rb-4.0.3&auto=format&fit=crop&w=1920&q=80');
+        }
+        
+        .leadership-grid {
+            display: grid;
+            grid-template-columns: repeat(auto-fit, minmax(300px, 1fr));
+            gap: 40px;
+            margin-top: 50px;
+        }
+        
+        .leader-card {
+            background-color: white;
+            border-radius: 10px;
+            overflow: hidden;
+            box-shadow: 0 10px 30px rgba(0, 0, 0, 0.08);
+            transition: var(--transition);
+        }
+        
+        .leader-card:hover {
+            transform: translateY(-10px);
+            box-shadow: 0 20px 40px rgba(10, 61, 31, 0.15);
+        }
+        
+        .leader-image {
+            height: 250px;
+            background-size: cover;
+            background-position: center;
+        }
+        
+        .leader-content {
+            padding: 30px;
+            text-align: center;
+        }
+        
+        .leader-content h4 {
+            font-size: 1.3rem;
+            margin-bottom: 5px;
+            color: var(--primary-dark);
+        }
+        
+        .leader-title {
+            color: var(--primary-green);
+            font-weight: 600;
+            margin-bottom: 15px;
+        }
+        
+        /* Activities */
+        .activities {
+            background: linear-gradient(rgba(248, 249, 250, 0.88), rgba(248, 249, 250, 0.88)), url('https://images.unsplash.com/photo-1500382017468-9049fed747ef?ixlib=rb-4.0.3&auto=format&fit=crop&w=1920&q=80');
+        }
+        
+        .activities-grid {
+            display: grid;
+            grid-template-columns: repeat(auto-fit, minmax(250px, 1fr));
+            gap: 30px;
+            margin-top: 50px;
+        }
+        
+        .activity-card {
+            background-color: white;
+            border-radius: 10px;
+            padding: 35px 30px;
+            text-align: center;
+            box-shadow: 0 10px 30px rgba(0, 0, 0, 0.08);
+            transition: var(--transition);
+        }
+        
+        .activity-card:hover {
+            transform: translateY(-10px);
+            box-shadow: 0 20px 40px rgba(29, 151, 108, 0.15);
+        }
+        
+        .activity-card h4 {
+            font-size: 1.3rem;
+            margin-bottom: 15px;
+            color: var(--primary-dark);
+        }
+        
+        /* Commitment Section - UPDATED with gold text */
+        .commitment {
+            background: linear-gradient(rgba(10, 61, 31, 0.88), rgba(10, 61, 31, 0.88)), url('https://images.unsplash.com/photo-1558618666-fcd25c85cd64?ixlib=rb-4.0.3&auto=format&fit=crop&w=1920&q=80');
+            color: white;
+        }
+        
+        .commitment-content {
+            max-width: 800px;
+            margin: 0 auto 50px;
+            text-align: center;
+        }
+        
+        .commitment-content h3 {
+            font-size: 2rem;
+            margin-bottom: 20px;
+            color: var(--accent-gold); /* Gold color for headings */
+        }
+        
+        .commitment-content p {
+            font-size: 1.1rem;
+            margin-bottom: 20px;
+            color: rgba(255, 255, 255, 0.9);
+        }
+        
+        .commitment-points {
+            display: grid;
+            grid-template-columns: repeat(auto-fit, minmax(250px, 1fr));
+            gap: 30px;
+            margin-top: 50px;
+        }
+        
+        .commitment-point {
+            background-color: white;
+            border-radius: 10px;
+            padding: 30px;
+            text-align: center;
+            box-shadow: 0 10px 30px rgba(0, 0, 0, 0.1);
+        }
+        
+        .commitment-point h4 {
+            font-size: 1.3rem;
+            margin-bottom: 15px;
+            color: var(--primary-dark); /* Dark text on white background */
+        }
+        
+        .commitment-point p {
+            color: #666; /* Regular text color on white background */
+            font-size: 1rem;
+        }
+        
+        /* Button */
+        .btn {
+            display: inline-block;
+            padding: 15px 35px;
+            border-radius: 50px;
+            text-decoration: none;
+            font-weight: 600;
+            font-family: 'Montserrat', sans-serif;
+            transition: var(--transition);
+            border: none;
+            cursor: pointer;
+            font-size: 1rem;
+        }
+        
+        .btn-primary {
+            background-color: var(--accent-gold);
+            color: var(--primary-dark);
+        }
+        
+        .btn-primary:hover {
+            background-color: #e6c34d;
+            transform: translateY(-5px);
+            box-shadow: 0 15px 25px rgba(212, 175, 55, 0.3);
+        }
+        
+        /* Animation Classes */
+        .animate-on-scroll {
+            opacity: 0;
+            transform: translateY(30px);
+            transition: opacity 0.8s ease, transform 0.8s ease;
+        }
+        
+        .animate-on-scroll.animated {
+            opacity: 1;
+            transform: translateY(0);
+        }
+        
+        .delay-1 {
+            transition-delay: 0.2s;
+        }
+        
+        .delay-2 {
+            transition-delay: 0.4s;
+        }
+        
+        .delay-3 {
+            transition-delay: 0.6s;
+        }
+        
+        /* Responsive adjustments for about page */
+        @media (max-width: 992px) {
+            .about-hero h1 {
+                font-size: 2.8rem;
+            }
+            
+            .overview-content {
+                grid-template-columns: 1fr;
+                gap: 40px;
+            }
+            
+            .overview-image {
+                order: -1;
+            }
+        }
+        
+        @media (max-width: 768px) {
+            .about-hero {
+                padding: 180px 0 80px;
+            }
+            
+            .about-hero h1 {
+                font-size: 2.4rem;
+            }
+            
+            .section-title h2 {
+                font-size: 2rem;
+            }
+            
+            .vm-card, .value-card, .strength-card, .activity-card, .commitment-point {
+                padding: 25px 20px;
+            }
+        }
+        
+        @media (max-width: 576px) {
+            .about-hero {
+                padding: 160px 0 60px;
+            }
+            
+            .about-hero h1 {
+                font-size: 2rem;
+            }
+            
+            section {
+                padding: 70px 0;
+            }
+        }
+    </style>
+</head>
+<body>
+    <!-- Header & Navigation - EXACT COPY from index.html -->
+    <header id="header">
+        <div class="container header-container">
+            <a href="/" class="logo">
+                <!-- Company Logo -->
+                <img src="/assets/img/logo.png" alt="YACEXIM AFRICA LTD">
+            </a>
+            
+            <div class="mobile-toggle" id="mobile-toggle">
+                <i class="fas fa-bars"></i>
+            </div>
+            
+            <ul class="nav-menu" id="nav-menu">
+                <li><a href="/">Home</a></li>
+                <li><a href="about.html" class="active">About</a></li>
+                <li><a href="/#services">Services</a></li>
+                <li><a href="/#products">Products</a></li>
+                <li><a href="/#contact">Contact</a></li>
+                <li><a href="#" class="btn btn-primary" style="padding: 10px 25px; margin-left: 0;">Trade Portal</a></li>
+            </ul>
+        </div>
+        <div class="menu-overlay" id="menu-overlay"></div>
+    </header>
+
+    <!-- About Hero Section -->
+    <section class="about-hero">
+        <div class="container">
+            <div class="breadcrumb">
+                <a href="/">Home</a>
+                <span>></span>
+                <span>About Us</span>
+            </div>
+            
+            <h1 class="animate__animated animate__fadeInUp">About YACEXIM Africa</h1>
+            <p class="animate__animated animate__fadeInUp animate__delay-1s">
+                A dynamic agribusiness and commodities trading company strategically positioned within Africa's growing agricultural value chain, delivering quality food products to local and international markets while supporting sustainable farming and rural livelihoods.
+            </p>
+        </div>
+    </section>
+
+    <!-- Company Overview Section -->
+    <section class="company-overview section-bg">
+        <div class="container section-content">
+            <div class="section-title">
+                <h2>Our Company</h2>
+                <p>A subsidiary of YAC GROUP Holdings, driving agricultural transformation in Africa</p>
+            </div>
+            
+            <div class="overview-content">
+                <div class="overview-text animate-on-scroll">
+                    <h3>Leading African Agribusiness & Export-Import Company</h3>
+                    <p>YAC EXIM AFRICA LTD is a dynamic agribusiness and commodities trading company operating as a subsidiary of YAC GROUP Holdings. We are strategically positioned within Africa's growing agricultural value chain, delivering quality food products to local and international markets while supporting sustainable farming and rural livelihoods.</p>
+                    
+                    <p>Our operations span importation, export, production, and agricultural support services, with a strong focus on quality assurance, ethical sourcing, and long-term partnerships.</p>
+                    
+                    <p>With deep expertise in African and international commodity markets, we bridge continents through agricultural trade, empowering farmers, promoting sustainable agriculture, and contributing to Africa's economic growth through efficient trade and innovation.</p>
+                </div>
+                
+                <div class="overview-image animate-on-scroll delay-1">
+                    <img src="https://images.unsplash.com/photo-1666987570506-f8c3e05b6c58?q=80&w=1074&auto=format&fit=crop&ixlib=rb-4.1.0&ixid=M3wxMjA3fDB8MHxwaG90by1wYWdlfHx8fGVufDB8fHx8fA%3D%3D" alt="YACEXIM African Agriculture">
+                </div>
+            </div>
+        </div>
+    </section>
+
+    <!-- Vision & Mission Section -->
+    <section class="vision-mission section-bg">
+        <div class="container section-content">
+            <div class="section-title">
+                <h2>Our Vision & Mission</h2>
+                <p>Guiding principles that drive our agricultural transformation journey</p>
+            </div>
+            
+            <div class="vm-grid">
+                <div class="vm-card animate-on-scroll">
+                    <h3><i class="fas fa-eye"></i> Our Vision</h3>
+                    <p>To become a leading African agribusiness and export-import company, recognized globally for quality, sustainability, and value creation across the agricultural supply chain.</p>
+                </div>
+                
+                <div class="vm-card animate-on-scroll delay-1">
+                    <h3><i class="fas fa-bullseye"></i> Our Mission</h3>
+                    <p>To deliver high-quality agricultural and food products to local and international markets while empowering farmers, promoting sustainable agriculture, and contributing to Africa's economic growth through efficient trade and innovation.</p>
+                </div>
+            </div>
+        </div>
+    </section>
+
+    <!-- Core Values Section -->
+    <section class="core-values section-bg">
+        <div class="container section-content">
+            <div class="section-title">
+                <h2>Our Core Values</h2>
+                <p>The principles that guide every aspect of our business operations</p>
+            </div>
+            
+            <div class="values-grid">
+                <div class="value-card animate-on-scroll">
+                    <h4>Integrity</h4>
+                    <p>We conduct business with honesty, transparency, and accountability.</p>
+                </div>
+                
+                <div class="value-card animate-on-scroll delay-1">
+                    <h4>Quality Excellence</h4>
+                    <p>We adhere to strict quality standards across all operations.</p>
+                </div>
+                
+                <div class="value-card animate-on-scroll delay-2">
+                    <h4>Sustainability</h4>
+                    <p>We promote environmentally responsible and socially inclusive practices.</p>
+                </div>
+                
+                <div class="value-card animate-on-scroll">
+                    <h4>Partnership</h4>
+                    <p>We build long-term relationships with farmers, suppliers, and buyers.</p>
+                </div>
+                
+                <div class="value-card animate-on-scroll delay-1">
+                    <h4>Innovation</h4>
+                    <p>We continuously improve our processes to enhance efficiency and value.</p>
+                </div>
+                
+                <div class="value-card animate-on-scroll delay-2">
+                    <h4>Customer Focus</h4>
+                    <p>We prioritize reliability, consistency, and client satisfaction.</p>
+                </div>
+            </div>
+        </div>
+    </section>
+
+    <!-- Competitive Strengths Section -->
+    <section class="strengths section-bg">
+        <div class="container section-content">
+            <div class="section-title">
+                <h2>Our Competitive Strengths</h2>
+                <p>What sets us apart in the agribusiness and commodities trading industry</p>
+            </div>
+            
+            <div class="strengths-grid">
+                <div class="strength-card animate-on-scroll">
+                    <div class="strength-number">1</div>
+                    <h4>Strong Group Backing</h4>
+                    <p>Backed by YAC GROUP Holdings, providing financial strength, governance, and strategic support.</p>
+                </div>
+                
+                <div class="strength-card animate-on-scroll delay-1">
+                    <div class="strength-number">2</div>
+                    <h4>Integrated Value Chain Approach</h4>
+                    <p>From farming and sourcing to processing, export, and import logistics.</p>
+                </div>
+                
+                <div class="strength-card animate-on-scroll delay-2">
+                    <div class="strength-number">3</div>
+                    <h4>Market Access & Trade Expertise</h4>
+                    <p>Deep understanding of African and international commodity markets.</p>
+                </div>
+                
+                <div class="strength-card animate-on-scroll">
+                    <div class="strength-number">4</div>
+                    <h4>Quality & Compliance Focus</h4>
+                    <p>Commitment to international standards in food safety, export requirements, and traceability.</p>
+                </div>
+                
+                <div class="strength-card animate-on-scroll delay-1">
+                    <div class="strength-number">5</div>
+                    <h4>Farmer-Centric Model</h4>
+                    <p>Active engagement with farmers through input support, training, and market access.</p>
+                </div>
+                
+                <div class="strength-card animate-on-scroll delay-2">
+                    <div class="strength-number">6</div>
+                    <h4>Diverse Product Portfolio</h4>
+                    <p>Reduces risk and enhances resilience across multiple agricultural segments.</p>
+                </div>
+            </div>
+        </div>
+    </section>
+
+    <!-- Principal Activities Section -->
+    <section class="activities section-bg">
+        <div class="container section-content">
+            <div class="section-title">
+                <h2>Our Principal Activities</h2>
+                <p>Comprehensive agribusiness solutions across the agricultural value chain</p>
+            </div>
+            
+            <div class="activities-grid">
+                <div class="activity-card animate-on-scroll">
+                    <h4>Importation</h4>
+                    <p>Importation of food items to support food security and market stability</p>
+                </div>
+                
+                <div class="activity-card animate-on-scroll delay-1">
+                    <h4>Export</h4>
+                    <p>Export of agricultural commodities including cashew nuts, cocoa beans, and cocoa products</p>
+                </div>
+                
+                <div class="activity-card animate-on-scroll delay-2">
+                    <h4>Commercial Farming</h4>
+                    <p>Commercial farming and farming support services</p>
+                </div>
+                
+                <div class="activity-card animate-on-scroll">
+                    <h4>Animal Husbandry</h4>
+                    <p>Animal husbandry and dairy production</p>
+                </div>
+                
+                <div class="activity-card animate-on-scroll delay-1">
+                    <h4>Value Chain Development</h4>
+                    <p>Agricultural value chain development, from farm to market</p>
+                </div>
+            </div>
+        </div>
+    </section>
+
+    <!-- Leadership Section -->
+    <section class="leadership section-bg">
+        <div class="container section-content">
+            <div class="section-title">
+                <h2>Leadership & Governance</h2>
+                <p>Experienced leadership guiding our agricultural transformation mission</p>
+            </div>
+            
+            <div class="leadership-grid">
+                <div class="leader-card animate-on-scroll">
+                    <div class="leader-image" style="background-image: url('https://images.unsplash.com/photo-1560250097-0b93528c311a?ixlib=rb-4.0.3&auto=format&fit=crop&w=800&q=80');"></div>
+                    <div class="leader-content">
+                        <h4>Joseph Jojan</h4>
+                        <div class="leader-title">Board of Directors</div>
+                        <p>Strategic oversight and governance leadership</p>
+                    </div>
+                </div>
+                
+                <div class="leader-card animate-on-scroll delay-1">
+                    <div class="leader-image" style="background-image: url('https://images.unsplash.com/photo-1544725176-7c40e5a71c5e?ixlib=rb-4.0.3&auto=format&fit=crop&w-800&q=80');"></div>
+                    <div class="leader-content">
+                        <h4>Yussif Alhassan Chibsah</h4>
+                        <div class="leader-title">Board of Directors</div>
+                        <p>Strategic oversight and governance leadership</p>
+                    </div>
+                </div>
+                
+                <div class="leader-card animate-on-scroll delay-2">
+                    <div class="leader-image" style="background-image: url('https://images.unsplash.com/photo-1551830412-1f4e6c8d6a32?ixlib=rb-4.0.3&auto=format&fit=crop&w=800&q=80');"></div>
+                    <div class="leader-content">
+                        <h4>Godfred Boateng Sefa</h4>
+                        <div class="leader-title">Chief Executive Officer (CEO)</div>
+                        <p>Executive leadership and strategic direction</p>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </section>
+
+    <!-- Our Commitment Section -->
+    <section class="commitment section-bg-dark">
+        <div class="container section-content">
+            <div class="section-title white">
+                <h2>Our Commitment</h2>
+                <p>Building a resilient agribusiness that supports food security and creates sustainable value</p>
+            </div>
+            
+            <div class="commitment-content animate-on-scroll">
+                <h3 style="color: var(--accent-gold);">Creating Sustainable Value Across Africa</h3>
+                <p>At YAC EXIM AFRICA LTD, we are committed to building a resilient agribusiness that supports food security, enhances export competitiveness, and creates sustainable value for stakeholders across Africa and beyond.</p>
+                <p>Through our integrated approach, farmer-centric model, and commitment to quality and sustainability, we are transforming African agriculture one partnership at a time.</p>
+            </div>
+            
+            <div class="commitment-points">
+                <div class="commitment-point animate-on-scroll">
+                    <h4>Quality Assurance</h4>
+                    <p>Commitment to international standards in food safety, export requirements, and traceability</p>
+                </div>
+                
+                <div class="commitment-point animate-on-scroll delay-1">
+                    <h4>Sustainable Practices</h4>
+                    <p>Promoting environmentally responsible and socially inclusive agricultural practices</p>
+                </div>
+                
+                <div class="commitment-point animate-on-scroll delay-2">
+                    <h4>Farmer Empowerment</h4>
+                    <p>Active engagement with farmers through input support, training, and market access</p>
+                </div>
+                
+                <div class="commitment-point animate-on-scroll delay-3">
+                    <h4>Market Development</h4>
+                    <p>Creating sustainable value chains that benefit all stakeholders from farm to market</p>
+                </div>
+            </div>
+        </div>
+    </section>
+
+    <!-- Footer - EXACT COPY from index.html -->
+    <footer id="contact">
+        <div class="container">
+            <div class="footer-grid">
+                <div class="footer-col">
+                    <h3>YACEXIM AFRICA LTD</h3>
+                    <p>Leading African agribusiness and commodities trading company, delivering quality food products to local and international markets while supporting sustainable farming across Africa.</p>
+                    <div class="social-links">
+                        <a href="#" class="social-link"><i class="fab fa-twitter"></i></a>
+                        <a href="#" class="social-link"><i class="fab fa-linkedin-in"></i></a>
+                        <a href="#" class="social-link"><i class="fab fa-facebook-f"></i></a>
+                        <a href="#" class="social-link"><i class="fab fa-instagram"></i></a>
+                    </div>
+                </div>
+                
+                <div class="footer-col">
+                    <h3>Quick Links</h3>
+                    <p><a href="/">Home</a></p>
+                    <p><a href="about.html">About Us</a></p>
+                    <p><a href="/#services">Our Services</a></p>
+                    <p><a href="/#products">Our Products</a></p>
+                    <p><a href="/#contact">Contact Us</a></p>
+                </div>
+                
+                <div class="footer-col">
+                    <h3>Our Products</h3>
+                    <p><a href="#">Raw Cashew Nuts</a></p>
+                    <p><a href="#">Processed Cashew Kernels</a></p>
+                    <p><a href="#">Cocoa Beans</a></p>
+                    <p><a href="#">Cocoa Products</a></p>
+                    <p><a href="#">Grains & Pulses</a></p>
+                </div>
+                
+                <div class="footer-col">
+                    <h3>Contact Info</h3>
+                    <p><i class="fas fa-map-marker-alt" style="margin-right: 10px; color: var(--accent-gold);"></i> Tebibiano- Tse Addo, Accra, Ghana</p>
+                    <p><i class="fas fa-phone" style="margin-right: 10px; color: var(--accent-gold);"></i> +233 XXX XXX XXXX</p>
+                    
+                    <div class="email-contact">
+                        <div class="email-item">
+                            <i class="fas fa-envelope"></i>
+                            <span>General Inquiries: <a href="mailto:info@yacexim.com">info@yacexim.com</a></span>
+                        </div>
+                        <div class="email-item">
+                            <i class="fas fa-shopping-cart"></i>
+                            <span>Sales: <a href="mailto:sales@yacexim.com">sales@yacexim.com</a></span>
+                        </div>
+                        <div class="email-item">
+                            <i class="fas fa-file-invoice-dollar"></i>
+                            <span>Finance: <a href="mailto:finance@yacexim.com">finance@yacexim.com</a></span>
+                        </div>
+                    </div>
+                    
+                    <p><i class="fas fa-clock" style="margin-right: 10px; color: var(--accent-gold);"></i> Mon - Fri: 8:00 - 18:00</p>
+                </div>
+            </div>
+            
+            <div class="copyright">
+                <p>&copy; 2026 YACEXIM AFRICA LTD. All Rights Reserved. | A subsidiary of YAC GROUP Holdings</p>
+            </div>
+        </div>
+    </footer>
+
+    <!-- JavaScript Libraries -->
+    <script src="https://code.jquery.com/jquery-3.6.0.min.js"></script>
+    
+    <script>
+        $(document).ready(function() {
+            // Mobile Navigation Toggle - EXACT COPY from index.html
+            $('#mobile-toggle').click(function() {
+                $('#nav-menu').toggleClass('active');
+                $('#menu-overlay').toggleClass('active');
+                $(this).find('i').toggleClass('fa-bars fa-times');
+            });
+            
+            // Close mobile menu when clicking overlay
+            $('#menu-overlay').click(function() {
+                $('#nav-menu').removeClass('active');
+                $(this).removeClass('active');
+                $('#mobile-toggle i').removeClass('fa-times').addClass('fa-bars');
+            });
+            
+            // Close mobile menu when clicking a link
+            $('#nav-menu a').click(function() {
+                $('#nav-menu').removeClass('active');
+                $('#menu-overlay').removeClass('active');
+                $('#mobile-toggle i').removeClass('fa-times').addClass('fa-bars');
+            });
+            
+            // Header scroll effect - EXACT COPY from index.html
+            $(window).scroll(function() {
+                if ($(this).scrollTop() > 100) {
+                    $('#header').addClass('scrolled');
+                } else {
+                    $('#header').removeClass('scrolled');
+                }
+            });
+            
+            // Smooth scrolling for anchor links
+            $('a[href*="#"]').not('[href="#"]').not('[href="#0"]').click(function(event) {
+                if (location.pathname.replace(/^\//, '') === this.pathname.replace(/^\//, '') && location.hostname === this.hostname) {
+                    var target = $(this.hash);
+                    target = target.length ? target : $('[name=' + this.hash.slice(1) + ']');
+                    if (target.length) {
+                        event.preventDefault();
+                        $('html, body').animate({
+                            scrollTop: target.offset().top - 80
+                        }, 1000);
+                    }
+                }
+            });
+            
+            // Scroll animation for elements
+            function animateOnScroll() {
+                $('.animate-on-scroll').each(function() {
+                    var elementTop = $(this).offset().top;
+                    var elementBottom = elementTop + $(this).outerHeight();
+                    var viewportTop = $(window).scrollTop();
+                    var viewportBottom = viewportTop + $(window).height();
+                    
+                    if (elementBottom > viewportTop && elementTop < viewportBottom) {
+                        $(this).addClass('animated');
+                    }
+                });
+            }
+            
+            // Trigger initial scroll check
+            animateOnScroll();
+            
+            // Animate on scroll
+            $(window).scroll(function() {
+                animateOnScroll();
+            });
+            
+            // Add hover animation to cards
+            $('.vm-card, .value-card, .strength-card, .leader-card, .activity-card, .commitment-point').hover(
+                function() {
+                    $(this).addClass('animate__animated animate__pulse');
+                },
+                function() {
+                    $(this).removeClass('animate__animated animate__pulse');
+                }
+            );
+        });
+    </script>
+</body>
+</html>

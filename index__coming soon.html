@@ -1,0 +1,953 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>YACEXIM AFRICA LTD - Coming Soon</title>
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.4.0/css/all.min.css">
+    <link href="https://fonts.googleapis.com/css2?family=Montserrat:wght@400;600;700;800&family=Open+Sans:wght@300;400;600&display=swap" rel="stylesheet">
+    <style>
+        * {
+            margin: 0;
+            padding: 0;
+            box-sizing: border-box;
+        }
+        
+        body {
+            font-family: 'Open Sans', sans-serif;
+            background-color: #0a192f;
+            color: #fff;
+            overflow-x: hidden;
+            min-height: 100vh;
+            position: relative;
+            background-image: radial-gradient(circle at 20% 80%, rgba(29, 151, 108, 0.1) 0%, transparent 20%),
+                              radial-gradient(circle at 80% 20%, rgba(245, 175, 25, 0.1) 0%, transparent 20%),
+                              radial-gradient(circle at 40% 40%, rgba(0, 180, 219, 0.1) 0%, transparent 20%);
+        }
+        
+        .container {
+            max-width: 1200px;
+            margin: 0 auto;
+            padding: 0 20px;
+            position: relative;
+            z-index: 10;
+        }
+        
+        /* Background Animation */
+        .bg-animation {
+            position: fixed;
+            top: 0;
+            left: 0;
+            width: 100%;
+            height: 100%;
+            z-index: 1;
+            overflow: hidden;
+        }
+        
+        .shape {
+            position: absolute;
+            border-radius: 50%;
+            opacity: 0.15;
+            animation: float 20s infinite linear;
+            filter: blur(1px);
+        }
+        
+        .shape-1 {
+            width: 300px;
+            height: 300px;
+            background: linear-gradient(45deg, #1d976c, #93f9b9);
+            top: 10%;
+            left: 5%;
+            animation-delay: 0s;
+            animation-duration: 25s;
+        }
+        
+        .shape-2 {
+            width: 200px;
+            height: 200px;
+            background: linear-gradient(45deg, #f5af19, #f12711);
+            bottom: 15%;
+            right: 10%;
+            animation-delay: 5s;
+            animation-duration: 20s;
+        }
+        
+        .shape-3 {
+            width: 180px;
+            height: 180px;
+            background: linear-gradient(45deg, #6a11cb, #2575fc);
+            top: 60%;
+            left: 15%;
+            animation-delay: 10s;
+            animation-duration: 22s;
+        }
+        
+        .shape-4 {
+            width: 250px;
+            height: 250px;
+            background: linear-gradient(45deg, #00b4db, #0083b0);
+            bottom: 5%;
+            left: 70%;
+            animation-delay: 15s;
+            animation-duration: 18s;
+        }
+        
+        .shape-5 {
+            width: 120px;
+            height: 120px;
+            background: linear-gradient(45deg, #ff7e5f, #feb47b);
+            top: 20%;
+            right: 20%;
+            animation-delay: 7s;
+            animation-duration: 30s;
+        }
+        
+        /* Header */
+        header {
+            padding: 30px 0;
+            position: relative;
+            z-index: 100;
+        }
+        
+        .logo {
+            display: flex;
+            align-items: center;
+            animation: slideDown 1s ease-out;
+        }
+        
+        .logo-icon {
+            font-size: 2.8rem;
+            color: #1d976c;
+            margin-right: 15px;
+            text-shadow: 0 0 15px rgba(29, 151, 108, 0.7);
+            animation: pulseIcon 3s infinite alternate;
+        }
+        
+        .logo-text {
+            font-family: 'Montserrat', sans-serif;
+            font-weight: 800;
+            font-size: 2rem;
+            background: linear-gradient(to right, #1d976c, #f5af19);
+            -webkit-background-clip: text;
+            background-clip: text;
+            color: transparent;
+            text-transform: uppercase;
+            letter-spacing: 1px;
+            line-height: 1.1;
+        }
+        
+        .logo-tagline {
+            font-size: 0.9rem;
+            color: #a8b2d1;
+            margin-top: 8px;
+            letter-spacing: 3px;
+            font-weight: 300;
+        }
+        
+        /* Main Content */
+        .main-content {
+            display: flex;
+            flex-direction: column;
+            align-items: center;
+            justify-content: center;
+            min-height: calc(100vh - 200px);
+            text-align: center;
+            padding: 40px 0 80px;
+            position: relative;
+            z-index: 10;
+        }
+        
+        .title {
+            font-family: 'Montserrat', sans-serif;
+            font-weight: 800;
+            font-size: 4.5rem;
+            margin-bottom: 25px;
+            background: linear-gradient(to right, #1d976c, #f5af19, #00b4db);
+            -webkit-background-clip: text;
+            background-clip: text;
+            color: transparent;
+            animation: glow 2.5s infinite alternate;
+            line-height: 1.2;
+            text-shadow: 0 5px 15px rgba(0, 0, 0, 0.3);
+        }
+        
+        .subtitle {
+            font-size: 1.6rem;
+            color: #a8b2d1;
+            margin-bottom: 50px;
+            max-width: 900px;
+            line-height: 1.6;
+            font-weight: 300;
+        }
+        
+        /* Countdown Timer - Updated for prominence */
+        .countdown-container {
+            margin: 50px 0 70px;
+            width: 100%;
+            max-width: 1000px;
+            background: rgba(10, 25, 47, 0.7);
+            backdrop-filter: blur(10px);
+            border-radius: 20px;
+            padding: 40px 30px;
+            border: 1px solid rgba(29, 151, 108, 0.3);
+            box-shadow: 0 15px 35px rgba(0, 0, 0, 0.4),
+                        inset 0 1px 0 rgba(255, 255, 255, 0.1);
+        }
+        
+        .countdown-title {
+            font-family: 'Montserrat', sans-serif;
+            font-size: 2.2rem;
+            margin-bottom: 40px;
+            color: #f5af19;
+            text-transform: uppercase;
+            letter-spacing: 2px;
+        }
+        
+        .countdown-title span {
+            color: #1d976c;
+        }
+        
+        .countdown {
+            display: flex;
+            justify-content: center;
+            flex-wrap: wrap;
+            gap: 25px;
+        }
+        
+        .countdown-item {
+            background: rgba(255, 255, 255, 0.07);
+            backdrop-filter: blur(5px);
+            border-radius: 15px;
+            padding: 30px 20px;
+            min-width: 180px;
+            box-shadow: 0 10px 25px rgba(0, 0, 0, 0.3),
+                        inset 0 1px 0 rgba(255, 255, 255, 0.1);
+            border: 1px solid rgba(255, 255, 255, 0.1);
+            transition: all 0.4s ease;
+            position: relative;
+            overflow: hidden;
+        }
+        
+        .countdown-item::before {
+            content: '';
+            position: absolute;
+            top: 0;
+            left: 0;
+            width: 100%;
+            height: 5px;
+            background: linear-gradient(to right, #1d976c, #f5af19);
+        }
+        
+        .countdown-item:hover {
+            transform: translateY(-12px);
+            box-shadow: 0 20px 40px rgba(29, 151, 108, 0.3);
+        }
+        
+        .countdown-number {
+            font-family: 'Montserrat', sans-serif;
+            font-weight: 800;
+            font-size: 4.5rem;
+            color: #fff;
+            line-height: 1;
+            margin-bottom: 10px;
+            text-shadow: 0 5px 15px rgba(0, 0, 0, 0.5);
+        }
+        
+        .countdown-label {
+            font-size: 1.1rem;
+            color: #a8b2d1;
+            text-transform: uppercase;
+            letter-spacing: 3px;
+            font-weight: 600;
+        }
+        
+        /* Timer Progress Bar */
+        .timer-progress {
+            width: 100%;
+            height: 8px;
+            background: rgba(255, 255, 255, 0.1);
+            border-radius: 4px;
+            margin-top: 30px;
+            overflow: hidden;
+        }
+        
+        .timer-progress-bar {
+            height: 100%;
+            background: linear-gradient(to right, #1d976c, #f5af19);
+            border-radius: 4px;
+            width: 0%;
+            transition: width 1s linear;
+        }
+        
+        .progress-text {
+            display: flex;
+            justify-content: space-between;
+            margin-top: 10px;
+            color: #a8b2d1;
+            font-size: 0.9rem;
+        }
+        
+        /* Company Info */
+        .company-info {
+            display: flex;
+            flex-wrap: wrap;
+            justify-content: center;
+            gap: 30px;
+            margin: 40px 0;
+            max-width: 1200px;
+        }
+        
+        .info-box {
+            background: rgba(255, 255, 255, 0.05);
+            backdrop-filter: blur(10px);
+            border-radius: 15px;
+            padding: 25px;
+            width: 350px;
+            text-align: left;
+            box-shadow: 0 10px 25px rgba(0, 0, 0, 0.2);
+            border: 1px solid rgba(255, 255, 255, 0.05);
+            transition: transform 0.3s ease;
+        }
+        
+        .info-box:hover {
+            transform: translateY(-8px);
+        }
+        
+        .info-title {
+            font-family: 'Montserrat', sans-serif;
+            font-size: 1.4rem;
+            color: #f5af19;
+            margin-bottom: 15px;
+            display: flex;
+            align-items: center;
+        }
+        
+        .info-title i {
+            margin-right: 10px;
+            font-size: 1.3rem;
+        }
+        
+        .info-content {
+            color: #a8b2d1;
+            line-height: 1.6;
+            font-size: 1rem;
+        }
+        
+        /* Notify Form */
+        .notify-container {
+            margin: 50px 0 40px;
+            width: 100%;
+            max-width: 700px;
+        }
+        
+        .notify-title {
+            font-family: 'Montserrat', sans-serif;
+            font-size: 2rem;
+            margin-bottom: 30px;
+            color: #00b4db;
+        }
+        
+        .notify-form {
+            display: flex;
+            flex-wrap: wrap;
+            justify-content: center;
+            gap: 15px;
+        }
+        
+        .notify-input {
+            flex-grow: 1;
+            min-width: 300px;
+            padding: 20px 30px;
+            border-radius: 50px;
+            border: 2px solid rgba(255, 255, 255, 0.1);
+            background: rgba(255, 255, 255, 0.07);
+            color: white;
+            font-size: 1.1rem;
+            transition: all 0.3s ease;
+        }
+        
+        .notify-input:focus {
+            outline: none;
+            border-color: #1d976c;
+            box-shadow: 0 0 20px rgba(29, 151, 108, 0.4);
+            background: rgba(255, 255, 255, 0.1);
+        }
+        
+        .notify-btn {
+            padding: 20px 45px;
+            border-radius: 50px;
+            border: none;
+            background: linear-gradient(to right, #1d976c, #f5af19);
+            color: #0a192f;
+            font-family: 'Montserrat', sans-serif;
+            font-weight: 700;
+            font-size: 1.1rem;
+            cursor: pointer;
+            transition: all 0.3s ease;
+            text-transform: uppercase;
+            letter-spacing: 1.5px;
+            box-shadow: 0 10px 20px rgba(29, 151, 108, 0.3);
+        }
+        
+        .notify-btn:hover {
+            transform: translateY(-5px);
+            box-shadow: 0 15px 25px rgba(29, 151, 108, 0.4);
+            background: linear-gradient(to right, #1d976c, #f5af19);
+        }
+        
+        .notify-note {
+            margin-top: 20px;
+            color: #a8b2d1;
+            font-size: 0.9rem;
+            font-style: italic;
+        }
+        
+        /* Footer */
+        footer {
+            padding: 50px 0 40px;
+            text-align: center;
+            position: relative;
+            z-index: 10;
+            border-top: 1px solid rgba(255, 255, 255, 0.05);
+            margin-top: 40px;
+        }
+        
+        .social-links {
+            display: flex;
+            justify-content: center;
+            gap: 25px;
+            margin-bottom: 35px;
+        }
+        
+        .social-link {
+            width: 55px;
+            height: 55px;
+            border-radius: 50%;
+            background: rgba(255, 255, 255, 0.05);
+            display: flex;
+            align-items: center;
+            justify-content: center;
+            color: #1d976c;
+            font-size: 1.4rem;
+            transition: all 0.3s ease;
+            box-shadow: 0 5px 15px rgba(0, 0, 0, 0.2);
+        }
+        
+        .social-link:hover {
+            background: #1d976c;
+            color: #0a192f;
+            transform: translateY(-8px) scale(1.1);
+            box-shadow: 0 10px 20px rgba(29, 151, 108, 0.4);
+        }
+        
+        .copyright {
+            color: #a8b2d1;
+            font-size: 0.9rem;
+            letter-spacing: 1px;
+            line-height: 1.6;
+        }
+        
+        .copyright a {
+            color: #f5af19;
+            text-decoration: none;
+            transition: color 0.3s ease;
+        }
+        
+        .copyright a:hover {
+            color: #1d976c;
+            text-decoration: underline;
+        }
+        
+        /* Animations */
+        @keyframes float {
+            0%, 100% {
+                transform: translateY(0) rotate(0deg) scale(1);
+            }
+            33% {
+                transform: translateY(-30px) rotate(120deg) scale(1.05);
+            }
+            66% {
+                transform: translateY(20px) rotate(240deg) scale(0.95);
+            }
+        }
+        
+        @keyframes slideDown {
+            from {
+                opacity: 0;
+                transform: translateY(-50px);
+            }
+            to {
+                opacity: 1;
+                transform: translateY(0);
+            }
+        }
+        
+        @keyframes glow {
+            from {
+                text-shadow: 0 0 10px rgba(29, 151, 108, 0.3),
+                             0 0 20px rgba(29, 151, 108, 0.2);
+            }
+            to {
+                text-shadow: 0 0 20px rgba(29, 151, 108, 0.6),
+                             0 0 30px rgba(245, 175, 25, 0.4),
+                             0 0 40px rgba(0, 180, 219, 0.2);
+            }
+        }
+        
+        @keyframes pulseIcon {
+            from {
+                transform: scale(1);
+                text-shadow: 0 0 10px rgba(29, 151, 108, 0.7);
+            }
+            to {
+                transform: scale(1.1);
+                text-shadow: 0 0 20px rgba(29, 151, 108, 1),
+                             0 0 30px rgba(29, 151, 108, 0.5);
+            }
+        }
+        
+        @keyframes countdownPulse {
+            0%, 100% {
+                transform: scale(1);
+            }
+            50% {
+                transform: scale(1.03);
+            }
+        }
+        
+        /* Responsive Design */
+        @media (max-width: 1100px) {
+            .title {
+                font-size: 3.8rem;
+            }
+            
+            .countdown-item {
+                min-width: 160px;
+            }
+            
+            .countdown-number {
+                font-size: 4rem;
+            }
+        }
+        
+        @media (max-width: 900px) {
+            .title {
+                font-size: 3.2rem;
+            }
+            
+            .subtitle {
+                font-size: 1.4rem;
+            }
+            
+            .countdown-item {
+                min-width: 140px;
+                padding: 25px 15px;
+            }
+            
+            .countdown-number {
+                font-size: 3.5rem;
+            }
+            
+            .info-box {
+                width: 100%;
+                max-width: 500px;
+            }
+        }
+        
+        @media (max-width: 768px) {
+            .title {
+                font-size: 2.8rem;
+            }
+            
+            .subtitle {
+                font-size: 1.3rem;
+            }
+            
+            .countdown-title {
+                font-size: 1.8rem;
+            }
+            
+            .countdown {
+                gap: 15px;
+            }
+            
+            .countdown-item {
+                min-width: 120px;
+                padding: 20px 10px;
+            }
+            
+            .countdown-number {
+                font-size: 3rem;
+            }
+            
+            .countdown-label {
+                font-size: 1rem;
+                letter-spacing: 2px;
+            }
+            
+            .notify-form {
+                flex-direction: column;
+                align-items: center;
+            }
+            
+            .notify-input, .notify-btn {
+                width: 100%;
+                max-width: 400px;
+            }
+            
+            .logo-text {
+                font-size: 1.7rem;
+            }
+        }
+        
+        @media (max-width: 576px) {
+            .title {
+                font-size: 2.3rem;
+            }
+            
+            .subtitle {
+                font-size: 1.2rem;
+            }
+            
+            .countdown-container {
+                padding: 30px 20px;
+            }
+            
+            .countdown-title {
+                font-size: 1.6rem;
+            }
+            
+            .countdown-item {
+                min-width: 100px;
+                padding: 15px 10px;
+            }
+            
+            .countdown-number {
+                font-size: 2.5rem;
+            }
+            
+            .countdown-label {
+                font-size: 0.9rem;
+                letter-spacing: 1.5px;
+            }
+            
+            .logo-text {
+                font-size: 1.5rem;
+            }
+            
+            .logo-icon {
+                font-size: 2.2rem;
+            }
+        }
+        
+        @media (max-width: 480px) {
+            .countdown {
+                gap: 10px;
+            }
+            
+            .countdown-item {
+                min-width: 85px;
+                padding: 15px 5px;
+            }
+            
+            .countdown-number {
+                font-size: 2.2rem;
+            }
+            
+            .countdown-label {
+                font-size: 0.8rem;
+            }
+        }
+    </style>
+</head>
+<body>
+    <!-- Background Animation -->
+    <div class="bg-animation">
+        <div class="shape shape-1"></div>
+        <div class="shape shape-2"></div>
+        <div class="shape shape-3"></div>
+        <div class="shape shape-4"></div>
+        <div class="shape shape-5"></div>
+    </div>
+    
+    <div class="container">
+        <!-- Header with Logo -->
+        <header>
+            <div class="logo">
+                <div class="logo-icon">
+                    <i class="fas fa-leaf"></i>
+                </div>
+                <div>
+                    <div class="logo-text">YACEXIM AFRICA LTD</div>
+                    <div class="logo-tagline">AGRIBUSINESS & COMMODITIES TRADING</div>
+                </div>
+            </div>
+        </header>
+        
+        <!-- Main Content -->
+        <main class="main-content">
+            <h1 class="title">New Platform Launching Soon</h1>
+            <p class="subtitle">We're building an innovative digital platform to transform agricultural trade across Africa. Experience seamless connectivity between farmers, markets, and global partners.</p>
+            
+            <!-- Company Info -->
+            <div class="company-info">
+                <div class="info-box">
+                    <div class="info-title"><i class="fas fa-bullseye"></i> Our Vision</div>
+                    <div class="info-content">
+                        To become a leading African agribusiness and export-import company, recognized globally for quality, sustainability, and value creation across the agricultural supply chain.
+                    </div>
+                </div>
+                
+                <div class="info-box">
+                    <div class="info-title"><i class="fas fa-tasks"></i> Our Core Activities</div>
+                    <div class="info-content">
+                        Importation of food items, export of agricultural commodities (cashew nuts, cocoa products), commercial farming, animal husbandry, and agricultural value chain development from farm to market.
+                    </div>
+                </div>
+            </div>
+            
+            <!-- Countdown Timer - 30 Days -->
+            <div class="countdown-container">
+                <h2 class="countdown-title">Launching In: <span id="launch-date-display"></span></h2>
+                <div class="countdown">
+                    <div class="countdown-item">
+                        <div class="countdown-number" id="days">30</div>
+                        <div class="countdown-label">Days</div>
+                    </div>
+                    <div class="countdown-item">
+                        <div class="countdown-number" id="hours">00</div>
+                        <div class="countdown-label">Hours</div>
+                    </div>
+                    <div class="countdown-item">
+                        <div class="countdown-number" id="minutes">00</div>
+                        <div class="countdown-label">Minutes</div>
+                    </div>
+                    <div class="countdown-item">
+                        <div class="countdown-number" id="seconds">00</div>
+                        <div class="countdown-label">Seconds</div>
+                    </div>
+                </div>
+                
+                <!-- Progress Bar -->
+                <div class="timer-progress">
+                    <div class="timer-progress-bar" id="progress-bar"></div>
+                </div>
+                <div class="progress-text">
+                    <span>Time Remaining</span>
+                    <span id="progress-percentage">0%</span>
+                </div>
+            </div>
+            
+            <!-- Notify Form -->
+            <div class="notify-container">
+                <h2 class="notify-title">Get Exclusive Early Access</h2>
+                <form class="notify-form" id="notifyForm">
+                    <input type="email" class="notify-input" placeholder="Enter your professional email address" required>
+                    <button type="submit" class="notify-btn">Notify Me <i class="fas fa-paper-plane"></i></button>
+                </form>
+                <p class="notify-note">Be the first to access our platform. We respect your privacy and will not share your information.</p>
+            </div>
+        </main>
+        
+        <!-- Footer -->
+        <footer>
+            <div class="social-links">
+                <a href="#" class="social-link"><i class="fab fa-twitter"></i></a>
+                <a href="#" class="social-link"><i class="fab fa-linkedin-in"></i></a>
+                <a href="#" class="social-link"><i class="fab fa-facebook-f"></i></a>
+                <a href="#" class="social-link"><i class="fab fa-instagram"></i></a>
+                <a href="#" class="social-link"><i class="fas fa-envelope"></i></a>
+            </div>
+            <div class="copyright">
+                <p><strong>YACEXIM AFRICA LTD</strong> - A subsidiary of YAC GROUP Holdings</p>
+                <p>Dynamic agribusiness and commodities trading company operating across Africa's agricultural value chain</p>
+                <p>&copy; 2026 YACEXIM AFRICA LTD. All Rights Reserved. | Email: <a href="mailto:info@yaceximafrica.com">info@yaceximafrica.com</a></p>
+            </div>
+        </footer>
+    </div>
+
+    <script>
+        // Set launch date to exactly 30 days from now
+        const launchDate = new Date();
+        launchDate.setDate(launchDate.getDate() + 30);
+        launchDate.setHours(12, 0, 0, 0); // Set to 12:00 PM
+        
+        // Display the launch date
+        document.getElementById('launch-date-display').textContent = launchDate.toLocaleDateString('en-US', {
+            weekday: 'long',
+            year: 'numeric',
+            month: 'long',
+            day: 'numeric'
+        });
+        
+        // Countdown Timer Function
+        function updateCountdown() {
+            const now = new Date().getTime();
+            const distance = launchDate - now;
+            
+            // Calculate days, hours, minutes, seconds
+            const days = Math.floor(distance / (1000 * 60 * 60 * 24));
+            const hours = Math.floor((distance % (1000 * 60 * 60 * 24)) / (1000 * 60 * 60));
+            const minutes = Math.floor((distance % (1000 * 60 * 60)) / (1000 * 60));
+            const seconds = Math.floor((distance % (1000 * 60)) / 1000);
+            
+            // Update the display with animation
+            updateDisplayWithAnimation('days', days.toString().padStart(2, '0'));
+            updateDisplayWithAnimation('hours', hours.toString().padStart(2, '0'));
+            updateDisplayWithAnimation('minutes', minutes.toString().padStart(2, '0'));
+            updateDisplayWithAnimation('seconds', seconds.toString().padStart(2, '0'));
+            
+            // Update progress bar
+            const totalDuration = 30 * 24 * 60 * 60 * 1000; // 30 days in milliseconds
+            const timePassed = totalDuration - distance;
+            const progressPercentage = Math.min(100, Math.max(0, (timePassed / totalDuration) * 100));
+            
+            document.getElementById('progress-bar').style.width = `${progressPercentage}%`;
+            document.getElementById('progress-percentage').textContent = `${Math.round(progressPercentage)}%`;
+            
+            // Add pulsing animation to countdown numbers
+            if (seconds % 2 === 0) {
+                document.querySelectorAll('.countdown-number').forEach(el => {
+                    el.style.animation = 'countdownPulse 0.5s ease';
+                    setTimeout(() => {
+                        el.style.animation = '';
+                    }, 500);
+                });
+            }
+            
+            // If the countdown is over
+            if (distance < 0) {
+                clearInterval(countdownInterval);
+                document.querySelector(".countdown-title").innerHTML = "We Have Launched! <span>Visit our new platform now</span>";
+                document.getElementById("days").textContent = "00";
+                document.getElementById("hours").textContent = "00";
+                document.getElementById("minutes").textContent = "00";
+                document.getElementById("seconds").textContent = "00";
+                document.getElementById('progress-bar').style.width = '100%';
+                document.getElementById('progress-percentage').textContent = '100%';
+            }
+        }
+        
+        // Helper function to update display with animation
+        function updateDisplayWithAnimation(elementId, newValue) {
+            const element = document.getElementById(elementId);
+            if (element.textContent !== newValue) {
+                element.style.transform = 'scale(1.1)';
+                element.style.color = '#f5af19';
+                setTimeout(() => {
+                    element.textContent = newValue;
+                    element.style.transform = 'scale(1)';
+                    element.style.color = '#fff';
+                }, 150);
+            } else {
+                element.textContent = newValue;
+            }
+        }
+        
+        // Initialize countdown - update every second
+        let countdownInterval = setInterval(updateCountdown, 1000);
+        updateCountdown(); // Initial call
+        
+        // Form submission handler
+        document.getElementById("notifyForm").addEventListener("submit", function(e) {
+            e.preventDefault();
+            const emailInput = this.querySelector(".notify-input");
+            const submitBtn = this.querySelector(".notify-btn");
+            
+            // Basic email validation
+            const email = emailInput.value.trim();
+            const emailRegex = /^[^\s@]+@[^\s@]+\.[^\s@]+$/;
+            
+            if (!emailRegex.test(email)) {
+                emailInput.style.borderColor = '#f12711';
+                emailInput.style.boxShadow = '0 0 15px rgba(241, 39, 17, 0.4)';
+                setTimeout(() => {
+                    emailInput.style.borderColor = 'rgba(255, 255, 255, 0.1)';
+                    emailInput.style.boxShadow = '';
+                }, 3000);
+                return;
+            }
+            
+            // Get the original button text
+            const originalText = submitBtn.innerHTML;
+            const originalGradient = submitBtn.style.background;
+            
+            // Show loading state
+            submitBtn.innerHTML = '<i class="fas fa-spinner fa-spin"></i> Processing...';
+            submitBtn.disabled = true;
+            
+            // Simulate API call
+            setTimeout(() => {
+                // Show success message
+                submitBtn.innerHTML = '<i class="fas fa-check"></i> Successfully Registered!';
+                submitBtn.style.background = "linear-gradient(to right, #1d976c, #93f9b9)";
+                
+                // Reset form
+                emailInput.value = "";
+                
+                // Show confirmation message
+                const confirmation = document.createElement('p');
+                confirmation.textContent = `Thank you! We'll notify you at ${email} when we launch.`;
+                confirmation.style.color = '#1d976c';
+                confirmation.style.marginTop = '15px';
+                confirmation.style.fontWeight = '600';
+                document.querySelector('.notify-container').appendChild(confirmation);
+                
+                // Remove confirmation after 5 seconds
+                setTimeout(() => {
+                    confirmation.remove();
+                }, 5000);
+                
+                // Revert button after 3 seconds
+                setTimeout(() => {
+                    submitBtn.innerHTML = originalText;
+                    submitBtn.disabled = false;
+                    submitBtn.style.background = originalGradient || "linear-gradient(to right, #1d976c, #f5af19)";
+                }, 3000);
+            }, 1500);
+        });
+        
+        // Add animation to social links on hover
+        document.querySelectorAll('.social-link').forEach(link => {
+            link.addEventListener('mouseenter', function() {
+                const icon = this.querySelector('i');
+                if (icon.classList.contains('fa-twitter')) {
+                    icon.style.transform = 'rotate(15deg) scale(1.3)';
+                } else if (icon.classList.contains('fa-linkedin-in')) {
+                    icon.style.transform = 'rotate(-15deg) scale(1.3)';
+                } else {
+                    icon.style.transform = 'scale(1.3)';
+                }
+            });
+            
+            link.addEventListener('mouseleave', function() {
+                const icon = this.querySelector('i');
+                icon.style.transform = 'scale(1)';
+            });
+        });
+        
+        // Add animation to info boxes on scroll
+        const observerOptions = {
+            threshold: 0.2,
+            rootMargin: '0px 0px -100px 0px'
+        };
+        
+        const observer = new IntersectionObserver((entries) => {
+            entries.forEach(entry => {
+                if (entry.isIntersecting) {
+                    entry.target.style.opacity = '1';
+                    entry.target.style.transform = 'translateY(0)';
+                }
+            });
+        }, observerOptions);
+        
+        // Observe elements for animation
+        document.querySelectorAll('.info-box').forEach(box => {
+            box.style.opacity = '0';
+            box.style.transform = 'translateY(20px)';
+            box.style.transition = 'opacity 0.6s ease, transform 0.6s ease';
+            observer.observe(box);
+        });
+    </script>
+</body>
+</html>
