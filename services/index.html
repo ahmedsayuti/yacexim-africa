@@ -1,0 +1,1078 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Our Services - YACEXIM AFRICA LTD | Agribusiness Solutions</title>
+
+    <!-- Favicon using company logo -->
+    <link rel="shortcut icon" href="/favicon.ico">
+    <link rel="apple-touch-icon" sizes="180x180" href="/apple-touch-icon.png">
+    <link rel="icon" type="image/png" sizes="32x32" href="/favicon-32x32.png">
+    <link rel="icon" type="image/png" sizes="16x16" href="/favicon-16x16.png">
+    <link rel="manifest" href="/site.webmanifest">
+        
+    <!-- External Libraries -->
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.4.0/css/all.min.css">
+    <link href="https://fonts.googleapis.com/css2?family=Montserrat:wght@300;400;500;600;700;800&family=Open+Sans:wght@300;400;500;600&display=swap" rel="stylesheet">
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/animate.css/4.1.1/animate.min.css">
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/OwlCarousel2/2.3.4/assets/owl.carousel.min.css">
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/OwlCarousel2/2.3.4/assets/owl.theme.default.min.css">
+    <style>
+        /* EXACT COPY OF CSS FROM index.html - Header, Footer, Base Styles */
+        :root {
+            --primary-dark: #0a3d1f;
+            --primary-green: #1d976c;
+            --accent-gold: #d4af37;
+            --accent-brown: #8b4513;
+            --accent-orange: #e67e22;
+            --light-bg: #f8f9fa;
+            --dark-text: #222;
+            --light-text: #f8f9fa;
+            --section-padding: 100px 0;
+            --transition: all 0.4s cubic-bezier(0.175, 0.885, 0.32, 1.275);
+        }
+        
+        * {
+            margin: 0;
+            padding: 0;
+            box-sizing: border-box;
+        }
+        
+        html {
+            scroll-behavior: smooth;
+        }
+        
+        body {
+            font-family: 'Open Sans', sans-serif;
+            color: var(--dark-text);
+            line-height: 1.6;
+            overflow-x: hidden;
+            background-color: var(--light-bg);
+        }
+        
+        h1, h2, h3, h4, h5, h6 {
+            font-family: 'Montserrat', sans-serif;
+            font-weight: 700;
+            line-height: 1.3;
+        }
+        
+        .container {
+            width: 100%;
+            max-width: 1200px;
+            margin: 0 auto;
+            padding: 0 20px;
+        }
+        
+        /* Header & Navigation - EXACT COPY from index.html */
+        header {
+            position: fixed;
+            top: 0;
+            left: 0;
+            width: 100%;
+            z-index: 1000;
+            padding: 15px 0;
+            transition: var(--transition);
+            background-color: rgba(255, 255, 255, 0.98);
+            box-shadow: 0 5px 20px rgba(10, 61, 31, 0.1);
+        }
+        
+        header.scrolled {
+            padding: 10px 0;
+            background-color: rgba(255, 255, 255, 0.99);
+            box-shadow: 0 5px 30px rgba(10, 61, 31, 0.15);
+        }
+        
+        .header-container {
+            display: flex;
+            justify-content: space-between;
+            align-items: center;
+            position: relative;
+        }
+        
+        .logo {
+            display: flex;
+            align-items: center;
+            text-decoration: none;
+            height: 110px;
+            z-index: 1001;
+        }
+        
+        .logo img {
+            height: 120%;
+            width: auto;
+            max-width: 220px;
+            object-fit: contain;
+        }
+        
+        .nav-menu {
+            display: flex;
+            list-style: none;
+            align-items: center;
+            margin-left: auto;
+        }
+        
+        .nav-menu li {
+            margin-left: 25px;
+        }
+        
+        .nav-menu a {
+            text-decoration: none;
+            color: var(--primary-dark);
+            font-weight: 600;
+            font-size: 0.95rem;
+            position: relative;
+            padding: 8px 0;
+            transition: var(--transition);
+        }
+        
+        .nav-menu a:after {
+            content: '';
+            position: absolute;
+            bottom: 0;
+            left: 0;
+            width: 0;
+            height: 2px;
+            background-color: var(--primary-green);
+            transition: var(--transition);
+        }
+        
+        .nav-menu a:hover {
+            color: var(--primary-green);
+        }
+        
+        .nav-menu a:hover:after {
+            width: 100%;
+        }
+        
+        .mobile-toggle {
+            display: none;
+            font-size: 1.5rem;
+            color: var(--primary-dark);
+            cursor: pointer;
+            z-index: 1001;
+        }
+        
+        /* Footer - EXACT COPY from index.html */
+        footer {
+            background-color: var(--primary-dark);
+            color: var(--light-text);
+            padding: 80px 0 40px;
+        }
+        
+        .footer-grid {
+            display: grid;
+            grid-template-columns: repeat(auto-fit, minmax(250px, 1fr));
+            gap: 40px;
+            margin-bottom: 50px;
+        }
+        
+        .footer-col h3 {
+            font-size: 1.4rem;
+            margin-bottom: 25px;
+            color: var(--accent-gold);
+        }
+        
+        .footer-col p, .footer-col a {
+            color: rgba(255, 255, 255, 0.8);
+            line-height: 1.8;
+        }
+        
+        .footer-col a {
+            text-decoration: none;
+            transition: var(--transition);
+        }
+        
+        .footer-col a:hover {
+            color: var(--accent-gold);
+            padding-left: 5px;
+        }
+        
+        .social-links {
+            display: flex;
+            gap: 15px;
+            margin-top: 20px;
+        }
+        
+        .social-link {
+            display: flex;
+            align-items: center;
+            justify-content: center;
+            width: 40px;
+            height: 40px;
+            background-color: rgba(255, 255, 255, 0.1);
+            border-radius: 50%;
+            color: var(--light-text);
+            font-size: 1.1rem;
+            transition: var(--transition);
+        }
+        
+        .social-link:hover {
+            background-color: var(--accent-gold);
+            color: var(--primary-dark);
+            transform: translateY(-5px);
+        }
+        
+        .email-contact {
+            margin-top: 15px;
+            padding: 10px 0;
+            border-top: 1px solid rgba(255, 255, 255, 0.1);
+        }
+        
+        .email-item {
+            margin-bottom: 8px;
+            display: flex;
+            align-items: center;
+        }
+        
+        .email-item i {
+            margin-right: 10px;
+            color: var(--accent-gold);
+            font-size: 0.9rem;
+        }
+        
+        .copyright {
+            text-align: center;
+            padding-top: 40px;
+            border-top: 1px solid rgba(255, 255, 255, 0.1);
+            color: rgba(255, 255, 255, 0.7);
+            font-size: 0.9rem;
+        }
+        
+        /* Responsive Styles - EXACT COPY from index.html */
+        @media (max-width: 992px) {
+            .logo {
+                height: 90px;
+            }
+            
+            .logo img {
+                max-width: 250px;
+            }
+        }
+        
+        @media (max-width: 768px) {
+            .nav-menu {
+                position: fixed;
+                top: 0;
+                left: -100%;
+                width: 80%;
+                height: 100vh;
+                background-color: #fff;
+                flex-direction: column;
+                align-items: flex-start;
+                justify-content: flex-start;
+                padding-top: 100px;
+                padding-left: 30px;
+                transition: var(--transition);
+                box-shadow: 0 10px 30px rgba(0, 0, 0, 0.1);
+                z-index: 1000;
+            }
+            
+            .nav-menu.active {
+                left: 0;
+            }
+            
+            .nav-menu li {
+                margin: 0 0 25px 0;
+                width: 100%;
+            }
+            
+            .nav-menu a {
+                font-size: 1.1rem;
+                padding: 10px 0;
+                display: block;
+                width: 100%;
+            }
+            
+            .mobile-toggle {
+                display: block;
+            }
+            
+            .logo {
+                height: 90px !important;
+            }
+            
+            .logo img {
+                max-width: 250px !important;
+            }
+        }
+        
+        @media (max-width: 576px) {
+            .logo {
+                height: 75px !important;
+            }
+            
+            .logo img {
+                max-width: 200px !important;
+            }
+        }
+        
+        @media (max-width: 480px) {
+            .logo {
+                height: 65px !important;
+            }
+            
+            .logo img {
+                max-width: 180px !important;
+            }
+        }
+        
+        .menu-overlay {
+            position: fixed;
+            top: 0;
+            left: 0;
+            width: 100%;
+            height: 100%;
+            background-color: rgba(0, 0, 0, 0.5);
+            z-index: 999;
+            display: none;
+        }
+        
+        .menu-overlay.active {
+            display: block;
+        }
+        
+        /* SERVICES PAGE SPECIFIC STYLES */
+        
+        /* Services Hero Section */
+        .services-hero {
+            padding: 180px 0 120px;
+            min-height: 70vh;
+            display: flex;
+            align-items: center;
+            background: linear-gradient(rgba(10, 61, 31, 0.85), rgba(10, 61, 31, 0.85)), url('https://images.unsplash.com/photo-1500382017468-9049fed747ef?q=80&w=2070&auto=format&fit=crop&ixlib=rb-4.1.0&ixid=M3wxMjA3fDB8MHxwaG90by1wYWdlfHx8fGVufDB8fHx8fA%3D%3D');
+            background-size: cover;
+            background-position: center;
+            color: var(--light-text);
+        }
+        
+        .services-hero .container {
+            max-width: 800px;
+            text-align: center;
+        }
+        
+        .services-hero h1 {
+            font-size: 3.5rem;
+            margin-bottom: 20px;
+            font-weight: 800;
+        }
+        
+        .services-hero p {
+            font-size: 1.2rem;
+            margin-bottom: 30px;
+            opacity: 0.9;
+        }
+        
+        .breadcrumb {
+            display: flex;
+            justify-content: center;
+            align-items: center;
+            margin-bottom: 30px;
+        }
+        
+        .breadcrumb a {
+            color: var(--accent-gold);
+            text-decoration: none;
+            transition: var(--transition);
+        }
+        
+        .breadcrumb a:hover {
+            color: white;
+        }
+        
+        .breadcrumb span {
+            margin: 0 10px;
+            color: rgba(255, 255, 255, 0.7);
+        }
+        
+        /* Section Styling */
+        section {
+            padding: var(--section-padding);
+        }
+        
+        .section-title {
+            text-align: center;
+            margin-bottom: 60px;
+        }
+        
+        .section-title h2 {
+            font-size: 2.5rem;
+            color: var(--primary-dark);
+            position: relative;
+            display: inline-block;
+            padding-bottom: 15px;
+        }
+        
+        .section-title h2:after {
+            content: '';
+            position: absolute;
+            bottom: 0;
+            left: 50%;
+            transform: translateX(-50%);
+            width: 80px;
+            height: 3px;
+            background-color: var(--primary-green);
+        }
+        
+        .section-title.white h2 {
+            color: white;
+        }
+        
+        .section-title.white h2:after {
+            background-color: var(--accent-gold);
+        }
+        
+        .section-title p {
+            max-width: 700px;
+            margin: 20px auto 0;
+            color: #666;
+            font-size: 1.1rem;
+        }
+        
+        /* Services Introduction */
+        .services-intro {
+            background-color: #fff;
+        }
+        
+        .intro-content {
+            max-width: 800px;
+            margin: 0 auto;
+            text-align: center;
+        }
+        
+        .intro-content h3 {
+            font-size: 2rem;
+            margin-bottom: 20px;
+            color: var(--primary-dark);
+        }
+        
+        /* Detailed Services Grid */
+        .detailed-services {
+            background-color: var(--light-bg);
+        }
+        
+        .service-detail-card {
+            background-color: white;
+            border-radius: 10px;
+            overflow: hidden;
+            box-shadow: 0 10px 30px rgba(0, 0, 0, 0.08);
+            margin-bottom: 50px;
+            transition: var(--transition);
+            display: grid;
+            grid-template-columns: 1fr 1fr;
+        }
+        
+        .service-detail-card:hover {
+            transform: translateY(-10px);
+            box-shadow: 0 20px 40px rgba(29, 151, 108, 0.15);
+        }
+        
+        .service-detail-image {
+            height: 350px;
+            background-size: cover;
+            background-position: center;
+        }
+        
+        .service-detail-content {
+            padding: 40px;
+        }
+        
+        .service-detail-content h3 {
+            font-size: 1.8rem;
+            margin-bottom: 15px;
+            color: var(--primary-dark);
+        }
+        
+        .service-detail-content p {
+            margin-bottom: 20px;
+            font-size: 1.05rem;
+        }
+        
+        .service-features {
+            list-style: none;
+            margin-top: 20px;
+        }
+        
+        .service-features li {
+            margin-bottom: 10px;
+            display: flex;
+            align-items: flex-start;
+        }
+        
+        .service-features i {
+            color: var(--primary-green);
+            margin-right: 10px;
+            margin-top: 5px;
+        }
+        
+        /* Process Section */
+        .process {
+            background: linear-gradient(rgba(10, 61, 31, 0.88), rgba(10, 61, 31, 0.88)), url('https://images.unsplash.com/photo-1416879595882-3373a0480b5b?q=80&w=2070&auto=format&fit=crop&ixlib=rb-4.1.0&ixid=M3wxMjA3fDB8MHxwaG90by1wYWdlfHx8fGVufDB8fHx8fA%3D%3D');
+            color: white;
+        }
+        
+        .process-steps {
+            display: grid;
+            grid-template-columns: repeat(auto-fit, minmax(250px, 1fr));
+            gap: 40px;
+            margin-top: 50px;
+        }
+        
+        .process-step {
+            text-align: center;
+            padding: 30px;
+        }
+        
+        .step-number {
+            width: 60px;
+            height: 60px;
+            background-color: var(--accent-gold);
+            color: var(--primary-dark);
+            border-radius: 50%;
+            display: flex;
+            align-items: center;
+            justify-content: center;
+            font-size: 1.5rem;
+            font-weight: 700;
+            margin: 0 auto 20px;
+        }
+        
+        .process-step h4 {
+            font-size: 1.3rem;
+            margin-bottom: 15px;
+            color: white;
+        }
+        
+        /* CTA Section */
+        .service-cta {
+            background: linear-gradient(rgba(212, 175, 55, 0.9), rgba(212, 175, 55, 0.9)), url('https://images.unsplash.com/photo-1542838132-92c53300491e?q=80&w=2070&auto=format&fit=crop&ixlib=rb-4.1.0&ixid=M3wxMjA3fDB8MHxwaG90by1wYWdlfHx8fGVufDB8fHx8fA%3D%3D');
+            background-size: cover;
+            background-position: center;
+            color: var(--primary-dark);
+            text-align: center;
+            padding: 120px 0;
+        }
+        
+        .service-cta h2 {
+            font-size: 2.8rem;
+            margin-bottom: 20px;
+        }
+        
+        .service-cta p {
+            font-size: 1.2rem;
+            margin-bottom: 40px;
+            max-width: 700px;
+            margin-left: auto;
+            margin-right: auto;
+        }
+        
+        /* Button */
+        .btn {
+            display: inline-block;
+            padding: 15px 35px;
+            border-radius: 50px;
+            text-decoration: none;
+            font-weight: 600;
+            font-family: 'Montserrat', sans-serif;
+            transition: var(--transition);
+            border: none;
+            cursor: pointer;
+            font-size: 1rem;
+        }
+        
+        .btn-primary {
+            background-color: var(--accent-gold);
+            color: var(--primary-dark);
+        }
+        
+        .btn-primary:hover {
+            background-color: #e6c34d;
+            transform: translateY(-5px);
+            box-shadow: 0 15px 25px rgba(212, 175, 55, 0.3);
+        }
+        
+        .btn-secondary {
+            background-color: var(--primary-dark);
+            color: white;
+        }
+        
+        .btn-secondary:hover {
+            background-color: var(--primary-green);
+            transform: translateY(-5px);
+        }
+        
+        /* Animation Classes */
+        .animate-on-scroll {
+            opacity: 0;
+            transform: translateY(30px);
+            transition: opacity 0.8s ease, transform 0.8s ease;
+        }
+        
+        .animate-on-scroll.animated {
+            opacity: 1;
+            transform: translateY(0);
+        }
+        
+        .delay-1 {
+            transition-delay: 0.2s;
+        }
+        
+        .delay-2 {
+            transition-delay: 0.4s;
+        }
+        
+        /* Responsive adjustments for services page */
+        @media (max-width: 992px) {
+            .services-hero h1 {
+                font-size: 2.8rem;
+            }
+            
+            .service-detail-card {
+                grid-template-columns: 1fr;
+            }
+            
+            .service-detail-image {
+                height: 250px;
+            }
+        }
+        
+        @media (max-width: 768px) {
+            .services-hero {
+                padding: 180px 0 80px;
+            }
+            
+            .services-hero h1 {
+                font-size: 2.4rem;
+            }
+            
+            .section-title h2 {
+                font-size: 2rem;
+            }
+            
+            .service-detail-content {
+                padding: 30px;
+            }
+        }
+        
+        @media (max-width: 576px) {
+            .services-hero {
+                padding: 160px 0 60px;
+            }
+            
+            .services-hero h1 {
+                font-size: 2rem;
+            }
+            
+            section {
+                padding: 70px 0;
+            }
+            
+            .service-detail-content {
+                padding: 25px;
+            }
+            
+            .service-detail-content h3 {
+                font-size: 1.5rem;
+            }
+        }
+    </style>
+</head>
+<body>
+    <!-- Header & Navigation -->
+    <header id="header">
+        <div class="container header-container">
+            <a href="/" class="logo">
+                <!-- Company Logo -->
+                <img src="/assets/img/logo.png" alt="YACEXIM AFRICA LTD">
+            </a>
+            
+            <div class="mobile-toggle" id="mobile-toggle">
+                <i class="fas fa-bars"></i>
+            </div>
+            
+            <ul class="nav-menu" id="nav-menu">
+                <li><a href="/">Home</a></li>
+                <li><a href="/about/">About</a></li>
+                <li><a href="/services/" class="active">Services</a></li>
+                <li><a href="/#products">Products</a></li>
+                <li><a href="/contact/">Contact</a></li>
+                <li><a href="#" class="btn btn-primary" style="padding: 10px 25px; margin-left: 0;">Trade Portal</a></li>
+            </ul>
+        </div>
+        <div class="menu-overlay" id="menu-overlay"></div>
+    </header>
+
+    <!-- Services Hero Section -->
+    <section class="services-hero">
+        <div class="container">
+            <div class="breadcrumb">
+                <a href="/">Home</a>
+                <span>></span>
+                <span>Our Services</span>
+            </div>
+            
+            <h1 class="animate__animated animate__fadeInUp">Our Agribusiness Services</h1>
+            <p class="animate__animated animate__fadeInUp animate__delay-1s">
+                Comprehensive agricultural value chain solutions from farm to market, delivering sustainable and efficient agribusiness services across Africa.
+            </p>
+        </div>
+    </section>
+
+    <!-- Services Introduction -->
+    <section class="services-intro">
+        <div class="container">
+            <div class="intro-content animate-on-scroll">
+                <h3>End-to-End Agricultural Solutions</h3>
+                <p>YACEXIM AFRICA LTD offers comprehensive agribusiness services designed to optimize every stage of the agricultural value chain. From farming and sourcing to processing, export, and import logistics, we provide integrated solutions that enhance productivity, ensure quality, and create sustainable value for all stakeholders.</p>
+            </div>
+        </div>
+    </section>
+
+    <!-- Detailed Services Section -->
+    <section class="detailed-services">
+        <div class="container">
+            <div class="section-title">
+                <h2>Our Comprehensive Services</h2>
+                <p>Specialized solutions designed to meet the diverse needs of modern agriculture</p>
+            </div>
+            
+            <!-- Service 1: Import & Export -->
+            <div class="service-detail-card animate-on-scroll">
+                <div class="service-detail-image" style="background-image: url('https://images.unsplash.com/photo-1713859326033-f75e04439c3e?q=80&w=1074&auto=format&fit=crop&ixlib=rb-4.1.0&ixid=M3wxMjA3fDB8MHxwaG90by1wYWdlfHx8fGVufDB8fHx8fA%3D%3D');"></div>
+                <div class="service-detail-content">
+                    <h3>Import & Export Services</h3>
+                    <p>Strategic importation of essential food items to support food security and export of premium African agricultural commodities to global markets.</p>
+                    
+                    <h4>Our Import Services:</h4>
+                    <ul class="service-features">
+                        <li><i class="fas fa-check-circle"></i> Importation of food staples and agricultural inputs</li>
+                        <li><i class="fas fa-check-circle"></i> Supply chain management for imported goods</li>
+                        <li><i class="fas fa-check-circle"></i> Quality assurance and compliance with import regulations</li>
+                        <li><i class="fas fa-check-circle"></i> Warehousing and distribution solutions</li>
+                    </ul>
+                    
+                    <h4>Our Export Services:</h4>
+                    <ul class="service-features">
+                        <li><i class="fas fa-check-circle"></i> Export of raw cashew nuts, cocoa beans, and other commodities</li>
+                        <li><i class="fas fa-check-circle"></i> International market access and trade facilitation</li>
+                        <li><i class="fas fa-check-circle"></i> Export documentation and compliance</li>
+                        <li><i class="fas fa-check-circle"></i> Logistics and shipping coordination</li>
+                    </ul>
+                </div>
+            </div>
+            
+            <!-- Service 2: Commercial Farming -->
+            <div class="service-detail-card animate-on-scroll delay-1">
+                <div class="service-detail-content">
+                    <h3>Commercial Farming & Support Services</h3>
+                    <p>Large-scale agricultural production with modern farming techniques and sustainable practices across multiple crop varieties.</p>
+                    
+                    <h4>Our Farming Services:</h4>
+                    <ul class="service-features">
+                        <li><i class="fas fa-check-circle"></i> Large-scale crop production and farm management</li>
+                        <li><i class="fas fa-check-circle"></i> Modern irrigation and precision farming techniques</li>
+                        <li><i class="fas fa-check-circle"></i> Soil testing and fertility management</li>
+                        <li><i class="fas fa-check-circle"></i> Crop rotation and sustainable land management</li>
+                    </ul>
+                    
+                    <h4>Farmer Support Services:</h4>
+                    <ul class="service-features">
+                        <li><i class="fas fa-check-circle"></i> Agricultural inputs supply (seeds, fertilizers, pesticides)</li>
+                        <li><i class="fas fa-check-circle"></i> Farmer training and capacity building</li>
+                        <li><i class="fas fa-check-circle"></i> Extension services and technical support</li>
+                        <li><i class="fas fa-check-circle"></i> Market linkage and price negotiation</li>
+                    </ul>
+                </div>
+                <div class="service-detail-image" style="background-image: url('https://images.unsplash.com/photo-1500382017468-9049fed747ef?q=80&w=2070&auto=format&fit=crop&ixlib=rb-4.1.0&ixid=M3wxMjA3fDB8MHxwaG90by1wYWdlfHx8fGVufDB8fHx8fA%3D%3D');"></div>
+            </div>
+            
+            <!-- Service 3: Processing & Value Addition -->
+            <div class="service-detail-card animate-on-scroll delay-2">
+                <div class="service-detail-image" style="background-image: url('https://blog.sathguru.com/wp-content/uploads/2021/11/Farmgate-Value-Addition-Critical-for-increasing-farm-income-and-rural-growth-1130x580.jpg');"></div>
+                <div class="service-detail-content">
+                    <h3>Processing & Value Addition</h3>
+                    <p>Transforming raw agricultural products into value-added goods including cashew kernels, cocoa products, and processed foods.</p>
+                    
+                    <h4>Our Processing Services:</h4>
+                    <ul class="service-features">
+                        <li><i class="fas fa-check-circle"></i> Cashew nut processing into various grades of kernels</li>
+                        <li><i class="fas fa-check-circle"></i> Cocoa bean processing into butter, powder, and liquor</li>
+                        <li><i class="fas fa-check-circle"></i> Grain milling and processing</li>
+                        <li><i class="fas fa-check-circle"></i> Packaging and labeling services</li>
+                    </ul>
+                    
+                    <h4>Value Addition:</h4>
+                    <ul class="service-features">
+                        <li><i class="fas fa-check-circle"></i> Product development and innovation</li>
+                        <li><i class="fas fa-check-circle"></i> Quality grading and standardization</li>
+                        <li><i class="fas fa-check-circle"></i> Brand development for processed products</li>
+                        <li><i class="fas fa-check-circle"></i> Shelf-life enhancement techniques</li>
+                    </ul>
+                </div>
+            </div>
+            
+            <!-- Service 4: Animal Husbandry & Dairy -->
+            <div class="service-detail-card animate-on-scroll">
+                <div class="service-detail-content">
+                    <h3>Animal Husbandry & Dairy Production</h3>
+                    <p>Specialized livestock management, dairy farming solutions, and value-added dairy products for domestic and export markets.</p>
+                    
+                    <h4>Our Animal Husbandry Services:</h4>
+                    <ul class="service-features">
+                        <li><i class="fas fa-check-circle"></i> Livestock breeding and management</li>
+                        <li><i class="fas fa-check-circle"></i> Animal nutrition and feed formulation</li>
+                        <li><i class="fas fa-check-circle"></i> Veterinary services and health management</li>
+                        <li><i class="fas fa-check-circle"></i> Modern housing and welfare standards</li>
+                    </ul>
+                    
+                    <h4>Dairy Production:</h4>
+                    <ul class="service-features">
+                        <li><i class="fas fa-check-circle"></i> Milk collection and processing</li>
+                        <li><i class="fas fa-check-circle"></i> Dairy product development (cheese, yogurt, butter)</li>
+                        <li><i class="fas fa-check-circle"></i> Quality control and food safety compliance</li>
+                        <li><i class="fas fa-check-circle"></i> Cold chain management</li>
+                    </ul>
+                </div>
+                <div class="service-detail-image" style="background-image: url('https://images.unsplash.com/photo-1571938574727-cd5ea31dafbd?q=80&w=2070&auto=format&fit=crop&ixlib=rb-4.1.0&ixid=M3wxMjA3fDB8MHxwaG90by1wYWdlfHx8fGVufDB8fHx8fA%3D%3D');"></div>
+            </div>
+            
+            <!-- Service 5: Supply Chain Management -->
+            <div class="service-detail-card animate-on-scroll delay-1">
+                <div class="service-detail-image" style="background-image: url('https://www.microbank.com/docs/blog/1572.jpg');"></div>
+                <div class="service-detail-content">
+                    <h3>Supply Chain Management</h3>
+                    <p>End-to-end logistics, storage, and distribution solutions ensuring quality preservation and timely delivery.</p>
+                    
+                    <h4>Our Supply Chain Solutions:</h4>
+                    <ul class="service-features">
+                        <li><i class="fas fa-check-circle"></i> Logistics and transportation management</li>
+                        <li><i class="fas fa-check-circle"></i> Warehousing and storage facilities</li>
+                        <li><i class="fas fa-check-circle"></i> Inventory management and tracking</li>
+                        <li><i class="fas fa-check-circle"></i> Cold chain logistics for perishables</li>
+                    </ul>
+                    
+                    <h4>Quality Preservation:</h4>
+                    <ul class="service-features">
+                        <li><i class="fas fa-check-circle"></i> Post-harvest handling and storage</li>
+                        <li><i class="fas fa-check-circle"></i> Pest control and fumigation services</li>
+                        <li><i class="fas fa-check-circle"></i> Quality monitoring throughout the supply chain</li>
+                        <li><i class="fas fa-check-circle"></i> Traceability systems implementation</li>
+                    </ul>
+                </div>
+            </div>
+            
+            <!-- Service 6: Sustainable Agriculture -->
+            <div class="service-detail-card animate-on-scroll delay-2">
+                <div class="service-detail-content">
+                    <h3>Sustainable Agriculture & Value Chain Development</h3>
+                    <p>Promoting environmentally responsible farming practices and developing complete agricultural value chains from farm to market.</p>
+                    
+                    <h4>Sustainable Agriculture:</h4>
+                    <ul class="service-features">
+                        <li><i class="fas fa-check-circle"></i> Climate-smart agricultural practices</li>
+                        <li><i class="fas fa-check-circle"></i> Organic farming and certification support</li>
+                        <li><i class="fas fa-check-circle"></i> Water conservation and management</li>
+                        <li><i class="fas fa-check-circle"></i> Biodiversity conservation programs</li>
+                    </ul>
+                    
+                    <h4>Value Chain Development:</h4>
+                    <ul class="service-features">
+                        <li><i class="fas fa-check-circle"></i> Complete value chain analysis and development</li>
+                        <li><i class="fas fa-check-circle"></i> Market linkage and access facilitation</li>
+                        <li><i class="fas fa-check-circle"></i> Farmer organization and cooperative development</li>
+                        <li><i class="fas fa-check-circle"></i> Access to finance and investment facilitation</li>
+                    </ul>
+                </div>
+                <div class="service-detail-image" style="background-image: url('https://images.unsplash.com/photo-1416879595882-3373a0480b5b?q=80&w=2070&auto=format&fit=crop&ixlib=rb-4.1.0&ixid=M3wxMjA3fDB8MHxwaG90by1wYWdlfHx8fGVufDB8fHx8fA%3D%3D');"></div>
+            </div>
+        </div>
+    </section>
+
+    <!-- Our Process Section -->
+    <section class="process">
+        <div class="container">
+            <div class="section-title white">
+                <h2>Our Service Delivery Process</h2>
+                <p>Streamlined approach ensuring efficiency and quality at every stage</p>
+            </div>
+            
+            <div class="process-steps">
+                <div class="process-step animate-on-scroll">
+                    <div class="step-number">1</div>
+                    <h4>Needs Assessment</h4>
+                    <p>Understanding client requirements and conducting comprehensive needs analysis</p>
+                </div>
+                
+                <div class="process-step animate-on-scroll delay-1">
+                    <div class="step-number">2</div>
+                    <h4>Solution Design</h4>
+                    <p>Developing customized agricultural solutions tailored to specific needs</p>
+                </div>
+                
+                <div class="process-step animate-on-scroll delay-2">
+                    <div class="step-number">3</div>
+                    <h4>Implementation</h4>
+                    <p>Executing the plan with precision and attention to detail</p>
+                </div>
+                
+                <div class="process-step animate-on-scroll">
+                    <div class="step-number">4</div>
+                    <h4>Quality Assurance</h4>
+                    <p>Continuous monitoring and quality control throughout the process</p>
+                </div>
+                
+                <div class="process-step animate-on-scroll delay-1">
+                    <div class="step-number">5</div>
+                    <h4>Delivery & Support</h4>
+                    <p>Timely delivery of services with ongoing support and maintenance</p>
+                </div>
+            </div>
+        </div>
+    </section>
+
+    <!-- CTA Section -->
+    <section class="service-cta">
+        <div class="container">
+            <h2>Ready to Transform Your Agricultural Operations?</h2>
+            <p>Partner with YACEXIM for comprehensive agribusiness solutions that drive efficiency, sustainability, and profitability. Let's discuss how we can support your agricultural needs.</p>
+            <a href="/contact/" class="btn btn-secondary">Get In Touch</a>
+        </div>
+    </section>
+
+    <!-- Footer -->
+    <footer id="contact">
+        <div class="container">
+            <div class="footer-grid">
+                <div class="footer-col">
+                    <h3>YACEXIM AFRICA LTD</h3>
+                    <p>Leading African agribusiness and commodities trading company, delivering quality food products to local and international markets while supporting sustainable farming across Africa.</p>
+                    <div class="social-links">
+                        <a href="#" class="social-link"><i class="fab fa-twitter"></i></a>
+                        <a href="#" class="social-link"><i class="fab fa-linkedin-in"></i></a>
+                        <a href="#" class="social-link"><i class="fab fa-facebook-f"></i></a>
+                        <a href="#" class="social-link"><i class="fab fa-instagram"></i></a>
+                    </div>
+                </div>
+                
+                <div class="footer-col">
+                    <h3>Quick Links</h3>
+                    <p><a href="/">Home</a></p>
+                    <p><a href="/about/">About Us</a></p>
+                    <p><a href="/services/">Our Services</a></p>
+                    <p><a href="/#products">Our Products</a></p>
+                    <p><a href="/contact/">Contact Us</a></p>
+                </div>
+                
+                <div class="footer-col">
+                    <h3>Our Services</h3>
+                    <p><a href="#">Import & Export</a></p>
+                    <p><a href="#">Commercial Farming</a></p>
+                    <p><a href="#">Processing & Value Addition</a></p>
+                    <p><a href="#">Supply Chain Management</a></p>
+                    <p><a href="#">Sustainable Agriculture</a></p>
+                </div>
+                
+                <div class="footer-col">
+                    <h3>Contact Info</h3>
+                    <p><i class="fas fa-map-marker-alt" style="margin-right: 10px; color: var(--accent-gold);"></i> Tebibiano- Tse Addo, Accra, Ghana</p>
+                    <p><i class="fas fa-phone" style="margin-right: 10px; color: var(--accent-gold);"></i> +233 XXX XXX XXXX</p>
+                    
+                    <div class="email-contact">
+                        <div class="email-item">
+                            <i class="fas fa-envelope"></i>
+                            <span>General Inquiries: <a href="mailto:info@yacexim.com">info@yacexim.com</a></span>
+                        </div>
+                        <div class="email-item">
+                            <i class="fas fa-shopping-cart"></i>
+                            <span>Sales: <a href="mailto:sales@yacexim.com">sales@yacexim.com</a></span>
+                        </div>
+                        <div class="email-item">
+                            <i class="fas fa-file-invoice-dollar"></i>
+                            <span>Finance: <a href="mailto:finance@yacexim.com">finance@yacexim.com</a></span>
+                        </div>
+                    </div>
+                    
+                    <p><i class="fas fa-clock" style="margin-right: 10px; color: var(--accent-gold);"></i> Mon - Fri: 8:00 - 18:00</p>
+                </div>
+            </div>
+            
+            <div class="copyright">
+                <p>&copy; 2026 YACEXIM AFRICA LTD. All Rights Reserved. | A subsidiary of YAC GROUP Holdings</p>
+            </div>
+        </div>
+    </footer>
+
+    <!-- JavaScript Libraries -->
+    <script src="https://code.jquery.com/jquery-3.6.0.min.js"></script>
+    
+    <script>
+        $(document).ready(function() {
+            // Mobile Navigation Toggle
+            $('#mobile-toggle').click(function() {
+                $('#nav-menu').toggleClass('active');
+                $('#menu-overlay').toggleClass('active');
+                $(this).find('i').toggleClass('fa-bars fa-times');
+            });
+            
+            // Close mobile menu when clicking overlay
+            $('#menu-overlay').click(function() {
+                $('#nav-menu').removeClass('active');
+                $(this).removeClass('active');
+                $('#mobile-toggle i').removeClass('fa-times').addClass('fa-bars');
+            });
+            
+            // Close mobile menu when clicking a link
+            $('#nav-menu a').click(function() {
+                $('#nav-menu').removeClass('active');
+                $('#menu-overlay').removeClass('active');
+                $('#mobile-toggle i').removeClass('fa-times').addClass('fa-bars');
+            });
+            
+            // Header scroll effect
+            $(window).scroll(function() {
+                if ($(this).scrollTop() > 100) {
+                    $('#header').addClass('scrolled');
+                } else {
+                    $('#header').removeClass('scrolled');
+                }
+            });
+            
+            // Smooth scrolling for anchor links
+            $('a[href*="#"]').not('[href="#"]').not('[href="#0"]').click(function(event) {
+                if (location.pathname.replace(/^\//, '') === this.pathname.replace(/^\//, '') && location.hostname === this.hostname) {
+                    var target = $(this.hash);
+                    target = target.length ? target : $('[name=' + this.hash.slice(1) + ']');
+                    if (target.length) {
+                        event.preventDefault();
+                        $('html, body').animate({
+                            scrollTop: target.offset().top - 80
+                        }, 1000);
+                    }
+                }
+            });
+            
+            // Scroll animation for elements
+            function animateOnScroll() {
+                $('.animate-on-scroll').each(function() {
+                    var elementTop = $(this).offset().top;
+                    var elementBottom = elementTop + $(this).outerHeight();
+                    var viewportTop = $(window).scrollTop();
+                    var viewportBottom = viewportTop + $(window).height();
+                    
+                    if (elementBottom > viewportTop && elementTop < viewportBottom) {
+                        $(this).addClass('animated');
+                    }
+                });
+            }
+            
+            // Trigger initial scroll check
+            animateOnScroll();
+            
+            // Animate on scroll
+            $(window).scroll(function() {
+                animateOnScroll();
+            });
+        });
+    </script>
+</body>
+</html>

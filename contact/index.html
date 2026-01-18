@@ -1,0 +1,1167 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Contact Us - YACEXIM AFRICA LTD | Get In Touch</title>
+
+    <!-- Favicon using company logo -->
+    <link rel="shortcut icon" href="/favicon.ico">
+    <link rel="apple-touch-icon" sizes="180x180" href="/apple-touch-icon.png">
+    <link rel="icon" type="image/png" sizes="32x32" href="/favicon-32x32.png">
+    <link rel="icon" type="image/png" sizes="16x16" href="/favicon-16x16.png">
+    <link rel="manifest" href="/site.webmanifest">
+        
+    <!-- External Libraries -->
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.4.0/css/all.min.css">
+    <link href="https://fonts.googleapis.com/css2?family=Montserrat:wght@300;400;500;600;700;800&family=Open+Sans:wght@300;400;500;600&display=swap" rel="stylesheet">
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/animate.css/4.1.1/animate.min.css">
+    <style>
+        /* EXACT COPY OF CSS FROM index.html - Header, Footer, Base Styles */
+        :root {
+            --primary-dark: #0a3d1f;
+            --primary-green: #1d976c;
+            --accent-gold: #d4af37;
+            --accent-brown: #8b4513;
+            --accent-orange: #e67e22;
+            --light-bg: #f8f9fa;
+            --dark-text: #222;
+            --light-text: #f8f9fa;
+            --section-padding: 100px 0;
+            --transition: all 0.4s cubic-bezier(0.175, 0.885, 0.32, 1.275);
+        }
+        
+        * {
+            margin: 0;
+            padding: 0;
+            box-sizing: border-box;
+        }
+        
+        html {
+            scroll-behavior: smooth;
+        }
+        
+        body {
+            font-family: 'Open Sans', sans-serif;
+            color: var(--dark-text);
+            line-height: 1.6;
+            overflow-x: hidden;
+            background-color: var(--light-bg);
+        }
+        
+        h1, h2, h3, h4, h5, h6 {
+            font-family: 'Montserrat', sans-serif;
+            font-weight: 700;
+            line-height: 1.3;
+        }
+        
+        .container {
+            width: 100%;
+            max-width: 1200px;
+            margin: 0 auto;
+            padding: 0 20px;
+        }
+        
+        /* Header & Navigation - EXACT COPY from index.html */
+        header {
+            position: fixed;
+            top: 0;
+            left: 0;
+            width: 100%;
+            z-index: 1000;
+            padding: 15px 0;
+            transition: var(--transition);
+            background-color: rgba(255, 255, 255, 0.98);
+            box-shadow: 0 5px 20px rgba(10, 61, 31, 0.1);
+        }
+        
+        header.scrolled {
+            padding: 10px 0;
+            background-color: rgba(255, 255, 255, 0.99);
+            box-shadow: 0 5px 30px rgba(10, 61, 31, 0.15);
+        }
+        
+        .header-container {
+            display: flex;
+            justify-content: space-between;
+            align-items: center;
+            position: relative;
+        }
+        
+        .logo {
+            display: flex;
+            align-items: center;
+            text-decoration: none;
+            height: 110px;
+            z-index: 1001;
+        }
+        
+        .logo img {
+            height: 120%;
+            width: auto;
+            max-width: 220px;
+            object-fit: contain;
+        }
+        
+        .nav-menu {
+            display: flex;
+            list-style: none;
+            align-items: center;
+            margin-left: auto;
+        }
+        
+        .nav-menu li {
+            margin-left: 25px;
+        }
+        
+        .nav-menu a {
+            text-decoration: none;
+            color: var(--primary-dark);
+            font-weight: 600;
+            font-size: 0.95rem;
+            position: relative;
+            padding: 8px 0;
+            transition: var(--transition);
+        }
+        
+        .nav-menu a:after {
+            content: '';
+            position: absolute;
+            bottom: 0;
+            left: 0;
+            width: 0;
+            height: 2px;
+            background-color: var(--primary-green);
+            transition: var(--transition);
+        }
+        
+        .nav-menu a:hover {
+            color: var(--primary-green);
+        }
+        
+        .nav-menu a:hover:after {
+            width: 100%;
+        }
+        
+        .mobile-toggle {
+            display: none;
+            font-size: 1.5rem;
+            color: var(--primary-dark);
+            cursor: pointer;
+            z-index: 1001;
+        }
+        
+        /* Footer - EXACT COPY from index.html */
+        footer {
+            background-color: var(--primary-dark);
+            color: var(--light-text);
+            padding: 80px 0 40px;
+        }
+        
+        .footer-grid {
+            display: grid;
+            grid-template-columns: repeat(auto-fit, minmax(250px, 1fr));
+            gap: 40px;
+            margin-bottom: 50px;
+        }
+        
+        .footer-col h3 {
+            font-size: 1.4rem;
+            margin-bottom: 25px;
+            color: var(--accent-gold);
+        }
+        
+        .footer-col p, .footer-col a {
+            color: rgba(255, 255, 255, 0.8);
+            line-height: 1.8;
+        }
+        
+        .footer-col a {
+            text-decoration: none;
+            transition: var(--transition);
+        }
+        
+        .footer-col a:hover {
+            color: var(--accent-gold);
+            padding-left: 5px;
+        }
+        
+        .social-links {
+            display: flex;
+            gap: 15px;
+            margin-top: 20px;
+        }
+        
+        .social-link {
+            display: flex;
+            align-items: center;
+            justify-content: center;
+            width: 40px;
+            height: 40px;
+            background-color: rgba(255, 255, 255, 0.1);
+            border-radius: 50%;
+            color: var(--light-text);
+            font-size: 1.1rem;
+            transition: var(--transition);
+        }
+        
+        .social-link:hover {
+            background-color: var(--accent-gold);
+            color: var(--primary-dark);
+            transform: translateY(-5px);
+        }
+        
+        .email-contact {
+            margin-top: 15px;
+            padding: 10px 0;
+            border-top: 1px solid rgba(255, 255, 255, 0.1);
+        }
+        
+        .email-item {
+            margin-bottom: 8px;
+            display: flex;
+            align-items: center;
+        }
+        
+        .email-item i {
+            margin-right: 10px;
+            color: var(--accent-gold);
+            font-size: 0.9rem;
+        }
+        
+        .copyright {
+            text-align: center;
+            padding-top: 40px;
+            border-top: 1px solid rgba(255, 255, 255, 0.1);
+            color: rgba(255, 255, 255, 0.7);
+            font-size: 0.9rem;
+        }
+        
+        /* Responsive Styles - EXACT COPY from index.html */
+        @media (max-width: 992px) {
+            .logo {
+                height: 90px;
+            }
+            
+            .logo img {
+                max-width: 250px;
+            }
+        }
+        
+        @media (max-width: 768px) {
+            .nav-menu {
+                position: fixed;
+                top: 0;
+                left: -100%;
+                width: 80%;
+                height: 100vh;
+                background-color: #fff;
+                flex-direction: column;
+                align-items: flex-start;
+                justify-content: flex-start;
+                padding-top: 100px;
+                padding-left: 30px;
+                transition: var(--transition);
+                box-shadow: 0 10px 30px rgba(0, 0, 0, 0.1);
+                z-index: 1000;
+            }
+            
+            .nav-menu.active {
+                left: 0;
+            }
+            
+            .nav-menu li {
+                margin: 0 0 25px 0;
+                width: 100%;
+            }
+            
+            .nav-menu a {
+                font-size: 1.1rem;
+                padding: 10px 0;
+                display: block;
+                width: 100%;
+            }
+            
+            .mobile-toggle {
+                display: block;
+            }
+            
+            .logo {
+                height: 90px !important;
+            }
+            
+            .logo img {
+                max-width: 250px !important;
+            }
+        }
+        
+        @media (max-width: 576px) {
+            .logo {
+                height: 75px !important;
+            }
+            
+            .logo img {
+                max-width: 200px !important;
+            }
+        }
+        
+        @media (max-width: 480px) {
+            .logo {
+                height: 65px !important;
+            }
+            
+            .logo img {
+                max-width: 180px !important;
+            }
+        }
+        
+        .menu-overlay {
+            position: fixed;
+            top: 0;
+            left: 0;
+            width: 100%;
+            height: 100%;
+            background-color: rgba(0, 0, 0, 0.5);
+            z-index: 999;
+            display: none;
+        }
+        
+        .menu-overlay.active {
+            display: block;
+        }
+        
+        /* CONTACT PAGE SPECIFIC STYLES */
+        
+        /* Contact Hero Section */
+        .contact-hero {
+            padding: 180px 0 120px;
+            min-height: 70vh;
+            display: flex;
+            align-items: center;
+            background: linear-gradient(rgba(10, 61, 31, 0.85), rgba(10, 61, 31, 0.85)), url('https://images.unsplash.com/photo-1559136555-9303baea8ebd?q=80&w=2070&auto=format&fit=crop&ixlib=rb-4.1.0&ixid=M3wxMjA3fDB8MHxwaG90by1wYWdlfHx8fGVufDB8fHx8fA%3D%3D');
+            background-size: cover;
+            background-position: center;
+            color: var(--light-text);
+        }
+        
+        .contact-hero .container {
+            max-width: 800px;
+            text-align: center;
+        }
+        
+        .contact-hero h1 {
+            font-size: 3.5rem;
+            margin-bottom: 20px;
+            font-weight: 800;
+        }
+        
+        .contact-hero p {
+            font-size: 1.2rem;
+            margin-bottom: 30px;
+            opacity: 0.9;
+        }
+        
+        .breadcrumb {
+            display: flex;
+            justify-content: center;
+            align-items: center;
+            margin-bottom: 30px;
+        }
+        
+        .breadcrumb a {
+            color: var(--accent-gold);
+            text-decoration: none;
+            transition: var(--transition);
+        }
+        
+        .breadcrumb a:hover {
+            color: white;
+        }
+        
+        .breadcrumb span {
+            margin: 0 10px;
+            color: rgba(255, 255, 255, 0.7);
+        }
+        
+        /* Section Styling */
+        section {
+            padding: var(--section-padding);
+        }
+        
+        .section-title {
+            text-align: center;
+            margin-bottom: 60px;
+        }
+        
+        .section-title h2 {
+            font-size: 2.5rem;
+            color: var(--primary-dark);
+            position: relative;
+            display: inline-block;
+            padding-bottom: 15px;
+        }
+        
+        .section-title h2:after {
+            content: '';
+            position: absolute;
+            bottom: 0;
+            left: 50%;
+            transform: translateX(-50%);
+            width: 80px;
+            height: 3px;
+            background-color: var(--primary-green);
+        }
+        
+        .section-title p {
+            max-width: 700px;
+            margin: 20px auto 0;
+            color: #666;
+            font-size: 1.1rem;
+        }
+        
+        /* Contact Info Section */
+        .contact-info {
+            background-color: #fff;
+        }
+        
+        .contact-grid {
+            display: grid;
+            grid-template-columns: repeat(auto-fit, minmax(300px, 1fr));
+            gap: 40px;
+            margin-top: 50px;
+        }
+        
+        .contact-card {
+            background-color: var(--light-bg);
+            border-radius: 10px;
+            padding: 40px;
+            text-align: center;
+            transition: var(--transition);
+            border-top: 4px solid transparent;
+        }
+        
+        .contact-card:hover {
+            transform: translateY(-10px);
+            border-top-color: var(--primary-green);
+            box-shadow: 0 20px 40px rgba(29, 151, 108, 0.15);
+        }
+        
+        .contact-icon {
+            font-size: 2.5rem;
+            color: var(--primary-green);
+            margin-bottom: 25px;
+            height: 80px;
+            width: 80px;
+            display: flex;
+            align-items: center;
+            justify-content: center;
+            background-color: rgba(29, 151, 108, 0.1);
+            border-radius: 50%;
+            margin: 0 auto 25px;
+        }
+        
+        .contact-card h3 {
+            font-size: 1.6rem;
+            margin-bottom: 15px;
+            color: var(--primary-dark);
+        }
+        
+        .contact-card p {
+            margin-bottom: 10px;
+        }
+        
+        .contact-card a {
+            color: var(--primary-green);
+            text-decoration: none;
+            font-weight: 600;
+            transition: var(--transition);
+        }
+        
+        .contact-card a:hover {
+            color: var(--accent-gold);
+        }
+        
+        /* Contact Form & Map Section */
+        .contact-form-map {
+            background-color: var(--light-bg);
+        }
+        
+        .contact-wrapper {
+            display: grid;
+            grid-template-columns: 1fr 1fr;
+            gap: 60px;
+        }
+        
+        .contact-form-container {
+            background-color: white;
+            border-radius: 10px;
+            padding: 40px;
+            box-shadow: 0 10px 30px rgba(0, 0, 0, 0.08);
+        }
+        
+        .contact-form-container h3 {
+            font-size: 1.8rem;
+            margin-bottom: 20px;
+            color: var(--primary-dark);
+        }
+        
+        .form-group {
+            margin-bottom: 25px;
+        }
+        
+        .form-group label {
+            display: block;
+            margin-bottom: 8px;
+            font-weight: 600;
+            color: var(--primary-dark);
+        }
+        
+        .form-control {
+            width: 100%;
+            padding: 15px;
+            border: 1px solid #ddd;
+            border-radius: 5px;
+            font-family: 'Open Sans', sans-serif;
+            font-size: 1rem;
+            transition: var(--transition);
+        }
+        
+        .form-control:focus {
+            outline: none;
+            border-color: var(--primary-green);
+            box-shadow: 0 0 0 3px rgba(29, 151, 108, 0.1);
+        }
+        
+        textarea.form-control {
+            min-height: 150px;
+            resize: vertical;
+        }
+        
+        /* Map Container */
+        .map-container {
+            border-radius: 10px;
+            overflow: hidden;
+            box-shadow: 0 10px 30px rgba(0, 0, 0, 0.08);
+            height: 100%;
+        }
+        
+        #contact-map {
+            height: 100%;
+            min-height: 500px;
+            width: 100%;
+        }
+        
+        /* Departments Section */
+        .departments {
+            background-color: #fff;
+        }
+        
+        .departments-grid {
+            display: grid;
+            grid-template-columns: repeat(auto-fit, minmax(300px, 1fr));
+            gap: 30px;
+            margin-top: 50px;
+        }
+        
+        .department-card {
+            background-color: var(--light-bg);
+            border-radius: 10px;
+            padding: 30px;
+            transition: var(--transition);
+        }
+        
+        .department-card:hover {
+            transform: translateY(-10px);
+            box-shadow: 0 20px 40px rgba(212, 175, 55, 0.15);
+        }
+        
+        .department-card h4 {
+            font-size: 1.3rem;
+            margin-bottom: 15px;
+            color: var(--primary-dark);
+        }
+        
+        .department-card p {
+            margin-bottom: 15px;
+        }
+        
+        .department-email {
+            color: var(--primary-green);
+            font-weight: 600;
+            text-decoration: none;
+        }
+        
+        .department-email:hover {
+            color: var(--accent-gold);
+        }
+        
+        /* Button */
+        .btn {
+            display: inline-block;
+            padding: 15px 35px;
+            border-radius: 50px;
+            text-decoration: none;
+            font-weight: 600;
+            font-family: 'Montserrat', sans-serif;
+            transition: var(--transition);
+            border: none;
+            cursor: pointer;
+            font-size: 1rem;
+        }
+        
+        .btn-primary {
+            background-color: var(--accent-gold);
+            color: var(--primary-dark);
+        }
+        
+        .btn-primary:hover {
+            background-color: #e6c34d;
+            transform: translateY(-5px);
+            box-shadow: 0 15px 25px rgba(212, 175, 55, 0.3);
+        }
+        
+        /* Animation Classes */
+        .animate-on-scroll {
+            opacity: 0;
+            transform: translateY(30px);
+            transition: opacity 0.8s ease, transform 0.8s ease;
+        }
+        
+        .animate-on-scroll.animated {
+            opacity: 1;
+            transform: translateY(0);
+        }
+        
+        .delay-1 {
+            transition-delay: 0.2s;
+        }
+        
+        .delay-2 {
+            transition-delay: 0.4s;
+        }
+        
+        /* Responsive adjustments for contact page */
+        @media (max-width: 992px) {
+            .contact-hero h1 {
+                font-size: 2.8rem;
+            }
+            
+            .contact-wrapper {
+                grid-template-columns: 1fr;
+                gap: 40px;
+            }
+            
+            #contact-map {
+                min-height: 400px;
+            }
+        }
+        
+        @media (max-width: 768px) {
+            .contact-hero {
+                padding: 180px 0 80px;
+            }
+            
+            .contact-hero h1 {
+                font-size: 2.4rem;
+            }
+            
+            .section-title h2 {
+                font-size: 2rem;
+            }
+            
+            .contact-card {
+                padding: 30px;
+            }
+            
+            .contact-form-container {
+                padding: 30px;
+            }
+        }
+        
+        @media (max-width: 576px) {
+            .contact-hero {
+                padding: 160px 0 60px;
+            }
+            
+            .contact-hero h1 {
+                font-size: 2rem;
+            }
+            
+            section {
+                padding: 70px 0;
+            }
+            
+            .contact-card {
+                padding: 25px;
+            }
+            
+            .contact-form-container {
+                padding: 25px;
+            }
+        }
+    </style>
+</head>
+<body>
+    <!-- Header & Navigation -->
+    <header id="header">
+        <div class="container header-container">
+            <a href="/" class="logo">
+                <!-- Company Logo -->
+                <img src="/assets/img/logo.png" alt="YACEXIM AFRICA LTD">
+            </a>
+            
+            <div class="mobile-toggle" id="mobile-toggle">
+                <i class="fas fa-bars"></i>
+            </div>
+            
+            <ul class="nav-menu" id="nav-menu">
+                <li><a href="/">Home</a></li>
+                <li><a href="/about/">About</a></li>
+                <li><a href="/services/">Services</a></li>
+                <li><a href="/#products">Products</a></li>
+                <li><a href="/contact/" class="active">Contact</a></li>
+                <li><a href="#" class="btn btn-primary" style="padding: 10px 25px; margin-left: 0;">Trade Portal</a></li>
+            </ul>
+        </div>
+        <div class="menu-overlay" id="menu-overlay"></div>
+    </header>
+
+    <!-- Contact Hero Section -->
+    <section class="contact-hero">
+        <div class="container">
+            <div class="breadcrumb">
+                <a href="/">Home</a>
+                <span>></span>
+                <span>Contact Us</span>
+            </div>
+            
+            <h1 class="animate__animated animate__fadeInUp">Get In Touch With Us</h1>
+            <p class="animate__animated animate__fadeInUp animate__delay-1s">
+                Ready to discuss your agricultural needs? Reach out to YACEXIM AFRICA LTD for comprehensive agribusiness solutions and partnership opportunities.
+            </p>
+        </div>
+    </section>
+
+    <!-- Contact Info Section -->
+    <section class="contact-info">
+        <div class="container">
+            <div class="section-title">
+                <h2>Our Contact Information</h2>
+                <p>Multiple ways to connect with our team for your agricultural needs</p>
+            </div>
+            
+            <div class="contact-grid">
+                <div class="contact-card animate-on-scroll">
+                    <div class="contact-icon">
+                        <i class="fas fa-map-marker-alt"></i>
+                    </div>
+                    <h3>Our Location</h3>
+                    <p><strong>Head Office:</strong></p>
+                    <p>Tebibiano- Tse Addo, Accra, Ghana</p>
+                    <p><strong>Regional Offices:</strong></p>
+                    <p>Kumasi, Takoradi, Tamale</p>
+                </div>
+                
+                <div class="contact-card animate-on-scroll delay-1">
+                    <div class="contact-icon">
+                        <i class="fas fa-phone"></i>
+                    </div>
+                    <h3>Phone & Hours</h3>
+                    <p><strong>Main Line:</strong> +233 XXX XXX XXXX</p>
+                    <p><strong>Sales:</strong> +233 XXX XXX XXXX</p>
+                    <p><strong>Support:</strong> +233 XXX XXX XXXX</p>
+                    <p><strong>Hours:</strong> Mon - Fri: 8:00 - 18:00</p>
+                </div>
+                
+                <div class="contact-card animate-on-scroll delay-2">
+                    <div class="contact-icon">
+                        <i class="fas fa-envelope"></i>
+                    </div>
+                    <h3>Email Addresses</h3>
+                    <p><strong>General:</strong> <a href="mailto:info@yacexim.com">info@yacexim.com</a></p>
+                    <p><strong>Sales:</strong> <a href="mailto:sales@yacexim.com">sales@yacexim.com</a></p>
+                    <p><strong>Support:</strong> <a href="mailto:support@yacexim.com">support@yacexim.com</a></p>
+                    <p><strong>Careers:</strong> <a href="mailto:careers@yacexim.com">careers@yacexim.com</a></p>
+                </div>
+            </div>
+        </div>
+    </section>
+
+    <!-- Contact Form & Map Section -->
+    <section class="contact-form-map">
+        <div class="container">
+            <div class="section-title">
+                <h2>Send Us a Message</h2>
+                <p>Fill out the form below or visit our office. We're ready to assist you.</p>
+            </div>
+            
+            <div class="contact-wrapper">
+                <!-- Contact Form -->
+                <div class="contact-form-container animate-on-scroll">
+                    <h3>Contact Form</h3>
+                    <form id="contact-form" action="#" method="POST">
+                        <div class="form-group">
+                            <label for="name">Full Name *</label>
+                            <input type="text" id="name" name="name" class="form-control" required>
+                        </div>
+                        
+                        <div class="form-group">
+                            <label for="email">Email Address *</label>
+                            <input type="email" id="email" name="email" class="form-control" required>
+                        </div>
+                        
+                        <div class="form-group">
+                            <label for="phone">Phone Number</label>
+                            <input type="tel" id="phone" name="phone" class="form-control">
+                        </div>
+                        
+                        <div class="form-group">
+                            <label for="subject">Subject *</label>
+                            <input type="text" id="subject" name="subject" class="form-control" required>
+                        </div>
+                        
+                        <div class="form-group">
+                            <label for="department">Department</label>
+                            <select id="department" name="department" class="form-control">
+                                <option value="">Select Department</option>
+                                <option value="sales">Sales & Inquiries</option>
+                                <option value="support">Technical Support</option>
+                                <option value="partnership">Partnerships</option>
+                                <option value="careers">Careers</option>
+                                <option value="other">Other</option>
+                            </select>
+                        </div>
+                        
+                        <div class="form-group">
+                            <label for="message">Message *</label>
+                            <textarea id="message" name="message" class="form-control" required></textarea>
+                        </div>
+                        
+                        <button type="submit" class="btn btn-primary">Send Message</button>
+                    </form>
+                </div>
+                
+                <!-- Google Map -->
+                <div class="map-container animate-on-scroll delay-1">
+                    <div id="contact-map"></div>
+                </div>
+            </div>
+        </div>
+    </section>
+
+    <!-- Departments Section -->
+    <section class="departments">
+        <div class="container">
+            <div class="section-title">
+                <h2>Contact Our Departments</h2>
+                <p>Direct contact information for specific departments and services</p>
+            </div>
+            
+            <div class="departments-grid">
+                <div class="department-card animate-on-scroll">
+                    <h4>Sales & Business Development</h4>
+                    <p>For product inquiries, pricing, and partnership opportunities.</p>
+                    <p><strong>Email:</strong> <a href="mailto:sales@yacexim.com" class="department-email">sales@yacexim.com</a></p>
+                    <p><strong>Phone:</strong> +233 XXX XXX XXXX</p>
+                </div>
+                
+                <div class="department-card animate-on-scroll delay-1">
+                    <h4>Technical Support & Farming Services</h4>
+                    <p>For agricultural support, farming services, and technical assistance.</p>
+                    <p><strong>Email:</strong> <a href="mailto:support@yacexim.com" class="department-email">support@yacexim.com</a></p>
+                    <p><strong>Phone:</strong> +233 XXX XXX XXXX</p>
+                </div>
+                
+                <div class="department-card animate-on-scroll delay-2">
+                    <h4>Finance & Accounts</h4>
+                    <p>For billing, payments, and financial inquiries.</p>
+                    <p><strong>Email:</strong> <a href="mailto:finance@yacexim.com" class="department-email">finance@yacexim.com</a></p>
+                    <p><strong>Phone:</strong> +233 XXX XXX XXXX</p>
+                </div>
+                
+                <div class="department-card animate-on-scroll">
+                    <h4>Export & Import Services</h4>
+                    <p>For international trade, shipping, and customs clearance.</p>
+                    <p><strong>Email:</strong> <a href="mailto:trade@yacexim.com" class="department-email">trade@yacexim.com</a></p>
+                    <p><strong>Phone:</strong> +233 XXX XXX XXXX</p>
+                </div>
+                
+                <div class="department-card animate-on-scroll delay-1">
+                    <h4>Human Resources & Careers</h4>
+                    <p>For job opportunities, recruitment, and HR inquiries.</p>
+                    <p><strong>Email:</strong> <a href="mailto:careers@yacexim.com" class="department-email">careers@yacexim.com</a></p>
+                    <p><strong>Phone:</strong> +233 XXX XXX XXXX</p>
+                </div>
+                
+                <div class="department-card animate-on-scroll delay-2">
+                    <h4>Media & Public Relations</h4>
+                    <p>For press inquiries, media partnerships, and public relations.</p>
+                    <p><strong>Email:</strong> <a href="mailto:media@yacexim.com" class="department-email">media@yacexim.com</a></p>
+                    <p><strong>Phone:</strong> +233 XXX XXX XXXX</p>
+                </div>
+            </div>
+        </div>
+    </section>
+
+    <!-- Footer -->
+    <footer id="contact">
+        <div class="container">
+            <div class="footer-grid">
+                <div class="footer-col">
+                    <h3>YACEXIM AFRICA LTD</h3>
+                    <p>Leading African agribusiness and commodities trading company, delivering quality food products to local and international markets while supporting sustainable farming across Africa.</p>
+                    <div class="social-links">
+                        <a href="#" class="social-link"><i class="fab fa-twitter"></i></a>
+                        <a href="#" class="social-link"><i class="fab fa-linkedin-in"></i></a>
+                        <a href="#" class="social-link"><i class="fab fa-facebook-f"></i></a>
+                        <a href="#" class="social-link"><i class="fab fa-instagram"></i></a>
+                    </div>
+                </div>
+                
+                <div class="footer-col">
+                    <h3>Quick Links</h3>
+                    <p><a href="/">Home</a></p>
+                    <p><a href="/about/">About Us</a></p>
+                    <p><a href="/services/">Our Services</a></p>
+                    <p><a href="/#products">Our Products</a></p>
+                    <p><a href="/contact/">Contact Us</a></p>
+                </div>
+                
+                <div class="footer-col">
+                    <h3>Our Services</h3>
+                    <p><a href="/services/">Import & Export</a></p>
+                    <p><a href="/services/">Commercial Farming</a></p>
+                    <p><a href="/services/">Processing & Value Addition</a></p>
+                    <p><a href="/services/">Supply Chain Management</a></p>
+                </div>
+                
+                <div class="footer-col">
+                    <h3>Contact Info</h3>
+                    <p><i class="fas fa-map-marker-alt" style="margin-right: 10px; color: var(--accent-gold);"></i> Tebibiano- Tse Addo, Accra, Ghana</p>
+                    <p><i class="fas fa-phone" style="margin-right: 10px; color: var(--accent-gold);"></i> +233 XXX XXX XXXX</p>
+                    
+                    <div class="email-contact">
+                        <div class="email-item">
+                            <i class="fas fa-envelope"></i>
+                            <span>General Inquiries: <a href="mailto:info@yacexim.com">info@yacexim.com</a></span>
+                        </div>
+                        <div class="email-item">
+                            <i class="fas fa-shopping-cart"></i>
+                            <span>Sales: <a href="mailto:sales@yacexim.com">sales@yacexim.com</a></span>
+                        </div>
+                        <div class="email-item">
+                            <i class="fas fa-file-invoice-dollar"></i>
+                            <span>Finance: <a href="mailto:finance@yacexim.com">finance@yacexim.com</a></span>
+                        </div>
+                    </div>
+                    
+                    <p><i class="fas fa-clock" style="margin-right: 10px; color: var(--accent-gold);"></i> Mon - Fri: 8:00 - 18:00</p>
+                </div>
+            </div>
+            
+            <div class="copyright">
+                <p>&copy; 2026 YACEXIM AFRICA LTD. All Rights Reserved. | A subsidiary of YAC GROUP Holdings</p>
+            </div>
+        </div>
+    </footer>
+
+    <!-- JavaScript Libraries -->
+    <script src="https://code.jquery.com/jquery-3.6.0.min.js"></script>
+    <!-- Google Maps API -->
+    <script src="https://maps.googleapis.com/maps/api/js?key=YOUR_GOOGLE_MAPS_API_KEY&callback=initMap" async defer></script>
+    
+    <script>
+        $(document).ready(function() {
+            // Mobile Navigation Toggle
+            $('#mobile-toggle').click(function() {
+                $('#nav-menu').toggleClass('active');
+                $('#menu-overlay').toggleClass('active');
+                $(this).find('i').toggleClass('fa-bars fa-times');
+            });
+            
+            // Close mobile menu when clicking overlay
+            $('#menu-overlay').click(function() {
+                $('#nav-menu').removeClass('active');
+                $(this).removeClass('active');
+                $('#mobile-toggle i').removeClass('fa-times').addClass('fa-bars');
+            });
+            
+            // Close mobile menu when clicking a link
+            $('#nav-menu a').click(function() {
+                $('#nav-menu').removeClass('active');
+                $('#menu-overlay').removeClass('active');
+                $('#mobile-toggle i').removeClass('fa-times').addClass('fa-bars');
+            });
+            
+            // Header scroll effect
+            $(window).scroll(function() {
+                if ($(this).scrollTop() > 100) {
+                    $('#header').addClass('scrolled');
+                } else {
+                    $('#header').removeClass('scrolled');
+                }
+            });
+            
+            // Smooth scrolling for anchor links
+            $('a[href*="#"]').not('[href="#"]').not('[href="#0"]').click(function(event) {
+                if (location.pathname.replace(/^\//, '') === this.pathname.replace(/^\//, '') && location.hostname === this.hostname) {
+                    var target = $(this.hash);
+                    target = target.length ? target : $('[name=' + this.hash.slice(1) + ']');
+                    if (target.length) {
+                        event.preventDefault();
+                        $('html, body').animate({
+                            scrollTop: target.offset().top - 80
+                        }, 1000);
+                    }
+                }
+            });
+            
+            // Scroll animation for elements
+            function animateOnScroll() {
+                $('.animate-on-scroll').each(function() {
+                    var elementTop = $(this).offset().top;
+                    var elementBottom = elementTop + $(this).outerHeight();
+                    var viewportTop = $(window).scrollTop();
+                    var viewportBottom = viewportTop + $(window).height();
+                    
+                    if (elementBottom > viewportTop && elementTop < viewportBottom) {
+                        $(this).addClass('animated');
+                    }
+                });
+            }
+            
+            // Trigger initial scroll check
+            animateOnScroll();
+            
+            // Animate on scroll
+            $(window).scroll(function() {
+                animateOnScroll();
+            });
+            
+            // Contact Form Submission
+            $('#contact-form').submit(function(e) {
+                e.preventDefault();
+                
+                // Simple form validation
+                const name = $('#name').val();
+                const email = $('#email').val();
+                const subject = $('#subject').val();
+                const message = $('#message').val();
+                
+                if (!name || !email || !subject || !message) {
+                    alert('Please fill in all required fields.');
+                    return;
+                }
+                
+                // In a real application, you would send this data to a server
+                // For now, we'll just show a success message
+                alert('Thank you for your message! We will get back to you soon.');
+                $('#contact-form')[0].reset();
+            });
+            
+            // Initialize Google Map
+            function initMap() {
+                // Coordinates for Accra, Ghana (approximate location)
+                const location = { lat: 5.6037, lng: -0.1870 };
+                
+                // Create map
+                const map = new google.maps.Map(document.getElementById('contact-map'), {
+                    zoom: 15,
+                    center: location,
+                    styles: [
+                        {
+                            "featureType": "administrative",
+                            "elementType": "labels.text.fill",
+                            "stylers": [{"color": "#444444"}]
+                        },
+                        {
+                            "featureType": "landscape",
+                            "elementType": "all",
+                            "stylers": [{"color": "#f2f2f2"}]
+                        },
+                        {
+                            "featureType": "poi",
+                            "elementType": "all",
+                            "stylers": [{"visibility": "off"}]
+                        },
+                        {
+                            "featureType": "road",
+                            "elementType": "all",
+                            "stylers": [{"saturation": -100}, {"lightness": 45}]
+                        },
+                        {
+                            "featureType": "road.highway",
+                            "elementType": "all",
+                            "stylers": [{"visibility": "simplified"}]
+                        },
+                        {
+                            "featureType": "road.arterial",
+                            "elementType": "labels.icon",
+                            "stylers": [{"visibility": "off"}]
+                        },
+                        {
+                            "featureType": "transit",
+                            "elementType": "all",
+                            "stylers": [{"visibility": "off"}]
+                        },
+                        {
+                            "featureType": "water",
+                            "elementType": "all",
+                            "stylers": [{"color": "#1d976c"}, {"visibility": "on"}]
+                        }
+                    ]
+                });
+                
+                // Create marker
+                const marker = new google.maps.Marker({
+                    position: location,
+                    map: map,
+                    title: 'YACEXIM AFRICA LTD - Head Office',
+                    icon: {
+                        url: 'https://maps.google.com/mapfiles/ms/icons/green-dot.png'
+                    }
+                });
+                
+                // Create info window
+                const infoWindow = new google.maps.InfoWindow({
+                    content: `
+                        <div style="padding: 10px;">
+                            <h3 style="margin: 0 0 10px 0; color: #0a3d1f;">YACEXIM AFRICA LTD</h3>
+                            <p style="margin: 0 0 5px 0;"><strong>Address:</strong> Tebibiano- Tse Addo, Accra, Ghana</p>
+                            <p style="margin: 0 0 5px 0;"><strong>Phone:</strong> +233 XXX XXX XXXX</p>
+                            <p style="margin: 0;"><strong>Email:</strong> info@yacexim.com</p>
+                        </div>
+                    `
+                });
+                
+                // Add click event to marker
+                marker.addListener('click', function() {
+                    infoWindow.open(map, marker);
+                });
+                
+                // Open info window by default
+                infoWindow.open(map, marker);
+            }
+            
+            // Fallback if Google Maps API fails to load
+            window.initMap = initMap;
+            
+            // If Google Maps fails to load, show a static image
+            setTimeout(function() {
+                if (!$('#contact-map').children().length) {
+                    $('#contact-map').html(`
+                        <div style="height: 100%; background: linear-gradient(rgba(10, 61, 31, 0.1), rgba(10, 61, 31, 0.1)), url('https://images.unsplash.com/photo-1543269865-cbf427effbad?q=80&w=2070&auto=format&fit=crop&ixlib=rb-4.1.0&ixid=M3wxMjA3fDB8MHxwaG90by1wYWdlfHx8fGVufDB8fHx8fA%3D%3D');
+                             background-size: cover; background-position: center; display: flex; align-items: center; justify-content: center; color: white;">
+                            <div style="text-align: center; padding: 20px;">
+                                <h3 style="margin-bottom: 10px;">YACEXIM AFRICA LTD</h3>
+                                <p>Tebibiano- Tse Addo, Accra, Ghana</p>
+                                <p>+233 XXX XXX XXXX</p>
+                            </div>
+                        </div>
+                    `);
+                }
+            }, 5000);
+        });
+    </script>
+</body>
+</html>
