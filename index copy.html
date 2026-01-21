@@ -343,7 +343,7 @@
             font-size: 1.1rem;
         }
         
-        /* Services Section with Images */
+        /* Services Section with Images - UPDATED */
         .services {
             background-color: #fff;
         }
@@ -355,6 +355,34 @@
             margin-top: 50px;
         }
         
+        /* Services Links Styling */
+        .services-grid a.service-link {
+            text-decoration: none;
+            color: inherit;
+            display: block;
+            transition: var(--transition);
+        }
+        
+        .services-grid a.service-link:hover {
+            text-decoration: none;
+        }
+        
+        /* Update existing hover effects to work with links */
+        .services-grid a.service-link:hover .service-card {
+            transform: translateY(-15px);
+            box-shadow: 0 20px 40px rgba(29, 151, 108, 0.15);
+        }
+        
+        .services-grid a.service-link:hover .service-image {
+            transform: scale(1.05);
+        }
+        
+        /* Ensure no text decoration in service content */
+        .service-content h3,
+        .service-content p {
+            text-decoration: none !important;
+        }
+        
         .service-card {
             background-color: #fff;
             border-radius: 10px;
@@ -364,20 +392,11 @@
             height: 100%;
         }
         
-        .service-card:hover {
-            transform: translateY(-15px);
-            box-shadow: 0 20px 40px rgba(29, 151, 108, 0.15);
-        }
-        
         .service-image {
             height: 200px;
             background-size: cover;
             background-position: center;
             transition: var(--transition);
-        }
-        
-        .service-card:hover .service-image {
-            transform: scale(1.05);
         }
         
         .service-content {
@@ -795,9 +814,9 @@
             <ul class="nav-menu" id="nav-menu">
                 <li><a href="/">Home</a></li>
                 <li><a href="/about/">About</a></li>
-                <li><a href="#services">Services</a></li>
+                <li><a href="/services/">Services</a></li>
                 <li><a href="#products">Products</a></li>
-                <li><a href="#contact">Contact</a></li>
+                <li><a href="/contact">Contact</a></li>
                 <li><a href="#" class="btn btn-primary" style="padding: 10px 25px; margin-left: 0;">Trade Portal</a></li>
             </ul>
         </div>
@@ -828,7 +847,7 @@
         
         <div class="container">
             <div class="hero-content">
-                <h1 class="animate__animated animate__fadeInUp">Bridging Continents Through <span style="color: var(--accent-gold)">Agricultural Trade</span></h1>
+                <h1 class="animate__animated animate__fadeInUp">Bridging Continents Through <span style="color: var(--accent-gold)">Commodities Trade</span></h1>
                 <p class="animate__animated animate__fadeInUp animate__delay-1s">YACEXIM AFRICA LTD is a leading agribusiness and commodities trading company, delivering quality food products to local and international markets while supporting sustainable farming across Africa.</p>
                 <div class="hero-btns">
                     <a href="#services" class="btn btn-primary animate__animated animate__fadeInUp animate__delay-2s">Our Services</a>
@@ -848,58 +867,70 @@
             
             <div class="services-grid">
                 <!-- Service 1: Import & Export -->
-                <div class="service-card">
-                    <div class="service-image" style="background-image: url('https://images.unsplash.com/photo-1713859326033-f75e04439c3e?q=80&w=1074&auto=format&fit=crop&ixlib=rb-4.1.0&ixid=M3wxMjA3fDB8MHxwaG90by1wYWdlfHx8fGVufDB8fHx8fA%3D%3D');"></div>
-                    <div class="service-content">
-                        <h3>Import & Export</h3>
-                        <p>Strategic importation of food items to support food security and export of premium African agricultural commodities to global markets.</p>
+                <a href="/services/import-export/" class="service-link">
+                    <div class="service-card">
+                        <div class="service-image" style="background-image: url('https://images.unsplash.com/photo-1713859326033-f75e04439c3e?q=80&w=1074&auto=format&fit=crop&ixlib=rb-4.1.0&ixid=M3wxMjA3fDB8MHxwaG90by1wYWdlfHx8fGVufDB8fHx8fA%3D%3D');"></div>
+                        <div class="service-content">
+                            <h3>Import & Export</h3>
+                            <p>Strategic importation of food items to support food security and export of premium African agricultural commodities to global markets.</p>
+                        </div>
                     </div>
-                </div>
-                
+                </a>
+
                 <!-- Service 2: Commercial Farming -->
-                <div class="service-card">
-                    <div class="service-image" style="background-image: url('https://images.unsplash.com/photo-1500382017468-9049fed747ef?ixlib=rb-4.0.3&auto=format&fit=crop&w-800&q=80');"></div>
-                    <div class="service-content">
-                        <h3>Commercial Farming</h3>
-                        <p>Large-scale agricultural production with modern farming techniques and sustainable practices across multiple crop varieties.</p>
+                <a href="/services/commercial-farming/" class="service-link">
+                    <div class="service-card">
+                        <div class="service-image" style="background-image: url('https://images.unsplash.com/photo-1500382017468-9049fed747ef?ixlib=rb-4.0.3&auto=format&fit=crop&w-800&q=80');"></div>
+                        <div class="service-content">
+                            <h3>Commercial Farming</h3>
+                            <p>Large-scale agricultural production with modern farming techniques and sustainable practices across multiple crop varieties.</p>
+                        </div>
                     </div>
-                </div>
+                </a>
                 
                 <!-- Service 3: Processing & Value Addition -->
-                <div class="service-card">
-                    <div class="service-image" style="background-image: url('https://blog.sathguru.com/wp-content/uploads/2021/11/Farmgate-Value-Addition-Critical-for-increasing-farm-income-and-rural-growth-1130x580.jpg');"></div>
-                    <div class="service-content">
-                        <h3>Processing & Value Addition</h3>
-                        <p>Transforming raw agricultural products into value-added goods including cashew kernels, cocoa products, and processed foods.</p>
+                <a href="/services/processing/" class="service-link">
+                    <div class="service-card">
+                        <div class="service-image" style="background-image: url('https://blog.sathguru.com/wp-content/uploads/2021/11/Farmgate-Value-Addition-Critical-for-increasing-farm-income-and-rural-growth-1130x580.jpg');"></div>
+                        <div class="service-content">
+                            <h3>Processing & Value Addition</h3>
+                            <p>Transforming raw agricultural products into value-added goods including cashew kernels, cocoa products, and processed foods.</p>
+                        </div>
                     </div>
-                </div>
+                </a>
                 
                 <!-- Service 4: Farmer Support Services -->
-                <div class="service-card">
-                    <div class="service-image" style="background-image: url('https://www.onefarm.africa/sites/default/files/2023-08/GettyImages-1407520358_2_0_0.jpg');"></div>
-                    <div class="service-content">
-                        <h3>Farmer Support Services</h3>
-                        <p>Providing farmers with inputs, training, market access, and financing to enhance productivity and livelihoods.</p>
+                <a href="/services/farmer-support/" class="service-link">
+                    <div class="service-card">
+                        <div class="service-image" style="background-image: url('https://www.onefarm.africa/sites/default/files/2023-08/GettyImages-1407520358_2_0_0.jpg');"></div>
+                        <div class="service-content">
+                            <h3>Farmer Support Services</h3>
+                            <p>Providing farmers with inputs, training, market access, and financing to enhance productivity and livelihoods.</p>
+                        </div>
                     </div>
-                </div>
+                </a>
                 
                 <!-- Service 5: Supply Chain Management -->
-                <div class="service-card">
-                    <div class="service-image" style="background-image: url('https://www.microbank.com/docs/blog/1572.jpg');"></div>
-                    <div class="service-content">
-                        <h3>Supply Chain Management</h3>
-                        <p>End-to-end logistics, storage, and distribution solutions ensuring quality preservation and timely delivery.</p>
+                <a href="/services/supply-chain/" class="service-link">
+                    <div class="service-card">
+                        <div class="service-image" style="background-image: url('https://www.microbank.com/docs/blog/1572.jpg');"></div>
+                        <div class="service-content">
+                            <h3>Supply Chain Management</h3>
+                            <p>End-to-end logistics, storage, and distribution solutions ensuring quality preservation and timely delivery.</p>
+                        </div>
                     </div>
-                </div>
+                </a>
                 
                 <!-- Service 6: Sustainable Agriculture -->
-                <div class="service-card">
-                    <div class="service-image" style="background-image: url('https://images.unsplash.com/photo-1416879595882-3373a0480b5b?ixlib=rb-4.0.3&auto=format&fit=crop&w=800&q=80');"></div>
-                    <div class="service-content">
-                        <h3>Sustainable Agriculture</h3>
-                        <p>Promoting environmentally responsible farming practices and supporting climate-resilient agricultural systems.</p>
+                <a href="/services/sustainable-agriculture/" class="service-link">
+                    <div class="service-card">
+                        <div class="service-image" style="background-image: url('https://images.unsplash.com/photo-1416879595882-3373a0480b5b?ixlib=rb-4.0.3&auto=format&fit=crop&w=800&q=80');"></div>
+                        <div class="service-content">
+                            <h3>Sustainable Agriculture</h3>
+                            <p>Promoting environmentally responsible farming practices and supporting climate-resilient agricultural systems.</p>
+                        </div>
                     </div>
-                </div>
+                </a>
             </div>
         </div>
     </section>
@@ -914,7 +945,7 @@
             
             <div class="products-carousel owl-carousel owl-theme">
                 <div class="product-item">
-                    <div class="product-img" style="background-image: url('http://images.unsplash.com/photo-1726771517475-e7acdd34cd8a?q=80&w=1170&auto=format&fit=crop&ixlib=rb-4.1.0&ixid=M3wxMjA3fDB8MHxwaG90by1wYWdlfHx8fGVufDB8fHx8fA%3D%3D');"></div>
+                    <div class="product-img" style="background-image: url('https://agrofastafrica.com/wp-content/uploads/2021/08/Raw-cashew-nuts-agrofastafrica.jpg');"></div>
                     <div class="product-content">
                         <h3>Raw Cashew Nuts</h3>
                         <p>Premium quality raw cashew nuts sourced directly from African farms, meeting international export standards.</p>
@@ -944,12 +975,25 @@
                         <p>Cocoa butter, powder, and other value-added cocoa products for the food and cosmetic industries.</p>
                     </div>
                 </div>
-                
                 <div class="product-item">
-                    <div class="product-img" style="background-image: url('https://images.unsplash.com/photo-1574323347407-f5e1ad6d020b?ixlib=rb-4.0.3&auto=format&fit=crop&w=800&q=80');"></div>
+                    <div class="product-img" style="background-image: url('https://cdn.wikifarmer.com/images/detailed/2024/07/What-is-Commercial-Agriculture.jpg');"></div>
                     <div class="product-content">
-                        <h3>Grains & Pulses</h3>
-                        <p>High-quality grains and pulses including maize, rice, millet, and beans for local and international markets.</p>
+                        <h3>Commercial Farming & Support Services</h3>
+                        <p>Comprehensive agricultural solutions including farm management, technical support, and farmer capacity building for sustainable commercial farming operations.</p>
+                    </div>
+                </div>
+                <div class="product-item">
+                    <div class="product-img" style="background-image: url('https://images.unsplash.com/photo-1571938574727-cd5ea31dafbd?q=80&w=1170&auto=format&fit=crop&ixlib=rb-4.1.0&ixid=M3wxMjA3fDB8MHxwaG90by1wYWdlfHx8fGVufDB8fHx8fA%3D%3D');"></div>
+                    <div class="product-content">
+                        <h3>Animal Husbandry & Dairy Production</h3>
+                        <p>Specialized livestock management, dairy farming solutions, and value-added dairy products including milk, cheese, and yogurt for domestic and export markets.</p>
+                    </div>
+                </div>
+                <div class="product-item">
+                    <div class="product-img" style="background-image: url('https://www.gep.com/prod/s3fs-public/blog-images/food-supply-chain-stages-models-challenges-best-practices-1920x1274.jpg');"></div>
+                    <div class="product-content">
+                        <h3>Agricultural Value Chain Development</h3>
+                        <p>End-to-end value chain solutions from production to market, enhancing efficiency, reducing post-harvest losses, and increasing farmer incomes across Africa.</p>
                     </div>
                 </div>
             </div>
@@ -1042,7 +1086,7 @@
         <div class="container">
             <h2>Ready to Partner With Us?</h2>
             <p>Join us in transforming African agriculture. Whether you're a farmer, buyer, or partner, we have opportunities for collaboration and growth.</p>
-            <a href="#contact" class="btn btn-primary">Get In Touch</a>
+            <a href="/contact/" class="btn btn-primary">Get In Touch</a>
         </div>
     </section>
 
@@ -1064,7 +1108,7 @@
                 <div class="footer-col">
                     <h3>Quick Links</h3>
                     <p><a href="/">Home</a></p>
-                    <p><a href="/">About Us</a></p>
+                    <p><a href="/about/">About Us</a></p>
                     <p><a href="#services">Our Services</a></p>
                     <p><a href="#products">Our Products</a></p>
                     <p><a href="#contact">Contact Us</a></p>
@@ -1076,13 +1120,12 @@
                     <p><a href="#">Processed Cashew Kernels</a></p>
                     <p><a href="#">Cocoa Beans</a></p>
                     <p><a href="#">Cocoa Products</a></p>
-                    <p><a href="#">Grains & Pulses</a></p>
                 </div>
                 
                 <div class="footer-col">
                     <h3>Contact Info</h3>
                     <p><i class="fas fa-map-marker-alt" style="margin-right: 10px; color: var(--accent-gold);"></i> Tebibiano- Tse Addo, Accra, Ghana</p>
-                    <p><i class="fas fa-phone" style="margin-right: 10px; color: var(--accent-gold);"></i> +233 XXX XXX XXXX</p>
+                    <p><i class="fas fa-phone" style="margin-right: 10px; color: var(--accent-gold);"></i> +233(0) 25 607 1615</p>
                     
                     <div class="email-contact">
                         <div class="email-item">
@@ -1094,8 +1137,8 @@
                             <span>Sales: <a href="mailto:sales@yacexim.com">sales@yacexim.com</a></span>
                         </div>
                         <div class="email-item">
-                            <i class="fas fa-file-invoice-dollar"></i>
-                            <span>Finance: <a href="mailto:finance@yacexim.com">finance@yacexim.com</a></span>
+                            <i class="fas fa-people-group"></i>
+                            <span>Directors: <a href="mailto:directors@yacexim.com">directors@yacexim.com</a></span>
                         </div>
                     </div>
                     
