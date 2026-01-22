@@ -481,6 +481,32 @@
             color: var(--accent-gold);
         }
         
+        /* WhatsApp Button */
+        .whatsapp-btn {
+            display: inline-flex;
+            align-items: center;
+            justify-content: center;
+            background-color: #25D366;
+            color: white;
+            padding: 10px 20px;
+            border-radius: 50px;
+            text-decoration: none;
+            font-weight: 600;
+            margin-top: 15px;
+            transition: var(--transition);
+        }
+        
+        .whatsapp-btn:hover {
+            background-color: #128C7E;
+            transform: translateY(-3px);
+            color: white;
+        }
+        
+        .whatsapp-btn i {
+            margin-right: 8px;
+            font-size: 1.2rem;
+        }
+        
         /* Contact Form & Map Section */
         .contact-form-map {
             background-color: var(--light-bg);
@@ -549,6 +575,7 @@
             height: 100%;
             min-height: 500px;
             width: 100%;
+            border: 0;
         }
         
         /* Departments Section */
@@ -757,9 +784,8 @@
                     </div>
                     <h3>Our Location</h3>
                     <p><strong>Head Office:</strong></p>
-                    <p>Tebibiano- Tse Addo, Accra, Ghana</p>
-                    <p><strong>Regional Offices:</strong></p>
-                    <p>Kumasi, Takoradi, Tamale</p>
+                    <p>Tse Addo, Accra, Ghana</p>
+                    <p><em>Currently serving nationwide from our Accra headquarters</em></p>
                 </div>
                 
                 <div class="contact-card animate-on-scroll delay-1">
@@ -767,21 +793,23 @@
                         <i class="fas fa-phone"></i>
                     </div>
                     <h3>Phone & Hours</h3>
-                    <p><strong>Main Line:</strong> +233 XXX XXX XXXX</p>
-                    <p><strong>Sales:</strong> +233 XXX XXX XXXX</p>
-                    <p><strong>Support:</strong> +233 XXX XXX XXXX</p>
+                    <p><strong>Primary Contact:</strong></p>
+                    <p>+233 256 071 615</p>
                     <p><strong>Hours:</strong> Mon - Fri: 8:00 - 18:00</p>
+                    <p><strong>Saturday:</strong> 9:00 - 14:00</p>
+                    <a href="https://wa.me/233256071615" target="_blank" class="whatsapp-btn">
+                        <i class="fab fa-whatsapp"></i> Chat on WhatsApp
+                    </a>
                 </div>
                 
                 <div class="contact-card animate-on-scroll delay-2">
                     <div class="contact-icon">
                         <i class="fas fa-envelope"></i>
                     </div>
-                    <h3>Email Addresses</h3>
-                    <p><strong>General:</strong> <a href="mailto:info@yacexim.com">info@yacexim.com</a></p>
-                    <p><strong>Sales:</strong> <a href="mailto:sales@yacexim.com">sales@yacexim.com</a></p>
-                    <p><strong>Support:</strong> <a href="mailto:support@yacexim.com">support@yacexim.com</a></p>
-                    <p><strong>Careers:</strong> <a href="mailto:careers@yacexim.com">careers@yacexim.com</a></p>
+                    <h3>Official Email Addresses</h3>
+                    <p><strong>General Inquiries:</strong> <a href="mailto:info@yacexim.com">info@yacexim.com</a></p>
+                    <p><strong>Sales & Finance:</strong> <a href="mailto:sales@yacexim.com">sales@yacexim.com</a></p>
+                    <p><strong>Directors & Investments:</strong> <a href="mailto:directors@yacexim.com">directors@yacexim.com</a></p>
                 </div>
             </div>
         </div>
@@ -812,7 +840,7 @@
                         
                         <div class="form-group">
                             <label for="phone">Phone Number</label>
-                            <input type="tel" id="phone" name="phone" class="form-control">
+                            <input type="tel" id="phone" name="phone" class="form-control" placeholder="+233 256 071 615">
                         </div>
                         
                         <div class="form-group">
@@ -821,14 +849,12 @@
                         </div>
                         
                         <div class="form-group">
-                            <label for="department">Department</label>
-                            <select id="department" name="department" class="form-control">
+                            <label for="department">Department *</label>
+                            <select id="department" name="department" class="form-control" required>
                                 <option value="">Select Department</option>
-                                <option value="sales">Sales & Inquiries</option>
-                                <option value="support">Technical Support</option>
-                                <option value="partnership">Partnerships</option>
-                                <option value="careers">Careers</option>
-                                <option value="other">Other</option>
+                                <option value="info">General Inquiries (info@yacexim.com)</option>
+                                <option value="sales">Sales & Finance (sales@yacexim.com)</option>
+                                <option value="directors">Directors & Investments (directors@yacexim.com)</option>
                             </select>
                         </div>
                         
@@ -843,7 +869,7 @@
                 
                 <!-- Google Map -->
                 <div class="map-container animate-on-scroll delay-1">
-                    <div id="contact-map"></div>
+                    <iframe id="contact-map" src="https://www.google.com/maps/embed?pb=!1m18!1m12!1m3!1d3970.7685312966087!2d-0.13367702656667513!3d5.6011745331969935!2m3!1f0!2f0!3f0!3m2!1i1024!2i768!4f13.1!3m3!1m2!1s0xfdf85002c15cbbf%3A0xa1ba040430e91349!2sYAC%20GROUP!5e0!3m2!1sen!2sgh!4v1745158640118!5m2!1sen!2sgh" allowfullscreen="" loading="lazy" referrerpolicy="no-referrer-when-downgrade"></iframe>
                 </div>
             </div>
         </div>
@@ -859,45 +885,24 @@
             
             <div class="departments-grid">
                 <div class="department-card animate-on-scroll">
-                    <h4>Sales & Business Development</h4>
-                    <p>For product inquiries, pricing, and partnership opportunities.</p>
+                    <h4>General Inquiries</h4>
+                    <p>For general information, company overview, and non-specific questions about our services.</p>
+                    <p><strong>Email:</strong> <a href="mailto:info@yacexim.com" class="department-email">info@yacexim.com</a></p>
+                    <p><strong>Phone:</strong> +233 256 071 615</p>
+                </div>
+                
+                <div class="department-card animate-on-scroll delay-1">
+                    <h4>Sales & Financial Services</h4>
+                    <p>For product inquiries, pricing, orders, billing, payments, and financial discussions.</p>
                     <p><strong>Email:</strong> <a href="mailto:sales@yacexim.com" class="department-email">sales@yacexim.com</a></p>
-                    <p><strong>Phone:</strong> +233 XXX XXX XXXX</p>
-                </div>
-                
-                <div class="department-card animate-on-scroll delay-1">
-                    <h4>Technical Support & Farming Services</h4>
-                    <p>For agricultural support, farming services, and technical assistance.</p>
-                    <p><strong>Email:</strong> <a href="mailto:support@yacexim.com" class="department-email">support@yacexim.com</a></p>
-                    <p><strong>Phone:</strong> +233 XXX XXX XXXX</p>
+                    <p><strong>Phone:</strong> +233 256 071 615</p>
                 </div>
                 
                 <div class="department-card animate-on-scroll delay-2">
-                    <h4>Finance & Accounts</h4>
-                    <p>For billing, payments, and financial inquiries.</p>
-                    <p><strong>Email:</strong> <a href="mailto:finance@yacexim.com" class="department-email">finance@yacexim.com</a></p>
-                    <p><strong>Phone:</strong> +233 XXX XXX XXXX</p>
-                </div>
-                
-                <div class="department-card animate-on-scroll">
-                    <h4>Export & Import Services</h4>
-                    <p>For international trade, shipping, and customs clearance.</p>
-                    <p><strong>Email:</strong> <a href="mailto:trade@yacexim.com" class="department-email">trade@yacexim.com</a></p>
-                    <p><strong>Phone:</strong> +233 XXX XXX XXXX</p>
-                </div>
-                
-                <div class="department-card animate-on-scroll delay-1">
-                    <h4>Human Resources & Careers</h4>
-                    <p>For job opportunities, recruitment, and HR inquiries.</p>
-                    <p><strong>Email:</strong> <a href="mailto:careers@yacexim.com" class="department-email">careers@yacexim.com</a></p>
-                    <p><strong>Phone:</strong> +233 XXX XXX XXXX</p>
-                </div>
-                
-                <div class="department-card animate-on-scroll delay-2">
-                    <h4>Media & Public Relations</h4>
-                    <p>For press inquiries, media partnerships, and public relations.</p>
-                    <p><strong>Email:</strong> <a href="mailto:media@yacexim.com" class="department-email">media@yacexim.com</a></p>
-                    <p><strong>Phone:</strong> +233 XXX XXX XXXX</p>
+                    <h4>Directors & Investment Division</h4>
+                    <p>For partnership opportunities, major investments, strategic collaborations, and executive communications.</p>
+                    <p><strong>Email:</strong> <a href="mailto:directors@yacexim.com" class="department-email">directors@yacexim.com</a></p>
+                    <p><strong>Phone:</strong> +233 256 071 615</p>
                 </div>
             </div>
         </div>
@@ -923,13 +928,13 @@
                     <p><a href="/">Home</a></p>
                     <p><a href="/about/">About Us</a></p>
                     <p><a href="/services/">Our Services</a></p>
-                    <p><a href="/#products">Our Products</a></p>
+                    <p><a href="/products/">Our Products</a></p>
                     <p><a href="/contact/">Contact Us</a></p>
                 </div>
                 
                 <div class="footer-col">
                     <h3>Our Services</h3>
-                    <p><a href="/services/">Import & Export</a></p>
+                    <p><a href="/products/">Import & Export</a></p>
                     <p><a href="/services/">Commercial Farming</a></p>
                     <p><a href="/services/">Processing & Value Addition</a></p>
                     <p><a href="/services/">Supply Chain Management</a></p>
@@ -937,8 +942,8 @@
                 
                 <div class="footer-col">
                     <h3>Contact Info</h3>
-                    <p><i class="fas fa-map-marker-alt" style="margin-right: 10px; color: var(--accent-gold);"></i> Tebibiano- Tse Addo, Accra, Ghana</p>
-                    <p><i class="fas fa-phone" style="margin-right: 10px; color: var(--accent-gold);"></i> +233 XXX XXX XXXX</p>
+                    <p><i class="fas fa-map-marker-alt" style="margin-right: 10px; color: var(--accent-gold);"></i> Tse Addo, Accra, Ghana</p>
+                    <p><i class="fas fa-phone" style="margin-right: 10px; color: var(--accent-gold);"></i> +233 256 071 615</p>
                     
                     <div class="email-contact">
                         <div class="email-item">
@@ -947,15 +952,16 @@
                         </div>
                         <div class="email-item">
                             <i class="fas fa-shopping-cart"></i>
-                            <span>Sales: <a href="mailto:sales@yacexim.com">sales@yacexim.com</a></span>
+                            <span>Sales & Finance: <a href="mailto:sales@yacexim.com">sales@yacexim.com</a></span>
                         </div>
                         <div class="email-item">
-                            <i class="fas fa-file-invoice-dollar"></i>
-                            <span>Finance: <a href="mailto:finance@yacexim.com">finance@yacexim.com</a></span>
+                            <i class="fas fa-people-group"></i>
+                            <span>Directors: <a href="mailto:directors@yacexim.com">directors@yacexim.com</a></span>
                         </div>
                     </div>
                     
                     <p><i class="fas fa-clock" style="margin-right: 10px; color: var(--accent-gold);"></i> Mon - Fri: 8:00 - 18:00</p>
+                    <p><i class="fas fa-clock" style="margin-right: 10px; color: var(--accent-gold);"></i> Sat: 9:00 - 14:00</p>
                 </div>
             </div>
             
@@ -967,8 +973,6 @@
 
     <!-- JavaScript Libraries -->
     <script src="https://code.jquery.com/jquery-3.6.0.min.js"></script>
-    <!-- Google Maps API -->
-    <script src="https://maps.googleapis.com/maps/api/js?key=YOUR_GOOGLE_MAPS_API_KEY&callback=initMap" async defer></script>
     
     <script>
         $(document).ready(function() {
@@ -1047,8 +1051,9 @@
                 const email = $('#email').val();
                 const subject = $('#subject').val();
                 const message = $('#message').val();
+                const department = $('#department').val();
                 
-                if (!name || !email || !subject || !message) {
+                if (!name || !email || !subject || !message || !department) {
                     alert('Please fill in all required fields.');
                     return;
                 }
@@ -1058,109 +1063,6 @@
                 alert('Thank you for your message! We will get back to you soon.');
                 $('#contact-form')[0].reset();
             });
-            
-            // Initialize Google Map
-            function initMap() {
-                // Coordinates for Accra, Ghana (approximate location)
-                const location = { lat: 5.6037, lng: -0.1870 };
-                
-                // Create map
-                const map = new google.maps.Map(document.getElementById('contact-map'), {
-                    zoom: 15,
-                    center: location,
-                    styles: [
-                        {
-                            "featureType": "administrative",
-                            "elementType": "labels.text.fill",
-                            "stylers": [{"color": "#444444"}]
-                        },
-                        {
-                            "featureType": "landscape",
-                            "elementType": "all",
-                            "stylers": [{"color": "#f2f2f2"}]
-                        },
-                        {
-                            "featureType": "poi",
-                            "elementType": "all",
-                            "stylers": [{"visibility": "off"}]
-                        },
-                        {
-                            "featureType": "road",
-                            "elementType": "all",
-                            "stylers": [{"saturation": -100}, {"lightness": 45}]
-                        },
-                        {
-                            "featureType": "road.highway",
-                            "elementType": "all",
-                            "stylers": [{"visibility": "simplified"}]
-                        },
-                        {
-                            "featureType": "road.arterial",
-                            "elementType": "labels.icon",
-                            "stylers": [{"visibility": "off"}]
-                        },
-                        {
-                            "featureType": "transit",
-                            "elementType": "all",
-                            "stylers": [{"visibility": "off"}]
-                        },
-                        {
-                            "featureType": "water",
-                            "elementType": "all",
-                            "stylers": [{"color": "#1d976c"}, {"visibility": "on"}]
-                        }
-                    ]
-                });
-                
-                // Create marker
-                const marker = new google.maps.Marker({
-                    position: location,
-                    map: map,
-                    title: 'YACEXIM AFRICA LTD - Head Office',
-                    icon: {
-                        url: 'https://maps.google.com/mapfiles/ms/icons/green-dot.png'
-                    }
-                });
-                
-                // Create info window
-                const infoWindow = new google.maps.InfoWindow({
-                    content: `
-                        <div style="padding: 10px;">
-                            <h3 style="margin: 0 0 10px 0; color: #0a3d1f;">YACEXIM AFRICA LTD</h3>
-                            <p style="margin: 0 0 5px 0;"><strong>Address:</strong> Tebibiano- Tse Addo, Accra, Ghana</p>
-                            <p style="margin: 0 0 5px 0;"><strong>Phone:</strong> +233 XXX XXX XXXX</p>
-                            <p style="margin: 0;"><strong>Email:</strong> info@yacexim.com</p>
-                        </div>
-                    `
-                });
-                
-                // Add click event to marker
-                marker.addListener('click', function() {
-                    infoWindow.open(map, marker);
-                });
-                
-                // Open info window by default
-                infoWindow.open(map, marker);
-            }
-            
-            // Fallback if Google Maps API fails to load
-            window.initMap = initMap;
-            
-            // If Google Maps fails to load, show a static image
-            setTimeout(function() {
-                if (!$('#contact-map').children().length) {
-                    $('#contact-map').html(`
-                        <div style="height: 100%; background: linear-gradient(rgba(10, 61, 31, 0.1), rgba(10, 61, 31, 0.1)), url('https://images.unsplash.com/photo-1543269865-cbf427effbad?q=80&w=2070&auto=format&fit=crop&ixlib=rb-4.1.0&ixid=M3wxMjA3fDB8MHxwaG90by1wYWdlfHx8fGVufDB8fHx8fA%3D%3D');
-                             background-size: cover; background-position: center; display: flex; align-items: center; justify-content: center; color: white;">
-                            <div style="text-align: center; padding: 20px;">
-                                <h3 style="margin-bottom: 10px;">YACEXIM AFRICA LTD</h3>
-                                <p>Tebibiano- Tse Addo, Accra, Ghana</p>
-                                <p>+233 XXX XXX XXXX</p>
-                            </div>
-                        </div>
-                    `);
-                }
-            }, 5000);
         });
     </script>
 </body>

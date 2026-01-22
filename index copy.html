@@ -18,7 +18,6 @@
     <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/animate.css/4.1.1/animate.min.css">
     <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/OwlCarousel2/2.3.4/assets/owl.carousel.min.css">
     <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/OwlCarousel2/2.3.4/assets/owl.theme.default.min.css">
-    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/Swiper/9.0.0/swiper-bundle.min.css">
     <style>
         :root {
             /* Color palette derived from logo */
@@ -409,43 +408,577 @@
             color: var(--primary-dark);
         }
         
-        /* Products Section */
-        .products {
+        /* Global Markets Section - UPDATED */
+        .global-markets {
             background-color: #f8f9fa;
+            position: relative;
+            overflow: hidden;
         }
         
-        .products-carousel {
-            margin-top: 50px;
+        .global-markets-content {
+            display: grid;
+            grid-template-columns: 1fr 1fr;
+            gap: 60px;
+            align-items: stretch; /* Changed to stretch for equal height */
         }
         
-        .product-item {
-            background-color: #fff;
+        .markets-map {
+            position: relative;
             border-radius: 10px;
             overflow: hidden;
-            box-shadow: 0 10px 30px rgba(0, 0, 0, 0.08);
-            margin: 10px;
+            box-shadow: 0 20px 40px rgba(0, 0, 0, 0.1);
+            background: white;
+            padding: 20px;
+            display: flex;
+            flex-direction: column;
+            height: 100%; /* Ensure full height */
+        }
+        
+        /* amCharts container styling */
+        #chartdiv {
+            width: 100%;
+            height: 500px;
+            border-radius: 8px;
+            overflow: hidden;
+            flex-grow: 1;
+        }
+        
+        /* Map Info Panel */
+        .map-info-panel {
+            position: absolute;
+            top: 30px;
+            right: 30px;
+            background: rgba(255, 255, 255, 0.95);
+            border-radius: 8px;
+            padding: 20px;
+            box-shadow: 0 10px 30px rgba(0, 0, 0, 0.15);
+            width: 300px;
+            z-index: 10;
+            display: none;
+            animation: fadeIn 0.3s ease;
+        }
+        
+        .map-info-panel.active {
+            display: block;
+        }
+        
+        .map-info-panel h4 {
+            color: var(--primary-dark);
+            margin-bottom: 10px;
+            font-size: 1.2rem;
+        }
+        
+        .map-info-panel p {
+            color: #666;
+            font-size: 0.9rem;
+            margin-bottom: 15px;
+        }
+        
+        .map-info-panel .close-btn {
+            position: absolute;
+            top: 10px;
+            right: 10px;
+            background: none;
+            border: none;
+            font-size: 1.2rem;
+            color: var(--primary-dark);
+            cursor: pointer;
+        }
+        
+        @keyframes fadeIn {
+            from { opacity: 0; transform: translateY(-10px); }
+            to { opacity: 1; transform: translateY(0); }
+        }
+        
+        .map-legend {
+            display: flex;
+            justify-content: space-around;
+            flex-wrap: wrap;
+            gap: 15px;
+            margin-top: 20px;
+        }
+        
+        .legend-item {
+            display: flex;
+            align-items: center;
+            color: var(--primary-dark);
+            font-size: 0.9rem;
+        }
+        
+        .legend-color {
+            width: 12px;
+            height: 12px;
+            background-color: var(--accent-gold);
+            border-radius: 50%;
+            margin-right: 8px;
+        }
+        
+        .markets-info {
+            padding: 20px 0;
+            display: flex;
+            flex-direction: column;
+            height: 100%; /* Ensure full height */
+        }
+        
+        .markets-info h3 {
+            font-size: 2rem;
+            margin-bottom: 20px;
+            color: var(--primary-dark);
+        }
+        
+        .market-regions {
+            display: grid;
+            grid-template-columns: repeat(auto-fill, minmax(250px, 1fr));
+            gap: 30px;
+            margin-top: 30px;
+            flex-grow: 1;
+        }
+        
+        .region-card {
+            background: white;
+            border-radius: 10px;
+            padding: 25px;
+            box-shadow: 0 5px 20px rgba(0, 0, 0, 0.08);
             transition: var(--transition);
+            border-top: 4px solid var(--primary-green);
+            position: relative;
+            overflow: hidden;
         }
         
-        .product-item:hover {
+        .region-card:hover {
             transform: translateY(-10px);
-            box-shadow: 0 20px 40px rgba(212, 175, 55, 0.15);
+            box-shadow: 0 15px 30px rgba(29, 151, 108, 0.15);
         }
         
-        .product-img {
-            height: 200px;
+        .region-icon {
+            font-size: 2rem;
+            color: var(--primary-green);
+            margin-bottom: 15px;
+            position: relative;
+            z-index: 2;
+            height: 80px;
+            display: flex;
+            align-items: center;
+            justify-content: center;
+        }
+        
+        /* Animated Icons for Market Regions */
+        .animated-icon {
+            width: 80px;
+            height: 80px;
+            position: relative;
+            display: flex;
+            align-items: center;
+            justify-content: center;
+        }
+
+        /* Europe Animated Icon - EU Star Style */
+        .europe-animated {
+            position: relative;
+        }
+
+        .europe-animated .icon-part {
+            position: absolute;
+            width: 30px;
+            height: 8px;
+            background-color: var(--primary-green);
+            border-radius: 4px;
+            transform-origin: 40px 40px;
+        }
+
+        .europe-animated .icon-part-1 {
+            transform: rotate(0deg);
+            animation: rotateStar 10s linear infinite;
+        }
+
+        .europe-animated .icon-part-2 {
+            transform: rotate(72deg);
+            animation: rotateStar 10s linear infinite reverse;
+        }
+
+        .europe-animated .icon-part-3 {
+            transform: rotate(144deg);
+            animation: rotateStar 10s linear infinite;
+        }
+
+        .europe-animated .icon-center {
+            width: 25px;
+            height: 25px;
+            background-color: var(--accent-gold);
+            border-radius: 50%;
+            position: relative;
+            z-index: 2;
+        }
+
+        @keyframes rotateStar {
+            0% { transform: rotate(0deg) translateX(20px) rotate(0deg); }
+            100% { transform: rotate(360deg) translateX(20px) rotate(-360deg); }
+        }
+
+        /* Asia Animated Icon - Ring and Dot Style */
+        .asia-animated {
+            position: relative;
+        }
+
+        .asia-animated .icon-ring {
+            position: absolute;
+            border: 2px solid var(--primary-green);
+            border-radius: 50%;
+            animation: pulseRing 3s ease-in-out infinite;
+        }
+
+        .asia-animated .ring-1 {
+            width: 70px;
+            height: 70px;
+            animation-delay: 0s;
+        }
+
+        .asia-animated .ring-2 {
+            width: 50px;
+            height: 50px;
+            animation-delay: 0.5s;
+        }
+
+        .asia-animated .ring-3 {
+            width: 30px;
+            height: 30px;
+            animation-delay: 1s;
+        }
+
+        .asia-animated .icon-dot {
+            position: absolute;
+            width: 10px;
+            height: 10px;
+            background-color: var(--accent-orange);
+            border-radius: 50%;
+            animation: floatDot 4s ease-in-out infinite;
+        }
+
+        .asia-animated .dot-1 {
+            top: 15px;
+            left: 15px;
+            animation-delay: 0s;
+        }
+
+        .asia-animated .dot-2 {
+            top: 15px;
+            right: 15px;
+            animation-delay: 0.7s;
+        }
+
+        .asia-animated .dot-3 {
+            bottom: 15px;
+            left: 35px;
+            animation-delay: 1.4s;
+        }
+
+        @keyframes pulseRing {
+            0%, 100% { 
+                opacity: 0.3;
+                transform: scale(0.95);
+            }
+            50% { 
+                opacity: 0.7;
+                transform: scale(1.05);
+            }
+        }
+
+        @keyframes floatDot {
+            0%, 100% { transform: translateY(0); }
+            50% { transform: translateY(-10px); }
+        }
+
+        /* Americas Animated Icon - Two Continents with Trade Flow */
+        .americas-animated {
+            position: relative;
+            width: 80px;
+            height: 80px;
+        }
+
+        .americas-animated .americas-icon {
+            position: relative;
+            width: 100%;
+            height: 100%;
+        }
+
+        .americas-animated .america-part {
+            position: absolute;
+            background-color: var(--primary-green);
+            border-radius: 5px;
+        }
+
+        .americas-animated .north {
+            top: 10px;
+            left: 30px;
+            width: 35px;
+            height: 25px;
+            animation: northPulse 4s ease-in-out infinite;
+        }
+
+        .americas-animated .south {
+            bottom: 10px;
+            right: 30px;
+            width: 30px;
+            height: 35px;
+            animation: southPulse 4s ease-in-out infinite 0.5s;
+        }
+
+        .americas-animated .trade-flow {
+            position: absolute;
+            width: 2px;
+            height: 30px;
+            background: linear-gradient(to bottom, transparent, var(--accent-gold), transparent);
+            top: 50%;
+            left: 50%;
+            transform: translate(-50%, -50%);
+            animation: tradeFlow 2s ease-in-out infinite;
+        }
+
+        @keyframes northPulse {
+            0%, 100% { transform: scale(1); }
+            50% { transform: scale(1.05); }
+        }
+
+        @keyframes southPulse {
+            0%, 100% { transform: scale(1); }
+            50% { transform: scale(1.05); }
+        }
+
+        @keyframes tradeFlow {
+            0% { 
+                height: 0;
+                opacity: 0;
+            }
+            50% { 
+                height: 30px;
+                opacity: 1;
+            }
+            100% { 
+                height: 0;
+                opacity: 0;
+            }
+        }
+
+        /* Africa Animated Icon - Growing Continent */
+        .africa-animated {
+            position: relative;
+            width: 80px;
+            height: 80px;
+        }
+
+        .africa-animated .africa-shape {
+            position: relative;
+            width: 100%;
+            height: 100%;
+        }
+
+        .africa-animated .africa-inner {
+            position: absolute;
+            top: 50%;
+            left: 50%;
+            transform: translate(-50%, -50%);
+            width: 50px;
+            height: 50px;
+            background-color: var(--accent-brown);
+            border-radius: 50% 50% 50% 0;
+            transform: rotate(-45deg) translate(-50%, -50%);
+            animation: africaBeat 3s ease-in-out infinite;
+        }
+
+        .africa-animated .africa-pulse {
+            position: absolute;
+            top: 50%;
+            left: 50%;
+            transform: translate(-50%, -50%);
+            width: 60px;
+            height: 60px;
+            border: 2px solid var(--accent-gold);
+            border-radius: 50%;
+            animation: africaPulse 3s ease-in-out infinite;
+        }
+
+        .africa-animated .growth-lines {
+            position: absolute;
+            background-color: var(--primary-green);
+            border-radius: 2px;
+            animation: growthLine 2s ease-in-out infinite;
+        }
+
+        .africa-animated .line-1 {
+            width: 20px;
+            height: 3px;
+            top: 15px;
+            left: 30px;
+            animation-delay: 0s;
+        }
+
+        .africa-animated .line-2 {
+            width: 15px;
+            height: 3px;
+            top: 40px;
+            left: 15px;
+            animation-delay: 0.3s;
+        }
+
+        .africa-animated .line-3 {
+            width: 18px;
+            height: 3px;
+            bottom: 15px;
+            right: 20px;
+            animation-delay: 0.6s;
+        }
+
+        @keyframes africaBeat {
+            0%, 100% { transform: rotate(-45deg) translate(-50%, -50%) scale(1); }
+            50% { transform: rotate(-45deg) translate(-50%, -50%) scale(1.05); }
+        }
+
+        @keyframes africaPulse {
+            0% {
+                opacity: 1;
+                transform: translate(-50%, -50%) scale(0.8);
+            }
+            100% {
+                opacity: 0;
+                transform: translate(-50%, -50%) scale(1.2);
+            }
+        }
+
+        @keyframes growthLine {
+            0%, 100% { 
+                transform: scaleX(1);
+                opacity: 0.7;
+            }
+            50% { 
+                transform: scaleX(1.2);
+                opacity: 1;
+            }
+        }
+
+        /* Hover Effects for Animated Icons */
+        .region-card:hover .animated-icon {
+            animation: bounceIcon 0.5s ease;
+        }
+
+        .region-card:hover .europe-animated .icon-part {
+            animation-duration: 7s;
+        }
+
+        .region-card:hover .asia-animated .icon-ring {
+            animation-duration: 2s;
+        }
+
+        .region-card:hover .americas-animated .trade-flow {
+            animation-duration: 1s;
+        }
+
+        .region-card:hover .africa-animated .growth-lines {
+            animation-duration: 1.5s;
+        }
+
+        @keyframes bounceIcon {
+            0%, 100% { transform: scale(1); }
+            50% { transform: scale(1.1); }
+        }
+        
+        /* Animated background for region cards */
+        .region-bg-animation {
+            position: absolute;
+            top: 0;
+            left: 0;
+            width: 100%;
+            height: 100%;
+            opacity: 0.05;
+            z-index: 1;
             background-size: cover;
             background-position: center;
+            transition: transform 0.5s ease;
         }
         
-        .product-content {
-            padding: 25px;
+        .region-card:hover .region-bg-animation {
+            transform: scale(1.1);
         }
         
-        .product-content h3 {
-            font-size: 1.3rem;
+        /* Specific animations for each region */
+        .region-europe {
+            background-image: url('https://images.unsplash.com/photo-1519677100203-5f3a5b5b5b5b?q=80&w=1170&auto=format&fit=crop');
+        }
+        
+        .region-asia {
+            background-image: url('https://images.unsplash.com/photo-1519681393784-d120267933ba?q=80&w=1170&auto=format&fit=crop');
+        }
+        
+        .region-americas {
+            background-image: url('https://images.unsplash.com/photo-1501594907352-04cda38ebc29?q=80&w=1170&auto=format&fit=crop');
+        }
+        
+        .region-africa {
+            background-image: url('https://images.unsplash.com/photo-1547471080-7cc2caa01a7e?q=80&w=1170&auto=format&fit=crop');
+        }
+        
+        .region-card h4 {
+            font-size: 1.2rem;
             margin-bottom: 10px;
             color: var(--primary-dark);
+            position: relative;
+            z-index: 2;
+        }
+        
+        .region-card p {
+            color: #666;
+            font-size: 0.95rem;
+            position: relative;
+            z-index: 2;
+        }
+        
+        .trade-network-stats {
+            display: flex;
+            justify-content: space-around;
+            background: white;
+            border-radius: 10px;
+            padding: 30px;
+            margin-top: 40px;
+            box-shadow: 0 10px 30px rgba(0, 0, 0, 0.08);
+        }
+        
+        .trade-stat {
+            text-align: center;
+            position: relative;
+            overflow: hidden;
+        }
+        
+        .trade-stat::before {
+            content: '';
+            position: absolute;
+            top: 0;
+            left: 0;
+            width: 100%;
+            height: 100%;
+            background: linear-gradient(135deg, transparent 30%, rgba(212, 175, 55, 0.1) 100%);
+            z-index: 1;
+            opacity: 0;
+            transition: opacity 0.3s ease;
+        }
+        
+        .trade-stat:hover::before {
+            opacity: 1;
+        }
+        
+        .trade-stat-number {
+            font-size: 2.5rem;
+            font-weight: 700;
+            color: var(--primary-green);
+            margin-bottom: 5px;
+            position: relative;
+            z-index: 2;
+        }
+        
+        .trade-stat-label {
+            font-size: 0.9rem;
+            color: #666;
+            font-weight: 500;
+            position: relative;
+            z-index: 2;
         }
         
         /* Stats Section */
@@ -651,9 +1184,25 @@
                 order: -1;
             }
             
+            .global-markets-content {
+                grid-template-columns: 1fr;
+                gap: 40px;
+            }
+            
+            .markets-map {
+                order: -1;
+                height: 500px;
+            }
+            
             .hero {
                 height: auto;
                 min-height: 700px;
+            }
+            
+            .map-info-panel {
+                top: 20px;
+                right: 20px;
+                width: 250px;
             }
         }
         
@@ -732,6 +1281,57 @@
             .service-image {
                 height: 180px;
             }
+            
+            .trade-network-stats {
+                flex-wrap: wrap;
+                gap: 20px;
+            }
+            
+            .trade-stat {
+                flex: 1 0 45%;
+                margin-bottom: 20px;
+            }
+            
+            #chartdiv {
+                height: 400px;
+            }
+            
+            .map-info-panel {
+                position: relative;
+                top: 0;
+                right: 0;
+                width: 100%;
+                margin-top: 20px;
+            }
+            
+            /* Responsive adjustments for animated icons */
+            .animated-icon {
+                width: 60px;
+                height: 60px;
+            }
+            
+            .europe-animated .icon-part {
+                transform-origin: 30px 30px;
+            }
+            
+            .asia-animated .ring-1 {
+                width: 50px;
+                height: 50px;
+            }
+            
+            .asia-animated .ring-2 {
+                width: 35px;
+                height: 35px;
+            }
+            
+            .asia-animated .ring-3 {
+                width: 20px;
+                height: 20px;
+            }
+            
+            .region-icon {
+                height: 60px;
+            }
         }
         
         @media (max-width: 576px) {
@@ -757,6 +1357,14 @@
                 height: 160px;
             }
             
+            .market-regions {
+                grid-template-columns: 1fr;
+            }
+            
+            .trade-stat {
+                flex: 1 0 100%;
+            }
+            
             /* Mobile Logo */
             .logo {
                 height: 75px !important;
@@ -764,6 +1372,56 @@
             
             .logo img {
                 max-width: 200px !important;
+            }
+            
+            #chartdiv {
+                height: 350px;
+            }
+            
+            /* Responsive adjustments for animated icons */
+            .animated-icon {
+                width: 50px;
+                height: 50px;
+            }
+            
+            .europe-animated .icon-part {
+                width: 20px;
+                height: 6px;
+                transform-origin: 25px 25px;
+            }
+            
+            .europe-animated .icon-center {
+                width: 20px;
+                height: 20px;
+            }
+            
+            .asia-animated .ring-1 {
+                width: 40px;
+                height: 40px;
+            }
+            
+            .asia-animated .ring-2 {
+                width: 30px;
+                height: 30px;
+            }
+            
+            .asia-animated .ring-3 {
+                width: 15px;
+                height: 15px;
+            }
+            
+            .africa-animated .africa-inner {
+                width: 40px;
+                height: 40px;
+            }
+            
+            .africa-animated .africa-pulse {
+                width: 50px;
+                height: 50px;
+            }
+            
+            .region-icon {
+                height: 50px;
             }
         }
         
@@ -778,6 +1436,10 @@
             
             .hero h1 {
                 font-size: 1.8rem;
+            }
+            
+            #chartdiv {
+                height: 300px;
             }
         }
         
@@ -796,6 +1458,22 @@
         .menu-overlay.active {
             display: block;
         }
+        
+        /* Animation for floating elements */
+        @keyframes float {
+            0%, 100% { transform: translateY(0) rotate(0deg); }
+            50% { transform: translateY(-20px) rotate(5deg); }
+        }
+        
+        /* Animation for stat counters */
+        @keyframes countUp {
+            from { opacity: 0; transform: translateY(20px); }
+            to { opacity: 1; transform: translateY(0); }
+        }
+        
+        .stat-animated {
+            animation: countUp 1s ease forwards;
+        }
     </style>
 </head>
 <body>
@@ -812,11 +1490,11 @@
             </div>
             
             <ul class="nav-menu" id="nav-menu">
-                <li><a href="/">Home</a></li>
+                <li><a href="/home/">Home</a></li>
                 <li><a href="/about/">About</a></li>
                 <li><a href="/services/">Services</a></li>
-                <li><a href="#products">Products</a></li>
-                <li><a href="/contact">Contact</a></li>
+                <li><a href="/products/">Products</a></li>
+                <li><a href="/contact/">Contact</a></li>
                 <li><a href="#" class="btn btn-primary" style="padding: 10px 25px; margin-left: 0;">Trade Portal</a></li>
             </ul>
         </div>
@@ -850,8 +1528,8 @@
                 <h1 class="animate__animated animate__fadeInUp">Bridging Continents Through <span style="color: var(--accent-gold)">Commodities Trade</span></h1>
                 <p class="animate__animated animate__fadeInUp animate__delay-1s">YACEXIM AFRICA LTD is a leading agribusiness and commodities trading company, delivering quality food products to local and international markets while supporting sustainable farming across Africa.</p>
                 <div class="hero-btns">
-                    <a href="#services" class="btn btn-primary animate__animated animate__fadeInUp animate__delay-2s">Our Services</a>
-                    <a href="#contact" class="btn btn-secondary animate__animated animate__fadeInUp animate__delay-2s">Contact Us</a>
+                    <a href="/services/" class="btn btn-primary animate__animated animate__fadeInUp animate__delay-2s">Our Services</a>
+                    <a href="/contact/" class="btn btn-secondary animate__animated animate__fadeInUp animate__delay-2s">Contact Us</a>
                 </div>
             </div>
         </div>
@@ -867,20 +1545,20 @@
             
             <div class="services-grid">
                 <!-- Service 1: Import & Export -->
-                <a href="/services/import-export/" class="service-link">
+                <a href="#" class="service-link">
                     <div class="service-card">
                         <div class="service-image" style="background-image: url('https://images.unsplash.com/photo-1713859326033-f75e04439c3e?q=80&w=1074&auto=format&fit=crop&ixlib=rb-4.1.0&ixid=M3wxMjA3fDB8MHxwaG90by1wYWdlfHx8fGVufDB8fHx8fA%3D%3D');"></div>
                         <div class="service-content">
                             <h3>Import & Export</h3>
-                            <p>Strategic importation of food items to support food security and export of premium African agricultural commodities to global markets.</p>
+                            <p>Strategic importation of food items to support food security and export of premium African commodities to global markets.</p>
                         </div>
                     </div>
                 </a>
 
                 <!-- Service 2: Commercial Farming -->
-                <a href="/services/commercial-farming/" class="service-link">
+                <a href="#" class="service-link">
                     <div class="service-card">
-                        <div class="service-image" style="background-image: url('https://images.unsplash.com/photo-1500382017468-9049fed747ef?ixlib=rb-4.0.3&auto=format&fit=crop&w-800&q=80');"></div>
+                        <div class="service-image" style="background-image: url('https://images.unsplash.com/photo-1500382017468-9049fed747ef?ixlib=rb-4.0.3&auto=format&fit=crop&w=800&q=80');"></div>
                         <div class="service-content">
                             <h3>Commercial Farming</h3>
                             <p>Large-scale agricultural production with modern farming techniques and sustainable practices across multiple crop varieties.</p>
@@ -889,7 +1567,7 @@
                 </a>
                 
                 <!-- Service 3: Processing & Value Addition -->
-                <a href="/services/processing/" class="service-link">
+                <a href="#" class="service-link">
                     <div class="service-card">
                         <div class="service-image" style="background-image: url('https://blog.sathguru.com/wp-content/uploads/2021/11/Farmgate-Value-Addition-Critical-for-increasing-farm-income-and-rural-growth-1130x580.jpg');"></div>
                         <div class="service-content">
@@ -900,7 +1578,7 @@
                 </a>
                 
                 <!-- Service 4: Farmer Support Services -->
-                <a href="/services/farmer-support/" class="service-link">
+                <a href="#" class="service-link">
                     <div class="service-card">
                         <div class="service-image" style="background-image: url('https://www.onefarm.africa/sites/default/files/2023-08/GettyImages-1407520358_2_0_0.jpg');"></div>
                         <div class="service-content">
@@ -911,7 +1589,7 @@
                 </a>
                 
                 <!-- Service 5: Supply Chain Management -->
-                <a href="/services/supply-chain/" class="service-link">
+                <a href="#" class="service-link">
                     <div class="service-card">
                         <div class="service-image" style="background-image: url('https://www.microbank.com/docs/blog/1572.jpg');"></div>
                         <div class="service-content">
@@ -922,7 +1600,7 @@
                 </a>
                 
                 <!-- Service 6: Sustainable Agriculture -->
-                <a href="/services/sustainable-agriculture/" class="service-link">
+                <a href="#" class="service-link">
                     <div class="service-card">
                         <div class="service-image" style="background-image: url('https://images.unsplash.com/photo-1416879595882-3373a0480b5b?ixlib=rb-4.0.3&auto=format&fit=crop&w=800&q=80');"></div>
                         <div class="service-content">
@@ -935,98 +1613,139 @@
         </div>
     </section>
 
-    <!-- Products Section -->
-    <section class="products" id="products">
+    <!-- Global Markets Section - UPDATED with enhanced features -->
+    <section class="global-markets" id="global-markets">
         <div class="container">
             <div class="section-title">
-                <h2>Our Products</h2>
-                <p>Premium African agricultural commodities for global markets</p>
+                <h2>Global Markets & Trade Network</h2>
+                <p>Connecting African agricultural excellence with international markets through strategic partnerships</p>
             </div>
             
-            <div class="products-carousel owl-carousel owl-theme">
-                <div class="product-item">
-                    <div class="product-img" style="background-image: url('https://agrofastafrica.com/wp-content/uploads/2021/08/Raw-cashew-nuts-agrofastafrica.jpg');"></div>
-                    <div class="product-content">
-                        <h3>Raw Cashew Nuts</h3>
-                        <p>Premium quality raw cashew nuts sourced directly from African farms, meeting international export standards.</p>
+            <div class="global-markets-content">
+                <div class="markets-map">
+                    <h3 style="color: var(--primary-dark); text-align: center; margin-bottom: 20px;">Our Global Reach</h3>
+                    
+                    <!-- Map Info Panel (hidden by default) -->
+                    <div class="map-info-panel" id="map-info-panel">
+                        <button class="close-btn" id="close-info-panel">&times;</button>
+                        <h4 id="location-title">Location Details</h4>
+                        <p id="location-description">Click on any marker to see detailed information about our operations in this location.</p>
+                        <div id="location-details">
+                            <p><strong>Commodities:</strong> <span id="location-commodities">N/A</span></p>
+                            <p><strong>Annual Volume:</strong> <span id="location-volume">N/A</span></p>
+                            <p><strong>Partnership Since:</strong> <span id="location-partnership">N/A</span></p>
+                        </div>
+                    </div>
+                    
+                    <!-- amCharts container -->
+                    <div id="chartdiv"></div>
+                    
+                    <div class="map-legend">
+                        <div class="legend-item">
+                            <div class="legend-color"></div>
+                            <span>Key Trade Hubs</span>
+                        </div>
+                        <div class="legend-item">
+                            <div class="legend-color" style="background-color: var(--primary-green);"></div>
+                            <span>Production Centers</span>
+                        </div>
+                        <div class="legend-item">
+                            <div class="legend-color" style="background-color: var(--accent-orange);"></div>
+                            <span>Strategic Partners</span>
+                        </div>
                     </div>
                 </div>
                 
-                <div class="product-item">
-                    <div class="product-img" style="background-image: url('https://images.unsplash.com/photo-1755598603073-3ef6645b1181?q=80&w=1170&auto=format&fit=crop&ixlib=rb-4.1.0&ixid=M3wxMjA3fDB8MHxwaG90by1wYWdlfHx8fGVufDB8fHx8fA%3D%3D');"></div>
-                    <div class="product-content">
-                        <h3>Processed Cashew Kernels</h3>
-                        <p>Grade A cashew kernels processed in our state-of-the-art facilities, ready for retail and wholesale markets.</p>
+                <div class="markets-info">
+                    <h3>Strategic International Trade Partnerships</h3>
+                    <p>With established relationships across five continents, YACEXIM facilitates the flow of premium African commodities to global markets while importing essential food products to support regional food security.</p>
+                    
+                    <div class="market-regions">
+                        <div class="region-card">
+                            <div class="region-bg-animation region-europe"></div>
+                            <div class="region-icon">
+                                <!-- Animated European market icon -->
+                                <div class="animated-icon europe-animated">
+                                    <div class="icon-part icon-part-1"></div>
+                                    <div class="icon-part icon-part-2"></div>
+                                    <div class="icon-part icon-part-3"></div>
+                                    <div class="icon-center"></div>
+                                </div>
+                            </div>
+                            <h4>European Markets</h4>
+                            <p>Premium cashew kernels and cocoa products meeting stringent EU quality standards for wholesale and retail distribution.</p>
+                        </div>
+                        
+                        <div class="region-card">
+                            <div class="region-bg-animation region-asia"></div>
+                            <div class="region-icon">
+                                <!-- Animated Asian market icon -->
+                                <div class="animated-icon asia-animated">
+                                    <div class="icon-ring ring-1"></div>
+                                    <div class="icon-ring ring-2"></div>
+                                    <div class="icon-ring ring-3"></div>
+                                    <div class="icon-dot dot-1"></div>
+                                    <div class="icon-dot dot-2"></div>
+                                    <div class="icon-dot dot-3"></div>
+                                </div>
+                            </div>
+                            <h4>Asian Markets</h4>
+                            <p>Growing partnerships with processors and distributors in Vietnam, India, and China for raw cashew nuts and cocoa beans.</p>
+                        </div>
+                        
+                        <div class="region-card">
+                            <div class="region-bg-animation region-americas"></div>
+                            <div class="region-icon">
+                                <!-- Animated Americas market icon -->
+                                <div class="animated-icon americas-animated">
+                                    <div class="americas-icon">
+                                        <div class="america-part north"></div>
+                                        <div class="america-part south"></div>
+                                        <div class="trade-flow"></div>
+                                    </div>
+                                </div>
+                            </div>
+                            <h4>American Markets</h4>
+                            <p>Strategic relationships with North American food manufacturers and South American agricultural technology partners.</p>
+                        </div>
+                        
+                        <div class="region-card">
+                            <div class="region-bg-animation region-africa"></div>
+                            <div class="region-icon">
+                                <!-- Animated Africa market icon -->
+                                <div class="animated-icon africa-animated">
+                                    <div class="africa-shape">
+                                        <div class="africa-pulse"></div>
+                                        <div class="africa-inner"></div>
+                                        <div class="growth-lines line-1"></div>
+                                        <div class="growth-lines line-2"></div>
+                                        <div class="growth-lines line-3"></div>
+                                    </div>
+                                </div>
+                            </div>
+                            <h4>Intra-African Trade</h4>
+                            <p>Strengthening regional food systems through cross-border trade under the African Continental Free Trade Area (AfCFTA).</p>
+                        </div>
                     </div>
-                </div>
-                
-                <div class="product-item">
-                    <div class="product-img" style="background-image: url('https://media.hswstatic.com/eyJidWNrZXQiOiJjb250ZW50Lmhzd3N0YXRpYy5jb20iLCJrZXkiOiJnaWZcL2Nob2NvbGF0ZS0zLmpwZyIsImVkaXRzIjp7InJlc2l6ZSI6eyJ3aWR0aCI6ODI4fX19');"></div>
-                    <div class="product-content">
-                        <h3>Cocoa Beans</h3>
-                        <p>Premium African cocoa beans known for their rich flavor profile, ideal for chocolate production worldwide.</p>
+                    
+                    <div class="trade-network-stats">
+                        <div class="trade-stat">
+                            <div class="trade-stat-number" id="stat-countries">25+</div>
+                            <div class="trade-stat-label">Countries</div>
+                        </div>
+                        <div class="trade-stat">
+                            <div class="trade-stat-number" id="stat-partners">50+</div>
+                            <div class="trade-stat-label">Trade Partners</div>
+                        </div>
+                        <div class="trade-stat">
+                            <div class="trade-stat-number" id="stat-tonnes">10K+</div>
+                            <div class="trade-stat-label">Tonnes Annually</div>
+                        </div>
+                        <div class="trade-stat">
+                            <div class="trade-stat-number" id="stat-delivery">99.7%</div>
+                            <div class="trade-stat-label">On-Time Delivery</div>
+                        </div>
                     </div>
-                </div>
-                
-                <div class="product-item">
-                    <div class="product-img" style="background-image: url('https://www.barry-callebaut.com/sites/default/files/styles/paragraph_text_and_image_left_right_brands/public/2019-07/H3-powder-1110x640.jpg?itok=4JjKKSU-');"></div>
-                    <div class="product-content">
-                        <h3>Cocoa Products</h3>
-                        <p>Cocoa butter, powder, and other value-added cocoa products for the food and cosmetic industries.</p>
-                    </div>
-                </div>
-                <div class="product-item">
-                    <div class="product-img" style="background-image: url('https://cdn.wikifarmer.com/images/detailed/2024/07/What-is-Commercial-Agriculture.jpg');"></div>
-                    <div class="product-content">
-                        <h3>Commercial Farming & Support Services</h3>
-                        <p>Comprehensive agricultural solutions including farm management, technical support, and farmer capacity building for sustainable commercial farming operations.</p>
-                    </div>
-                </div>
-                <div class="product-item">
-                    <div class="product-img" style="background-image: url('https://images.unsplash.com/photo-1571938574727-cd5ea31dafbd?q=80&w=1170&auto=format&fit=crop&ixlib=rb-4.1.0&ixid=M3wxMjA3fDB8MHxwaG90by1wYWdlfHx8fGVufDB8fHx8fA%3D%3D');"></div>
-                    <div class="product-content">
-                        <h3>Animal Husbandry & Dairy Production</h3>
-                        <p>Specialized livestock management, dairy farming solutions, and value-added dairy products including milk, cheese, and yogurt for domestic and export markets.</p>
-                    </div>
-                </div>
-                <div class="product-item">
-                    <div class="product-img" style="background-image: url('https://www.gep.com/prod/s3fs-public/blog-images/food-supply-chain-stages-models-challenges-best-practices-1920x1274.jpg');"></div>
-                    <div class="product-content">
-                        <h3>Agricultural Value Chain Development</h3>
-                        <p>End-to-end value chain solutions from production to market, enhancing efficiency, reducing post-harvest losses, and increasing farmer incomes across Africa.</p>
-                    </div>
-                </div>
-            </div>
-        </div>
-    </section>
-
-    <!-- Stats Section -->
-    <section class="stats">
-        <div class="container">
-            <div class="section-title">
-                <h2 style="color: white;">Our Impact</h2>
-                <p style="color: rgba(255, 255, 255, 0.9);">Creating value across the agricultural supply chain</p>
-            </div>
-            
-            <div class="stats-grid">
-                <div class="stat-item">
-                    <div class="stat-number" data-count="500">0</div>
-                    <div class="stat-text">Farmers Supported</div>
-                </div>
-                
-                <div class="stat-item">
-                    <div class="stat-number" data-count="25">0</div>
-                    <div class="stat-text">Countries Served</div>
-                </div>
-                
-                <div class="stat-item">
-                    <div class="stat-number" data-count="10000">0</div>
-                    <div class="stat-text">Tonnes Exported Annually</div>
-                </div>
-                
-                <div class="stat-item">
-                    <div class="stat-number" data-count="15">0</div>
-                    <div class="stat-text">Years of Experience</div>
                 </div>
             </div>
         </div>
@@ -1086,7 +1805,7 @@
         <div class="container">
             <h2>Ready to Partner With Us?</h2>
             <p>Join us in transforming African agriculture. Whether you're a farmer, buyer, or partner, we have opportunities for collaboration and growth.</p>
-            <a href="/contact/" class="btn btn-primary">Get In Touch</a>
+            <a href="#contact" class="btn btn-primary">Get In Touch</a>
         </div>
     </section>
 
@@ -1109,23 +1828,23 @@
                     <h3>Quick Links</h3>
                     <p><a href="/">Home</a></p>
                     <p><a href="/about/">About Us</a></p>
-                    <p><a href="#services">Our Services</a></p>
-                    <p><a href="#products">Our Products</a></p>
-                    <p><a href="#contact">Contact Us</a></p>
+                    <p><a href="/services/">Our Services</a></p>
+                    <p><a href="#global-markets">Global Markets</a></p>
+                    <p><a href="/contact/">Contact Us</a></p>
                 </div>
                 
                 <div class="footer-col">
-                    <h3>Our Products</h3>
-                    <p><a href="#">Raw Cashew Nuts</a></p>
-                    <p><a href="#">Processed Cashew Kernels</a></p>
-                    <p><a href="#">Cocoa Beans</a></p>
-                    <p><a href="#">Cocoa Products</a></p>
+                    <h3>Trade Services</h3>
+                    <p><a href="#">Import & Export</a></p>
+                    <p><a href="#">Commodities Trading</a></p>
+                    <p><a href="#">Supply Chain Solutions</a></p>
+                    <p><a href="#">Market Access</a></p>
                 </div>
                 
                 <div class="footer-col">
                     <h3>Contact Info</h3>
                     <p><i class="fas fa-map-marker-alt" style="margin-right: 10px; color: var(--accent-gold);"></i> Tebibiano- Tse Addo, Accra, Ghana</p>
-                    <p><i class="fas fa-phone" style="margin-right: 10px; color: var(--accent-gold);"></i> +233(0) 25 607 1615</p>
+                    <p><i class="fas fa-phone" style="margin-right: 10px; color: var(--accent-gold);"></i> +233 256 071 615</p>
                     
                     <div class="email-contact">
                         <div class="email-item">
@@ -1190,31 +1909,6 @@
                 }
             });
             
-            // Initialize Owl Carousel for products
-            $('.products-carousel').owlCarousel({
-                loop: true,
-                margin: 20,
-                nav: true,
-                dots: false,
-                responsive: {
-                    0: {
-                        items: 1
-                    },
-                    768: {
-                        items: 2
-                    },
-                    992: {
-                        items: 3
-                    }
-                }
-            });
-            
-            // Initialize counter animation for stats
-            $('.stat-number').counterUp({
-                delay: 10,
-                time: 2000
-            });
-            
             // Create floating elements in hero section
             const floatingContainer = $('#floating-elements');
             const icons = ['fa-leaf', 'fa-seedling', 'fa-tractor', 'fa-apple-alt', 'fa-wheat', 'fa-tree', 'fa-pepper-hot'];
@@ -1260,7 +1954,7 @@
             
             // Add animation to elements when they come into view
             $(window).scroll(function() {
-                $('.service-card, .product-item, .about-img, .value-item').each(function() {
+                $('.service-card, .region-card, .about-img, .value-item').each(function() {
                     var elementTop = $(this).offset().top;
                     var elementBottom = elementTop + $(this).outerHeight();
                     var viewportTop = $(window).scrollTop();
@@ -1270,6 +1964,18 @@
                         $(this).addClass('animate__animated animate__fadeInUp');
                     }
                 });
+                
+                // Animate stats when in view
+                if ($('.trade-network-stats').length) {
+                    var statsTop = $('.trade-network-stats').offset().top;
+                    var statsBottom = statsTop + $('.trade-network-stats').outerHeight();
+                    var viewportTop = $(window).scrollTop();
+                    var viewportBottom = viewportTop + $(window).height();
+                    
+                    if (statsBottom > viewportTop && statsTop < viewportBottom) {
+                        $('.trade-stat-number').addClass('stat-animated');
+                    }
+                }
             });
             
             // Trigger initial scroll check
@@ -1358,7 +2064,463 @@
             
             // Apply initial transition to first slide
             applyRandomTransition($('.hero-slide.active'));
+            
+            // Animate stat counters
+            function animateStats() {
+                const stats = [
+                    { id: 'stat-countries', target: 25, suffix: '+' },
+                    { id: 'stat-partners', target: 50, suffix: '+' },
+                    { id: 'stat-tonnes', target: 10, suffix: 'K+' },
+                    { id: 'stat-delivery', target: 99.7, suffix: '%' }
+                ];
+                
+                stats.forEach(stat => {
+                    const element = document.getElementById(stat.id);
+                    if (element) {
+                        let current = 0;
+                        const increment = stat.target / 50;
+                        const timer = setInterval(() => {
+                            current += increment;
+                            if (current >= stat.target) {
+                                current = stat.target;
+                                clearInterval(timer);
+                            }
+                            element.textContent = current.toFixed(stat.id === 'stat-delivery' ? 1 : 0) + stat.suffix;
+                        }, 30);
+                    }
+                });
+            }
+            
+            // Observe when stats section enters viewport
+            const observer = new IntersectionObserver((entries) => {
+                entries.forEach(entry => {
+                    if (entry.isIntersecting) {
+                        animateStats();
+                        observer.unobserve(entry.target);
+                    }
+                });
+            }, { threshold: 0.5 });
+            
+            const statsSection = document.querySelector('.trade-network-stats');
+            if (statsSection) {
+                observer.observe(statsSection);
+            }
+            
+            // Close map info panel
+            $('#close-info-panel').click(function() {
+                $('#map-info-panel').removeClass('active');
+            });
         });
+        
+        // amCharts Resources - Load dynamically
+        document.addEventListener('DOMContentLoaded', function() {
+            // Load amCharts resources only when needed
+            const script1 = document.createElement('script');
+            script1.src = 'https://cdn.amcharts.com/lib/5/index.js';
+            document.head.appendChild(script1);
+            
+            const script2 = document.createElement('script');
+            script2.src = 'https://cdn.amcharts.com/lib/5/map.js';
+            document.head.appendChild(script2);
+            
+            const script3 = document.createElement('script');
+            script3.src = 'https://cdn.amcharts.com/lib/5/geodata/worldLow.js';
+            document.head.appendChild(script3);
+            
+            const script4 = document.createElement('script');
+            script4.src = 'https://cdn.amcharts.com/lib/5/themes/Animated.js';
+            document.head.appendChild(script4);
+            
+            // Load the chart after all scripts are loaded
+            Promise.all([
+                new Promise(resolve => script1.onload = resolve),
+                new Promise(resolve => script2.onload = resolve),
+                new Promise(resolve => script3.onload = resolve),
+                new Promise(resolve => script4.onload = resolve)
+            ]).then(initAmChart);
+        });
+        
+        function initAmChart() {
+            am5.ready(function() {
+                // Create root element
+                var root = am5.Root.new("chartdiv");
+                
+                // Set themes
+                root.setThemes([
+                    am5themes_Animated.new(root)
+                ]);
+                
+                // Create the map chart
+                var chart = root.container.children.push(
+                    am5map.MapChart.new(root, {
+                        panX: "rotateX",
+                        panY: "translateY",
+                        projection: am5map.geoMercator(),
+                        paddingLeft: 0,
+                        paddingRight: 0
+                    })
+                );
+                
+                // Add zoom control
+                var zoomControl = chart.set("zoomControl", am5map.ZoomControl.new(root, {}));
+                zoomControl.homeButton.set("visible", true);
+                
+                // Create polygon series for countries
+                var polygonSeries = chart.series.push(
+                    am5map.MapPolygonSeries.new(root, {
+                        geoJSON: am5geodata_worldLow,
+                        exclude: ["AQ"] // Exclude Antarctica
+                    })
+                );
+                
+                // Style the countries - using your brand colors
+                polygonSeries.mapPolygons.template.setAll({
+                    fill: am5.color(0xf0f0f0),
+                    fillOpacity: 0.8,
+                    strokeWidth: 0.5,
+                    stroke: am5.color(0xffffff)
+                });
+                
+                // Highlight Africa (your production hub) with your brand green
+                polygonSeries.mapPolygons.template.events.on("datavalidated", function() {
+                    var africaCountries = ["DZA", "AGO", "BEN", "BWA", "BFA", "BDI", "CPV", "CMR", "CAF", "TCD", "COM", 
+                                           "COG", "COD", "DJI", "EGY", "GNQ", "ERI", "SWZ", "ETH", "GAB", "GMB", "GHA", 
+                                           "GIN", "GNB", "CIV", "KEN", "LSO", "LBR", "LBY", "MDG", "MWI", "MLI", "MRT", 
+                                           "MUS", "MYT", "MAR", "MOZ", "NAM", "NER", "NGA", "REU", "RWA", "SHN", "STP", 
+                                           "SEN", "SYC", "SLE", "SOM", "ZAF", "SSD", "SDN", "TZA", "TGO", "TUN", "UGA", 
+                                           "ESH", "ZMB", "ZWE"];
+                    
+                    polygonSeries.dataItems.each(function(dataItem) {
+                        if (africaCountries.includes(dataItem.get("id"))) {
+                            var polygon = dataItem.get("mapPolygon");
+                            polygon.set("fill", am5.color(0x1d976c)); // Your primary-green
+                            polygon.set("fillOpacity", 0.7);
+                        }
+                    });
+                });
+                
+                // Create point series for YACEXIM trade locations
+                var pointSeries = chart.series.push(am5map.MapPointSeries.new(root, {}));
+                
+                pointSeries.bullets.push(function(root, series, dataItem) {
+                    var container = am5.Container.new(root, {});
+                    
+                    // Different symbols for different region types
+                    var symbol;
+                    if (dataItem.dataContext.type === "production") {
+                        symbol = am5.Circle.new(root, {
+                            radius: 10,
+                            fill: am5.color(0x1d976c), // Green for production
+                            strokeWidth: 2,
+                            stroke: am5.color(0xffffff),
+                            tooltipText: "{title}\n{description}\n\nClick for details"
+                        });
+                    } else if (dataItem.dataContext.type === "trade") {
+                        symbol = am5.Triangle.new(root, {
+                            width: 14,
+                            height: 14,
+                            fill: am5.color(0xd4af37), // Gold for trade hubs
+                            strokeWidth: 2,
+                            stroke: am5.color(0xffffff),
+                            rotation: 180,
+                            tooltipText: "{title}\n{description}\n\nClick for details"
+                        });
+                    } else {
+                        symbol = am5.RoundedRectangle.new(root, {
+                            width: 12,
+                            height: 12,
+                            fill: am5.color(0xe67e22), // Orange for strategic partners
+                            strokeWidth: 2,
+                            stroke: am5.color(0xffffff),
+                            tooltipText: "{title}\n{description}\n\nClick for details"
+                        });
+                    }
+                    
+                    container.children.push(symbol);
+                    
+                    // Add hover effect
+                    symbol.events.on("pointerover", function(ev) {
+                        symbol.set("scale", 1.3);
+                        document.body.style.cursor = "pointer";
+                    });
+                    
+                    symbol.events.on("pointerout", function(ev) {
+                        symbol.set("scale", 1);
+                        document.body.style.cursor = "default";
+                    });
+                    
+                    // Add pulse animation for key locations
+                    if (dataItem.dataContext.keyLocation) {
+                        var pulseCircle = am5.Circle.new(root, {
+                            radius: 10,
+                            fill: dataItem.dataContext.type === "production" ? am5.color(0x1d976c) : am5.color(0xd4af37),
+                            fillOpacity: 0.3
+                        });
+                        
+                        pulseCircle.animate({
+                            key: "radius",
+                            to: 25,
+                            duration: 2000,
+                            easing: am5.ease.out(am5.ease.cubic),
+                            loops: Infinity
+                        });
+                        
+                        pulseCircle.animate({
+                            key: "fillOpacity",
+                            to: 0,
+                            duration: 2000,
+                            easing: am5.ease.out(am5.ease.cubic),
+                            loops: Infinity
+                        });
+                        
+                        container.children.push(pulseCircle);
+                        container.children.moveValue(pulseCircle, 0);
+                    }
+                    
+                    return am5.Bullet.new(root, {
+                        sprite: container,
+                        dynamic: true
+                    });
+                });
+                
+                // Enhanced YACEXIM specific trade locations with detailed information
+                var tradeLocations = [
+                    // African Production Hubs (green circles)
+                    { 
+                        title: "Accra, Ghana", 
+                        latitude: 5.6037, 
+                        longitude: -0.1870, 
+                        description: "Headquarters & Primary Export Hub", 
+                        type: "production", 
+                        keyLocation: true,
+                        commodities: "Cashew, Cocoa, Shea",
+                        volume: "3,500+ tonnes",
+                        partnership: "2018"
+                    },
+                    { 
+                        title: "Abidjan, Côte d'Ivoire", 
+                        latitude: 5.3600, 
+                        longitude: -4.0083, 
+                        description: "Cocoa Bean Sourcing Center", 
+                        type: "production",
+                        commodities: "Cocoa, Coffee",
+                        volume: "2,800+ tonnes",
+                        partnership: "2020"
+                    },
+                    { 
+                        title: "Dar es Salaam, Tanzania", 
+                        latitude: -6.7924, 
+                        longitude: 39.2083, 
+                        description: "Cashew Processing Facility", 
+                        type: "production",
+                        commodities: "Cashew, Sesame",
+                        volume: "1,900+ tonnes",
+                        partnership: "2019"
+                    },
+                    { 
+                        title: "Maputo, Mozambique", 
+                        latitude: -25.9692, 
+                        longitude: 32.5732, 
+                        description: "Regional Distribution Center", 
+                        type: "production",
+                        commodities: "Cotton, Maize",
+                        volume: "1,200+ tonnes",
+                        partnership: "2021"
+                    },
+                    { 
+                        title: "Lagos, Nigeria", 
+                        latitude: 6.5244, 
+                        longitude: 3.3792, 
+                        description: "West African Trade Hub", 
+                        type: "production",
+                        commodities: "Palm Oil, Rice",
+                        volume: "2,100+ tonnes",
+                        partnership: "2022"
+                    },
+                    
+                    // European Trade Hubs (gold triangles)
+                    { 
+                        title: "Rotterdam, Netherlands", 
+                        latitude: 51.9244, 
+                        longitude: 4.4777, 
+                        description: "EU Entry Port & Distribution", 
+                        type: "trade", 
+                        keyLocation: true,
+                        commodities: "Import/Export Hub",
+                        volume: "All commodities",
+                        partnership: "2017"
+                    },
+                    { 
+                        title: "Hamburg, Germany", 
+                        latitude: 53.5488, 
+                        longitude: 9.9872, 
+                        description: "Northern European Logistics", 
+                        type: "trade",
+                        commodities: "Cocoa, Coffee",
+                        volume: "1,800+ tonnes",
+                        partnership: "2019"
+                    },
+                    { 
+                        title: "Antwerp, Belgium", 
+                        latitude: 51.2213, 
+                        longitude: 4.4051, 
+                        description: "Cocoa Products Trading", 
+                        type: "trade",
+                        commodities: "Cocoa derivatives",
+                        volume: "1,200+ tonnes",
+                        partnership: "2020"
+                    },
+                    
+                    // Asian Trade Hubs (gold triangles)
+                    { 
+                        title: "Ho Chi Minh City, Vietnam", 
+                        latitude: 10.8231, 
+                        longitude: 106.6297, 
+                        description: "Cashew Processing Partners", 
+                        type: "trade", 
+                        keyLocation: true,
+                        commodities: "Raw cashew nuts",
+                        volume: "2,500+ tonnes",
+                        partnership: "2018"
+                    },
+                    { 
+                        title: "Mumbai, India", 
+                        latitude: 19.0760, 
+                        longitude: 72.8777, 
+                        description: "Regional Trading Partners", 
+                        type: "trade",
+                        commodities: "Spices, Pulses",
+                        volume: "900+ tonnes",
+                        partnership: "2021"
+                    },
+                    { 
+                        title: "Shanghai, China", 
+                        latitude: 31.2304, 
+                        longitude: 121.4737, 
+                        description: "East Asian Market Access", 
+                        type: "trade",
+                        commodities: "Agricultural commodities",
+                        volume: "1,500+ tonnes",
+                        partnership: "2022"
+                    },
+                    
+                    // American Trade Hubs (gold triangles)
+                    { 
+                        title: "New York, USA", 
+                        latitude: 40.7128, 
+                        longitude: -74.0060, 
+                        description: "North American Sales Office", 
+                        type: "trade",
+                        commodities: "Cocoa, Specialty crops",
+                        volume: "800+ tonnes",
+                        partnership: "2020"
+                    },
+                    { 
+                        title: "São Paulo, Brazil", 
+                        latitude: -23.5505, 
+                        longitude: -46.6333, 
+                        description: "South American Partners", 
+                        type: "trade",
+                        commodities: "Agricultural technology",
+                        volume: "Exchange partnership",
+                        partnership: "2023"
+                    },
+                    
+                    // Strategic Partners (orange rectangles)
+                    { 
+                        title: "Dubai, UAE", 
+                        latitude: 25.2048, 
+                        longitude: 55.2708, 
+                        description: "Middle East Distribution", 
+                        type: "strategic",
+                        commodities: "Re-export hub",
+                        volume: "1,000+ tonnes",
+                        partnership: "2021"
+                    },
+                    { 
+                        title: "Singapore", 
+                        latitude: 1.3521, 
+                        longitude: 103.8198, 
+                        description: "Asia-Pacific Finance Hub", 
+                        type: "strategic",
+                        commodities: "Trade finance",
+                        volume: "Financial services",
+                        partnership: "2022"
+                    }
+                ];
+                
+                // Add the trade locations to the map
+                tradeLocations.forEach(function(location) {
+                    pointSeries.data.push({
+                        geometry: { type: "Point", coordinates: [location.longitude, location.latitude] },
+                        title: location.title,
+                        description: location.description,
+                        type: location.type,
+                        keyLocation: location.keyLocation || false,
+                        commodities: location.commodities,
+                        volume: location.volume,
+                        partnership: location.partnership
+                    });
+                });
+                
+                // Add click interaction for map points
+                pointSeries.bullets.get("events").on("click", function(ev) {
+                    var dataItem = ev.target.dataItem;
+                    if (dataItem) {
+                        var longitude = dataItem.dataContext.geometry.coordinates[0];
+                        var latitude = dataItem.dataContext.geometry.coordinates[1];
+                        
+                        // Zoom to the clicked location
+                        chart.zoomToGeoPoint({
+                            longitude: longitude,
+                            latitude: latitude
+                        }, 5, true);
+                        
+                        // Show information panel
+                        document.getElementById('location-title').textContent = dataItem.dataContext.title;
+                        document.getElementById('location-description').textContent = dataItem.dataContext.description;
+                        document.getElementById('location-commodities').textContent = dataItem.dataContext.commodities;
+                        document.getElementById('location-volume').textContent = dataItem.dataContext.volume;
+                        document.getElementById('location-partnership').textContent = dataItem.dataContext.partnership;
+                        
+                        document.getElementById('map-info-panel').classList.add('active');
+                    }
+                });
+                
+                // Make stuff animate on load
+                chart.appear(1000, 100);
+                
+                // Add click event to zoom to Africa on initial view
+                setTimeout(function() {
+                    polygonSeries.zoomToDataItems(
+                        polygonSeries.dataItems.filter(function(dataItem) {
+                            var africaIds = ["GHA", "CIV", "TZA", "MOZ", "NGA", "KEN", "ZAF"];
+                            return africaIds.includes(dataItem.get("id"));
+                        })
+                    );
+                }, 1500);
+                
+                // Add hover effect to map points
+                pointSeries.bullets.get("events").on("pointerover", function(ev) {
+                    var dataItem = ev.target.dataItem;
+                    if (dataItem) {
+                        // Optional: highlight the point or show additional info
+                    }
+                });
+                
+                // Close info panel when clicking outside
+                document.addEventListener('click', function(event) {
+                    var mapInfoPanel = document.getElementById('map-info-panel');
+                    var chartDiv = document.getElementById('chartdiv');
+                    
+                    if (mapInfoPanel.classList.contains('active') && 
+                        !mapInfoPanel.contains(event.target) && 
+                        !chartDiv.contains(event.target)) {
+                        mapInfoPanel.classList.remove('active');
+                    }
+                });
+            });
+        }
     </script>
 </body>
 </html>
