@@ -928,11 +928,6 @@
                                 <i class="fas fa-spinner fa-spin"></i> Sending...
                             </span>
                         </button>
-                        
-                        <!-- Test Connection Button (Optional - can be removed after testing) -->
-                        <button type="button" id="test-connection" class="btn" style="margin-left: 10px; background-color: #6c757d; color: white;">
-                            Test Connection
-                        </button>
                     </form>
                 </div>
                 
@@ -1049,10 +1044,10 @@
     <script src="https://code.jquery.com/jquery-3.6.0.min.js"></script>
     
     <script>
-        // IMPORTANT: Replace this URL with your actual Google Apps Script Web App URL
+        // REPLACE THIS URL WITH YOUR ACTUAL GOOGLE APPS SCRIPT WEB APP URL
         // After deploying your Google Apps Script, you'll get a URL like:
         // https://script.google.com/macros/s/AKfycby.../exec
-        const GOOGLE_SCRIPT_URL = 'https://script.google.com/macros/s/AKfycbyghq4Ql_7qKsVYjJ2sBEGzY2FV31B_xr2R5AMZ-InjDIiOcfjrDgz-Tlp2-gepB7Q/exec';
+        const GOOGLE_SCRIPT_URL = 'https://script.google.com/macros/s/AKfycbzu_IH7K-96TNFRdExppZsF2_SAU7plsZUHLx-Ll-GvWkahkNINrdeCEQZkmLHJNNbh/exec';
         
         $(document).ready(function() {
             console.log('Contact page loaded');
@@ -1167,6 +1162,12 @@
                 e.preventDefault();
                 console.log('Form submit triggered');
                 
+                // Check if Google Script URL is set
+                if (!GOOGLE_SCRIPT_URL || GOOGLE_SCRIPT_URL === 'https://script.google.com/macros/s/AKfycbzu_IH7K-96TNFRdExppZsF2_SAU7plsZUHLx-Ll-GvWkahkNINrdeCEQZkmLHJNNbh/exec') {
+                    showFormMessage('⚠️ Form submission is not configured. Please contact us directly at info@yacexim.com', 'error');
+                    return;
+                }
+                
                 // Get form values
                 const name = $('#name').val().trim();
                 const email = $('#email').val().trim();
@@ -1208,7 +1209,8 @@
                     phone: phone || '',
                     subject: subject,
                     department: department,
-                    message: message
+                    message: message,
+                    timestamp: new Date().toISOString()
                 };
                 
                 console.log('Sending form data:', formData);
@@ -1227,6 +1229,14 @@
                         if (response && response.success) {
                             showFormMessage(response.message, 'success');
                             $('#contact-form')[0].reset(); // Clear form
+                            
+                            // Add to Google Analytics or other tracking if needed
+                            if (typeof gtag !== 'undefined') {
+                                gtag('event', 'contact_form_submit', {
+                                    'event_category': 'Contact',
+                                    'event_label': 'Form Submission'
+                                });
+                            }
                         } else {
                             const errorMsg = response ? response.message : 'Unknown error occurred';
                             showFormMessage('Error: ' + errorMsg, 'error');
@@ -1247,8 +1257,6 @@
                             errorMessage += 'Server not found (404). Please check your Google Apps Script URL.';
                         } else if (xhr.status === 500) {
                             errorMessage += 'Server error (500). Please check your Google Apps Script code.';
-                        } else if (xhr.responseText) {
-                            errorMessage += 'Server responded with error.';
                         } else {
                             errorMessage += 'Please try again or contact us directly at info@yacexim.com';
                         }
@@ -1264,37 +1272,19 @@
                 });
             });
             
-            // Test Connection Button (Optional - can remove after testing)
-            $('#test-connection').click(function() {
-                console.log('Testing connection to:', GOOGLE_SCRIPT_URL);
-                
-                if (!GOOGLE_SCRIPT_URL || GOOGLE_SCRIPT_URL === 'https://script.google.com/macros/s/AKfycbyghq4Ql_7qKsVYjJ2sBEGzY2FV31B_xr2R5AMZ-InjDIiOcfjrDgz-Tlp2-gepB7Q/exec') {
-                    showFormMessage('Please update the GOOGLE_SCRIPT_URL variable in the JavaScript code with your actual Google Apps Script URL.', 'error');
-                    return;
+            // Initialize form validation on input
+            $('#email').on('blur', function() {
+                const email = $(this).val().trim();
+                if (email && !isValidEmail(email)) {
+                    $(this).css('border-color', '#dc3545');
+                } else {
+                    $(this).css('border-color', '#ddd');
                 }
-                
-                showFormMessage('Testing connection to Google Apps Script...', 'error');
-                
-                $.ajax({
-                    url: GOOGLE_SCRIPT_URL,
-                    method: 'GET',
-                    dataType: 'json',
-                    timeout: 10000,
-                    success: function(response) {
-                        console.log('Connection test successful:', response);
-                        showFormMessage('✅ Connection successful! Google Apps Script is working. You can now submit the form.', 'success');
-                    },
-                    error: function(xhr, status, error) {
-                        console.error('Connection test failed:', error);
-                        showFormMessage('❌ Connection failed: ' + error + '. Please check your Google Apps Script URL and deployment.', 'error');
-                    }
-                });
             });
             
             // Check if URL is set
-            if (!GOOGLE_SCRIPT_URL || GOOGLE_SCRIPT_URL === 'https://script.google.com/macros/s/AKfycbyghq4Ql_7qKsVYjJ2sBEGzY2FV31B_xr2R5AMZ-InjDIiOcfjrDgz-Tlp2-gepB7Q/exec') {
+            if (!GOOGLE_SCRIPT_URL || GOOGLE_SCRIPT_URL === 'https://script.google.com/macros/s/AKfycbzu_IH7K-96TNFRdExppZsF2_SAU7plsZUHLx-Ll-GvWkahkNINrdeCEQZkmLHJNNbh/exec') {
                 console.warn('Google Apps Script URL is not set! Please update the GOOGLE_SCRIPT_URL variable.');
-                showFormMessage('⚠️ Please update the Google Apps Script URL in the code to enable form submissions.', 'error');
             }
         });
     </script>
