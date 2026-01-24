@@ -589,6 +589,26 @@
             resize: vertical;
         }
         
+        /* Form success/error messages */
+        .form-message {
+            padding: 15px;
+            margin: 20px 0;
+            border-radius: 5px;
+            display: none;
+        }
+        
+        .form-success {
+            background-color: #d4edda;
+            color: #155724;
+            border: 1px solid #c3e6cb;
+        }
+        
+        .form-error {
+            background-color: #f8d7da;
+            color: #721c24;
+            border: 1px solid #f5c6cb;
+        }
+        
         /* Map Container */
         .map-container {
             border-radius: 10px;
@@ -671,6 +691,13 @@
             background-color: #e6c34d;
             transform: translateY(-5px);
             box-shadow: 0 15px 25px rgba(212, 175, 55, 0.3);
+        }
+        
+        .btn-primary:disabled {
+            background-color: #cccccc;
+            cursor: not-allowed;
+            transform: none;
+            box-shadow: none;
         }
         
         /* Animation Classes */
@@ -855,6 +882,10 @@
                 <!-- Contact Form -->
                 <div class="contact-form-container animate-on-scroll">
                     <h3>Contact Form</h3>
+                    
+                    <!-- Success/Error Message Container -->
+                    <div id="form-message" class="form-message"></div>
+                    
                     <form id="contact-form" action="#" method="POST">
                         <div class="form-group">
                             <label for="name">Full Name *</label>
@@ -891,7 +922,12 @@
                             <textarea id="message" name="message" class="form-control" required></textarea>
                         </div>
                         
-                        <button type="submit" class="btn btn-primary">Send Message</button>
+                        <button type="submit" id="submit-btn" class="btn btn-primary">
+                            <span id="submit-text">Send Message</span>
+                            <span id="submit-spinner" style="display: none;">
+                                <i class="fas fa-spinner fa-spin"></i> Sending...
+                            </span>
+                        </button>
                     </form>
                 </div>
                 
@@ -934,7 +970,6 @@
                     <p><strong>Email:</strong> <a href="mailto:directors@yacexim.com" class="department-email">directors@yacexim.com</a></p>
                     <p><strong>Phone:</strong> +233 256 071 615</p>
                     <p><strong>Phone:</strong> +233 240 164 081</p>
-
                 </div>
             </div>
         </div>
@@ -1009,7 +1044,15 @@
     <script src="https://code.jquery.com/jquery-3.6.0.min.js"></script>
     
     <script>
+        // REPLACE THIS URL WITH YOUR ACTUAL GOOGLE APPS SCRIPT WEB APP URL
+        // After deploying your Google Apps Script, you'll get a URL like:
+        // https://script.google.com/macros/s/AKfycby.../exec
+        const GOOGLE_SCRIPT_URL = 'https://script.google.com/macros/s/AKfycbz4gpwSoRd4Mdf1mAul2E7U9qUmhBjCJW6CmSSvvzDk_CzpEYPF0Fd_Jw0BCewYMvpKrw/exec';
+        
         $(document).ready(function() {
+            console.log('Contact page loaded');
+            console.log('Google Script URL:', GOOGLE_SCRIPT_URL);
+            
             // Mobile Navigation Toggle
             $('#mobile-toggle').click(function() {
                 $('#nav-menu').toggleClass('active');
@@ -1076,27 +1119,173 @@
                 animateOnScroll();
             });
             
+            // ================ CONTACT FORM HANDLING ================
+            
+            // Email validation function
+            function isValidEmail(email) {
+                const emailRegex = /^[^\s@]+@[^\s@]+\.[^\s@]+$/;
+                return emailRegex.test(email);
+            }
+            
+            // Function to show form messages
+            function showFormMessage(message, type) {
+                const messageElement = $('#form-message');
+                
+                messageElement.removeClass('form-success form-error');
+                messageElement.hide();
+                
+                if (type === 'success') {
+                    messageElement.addClass('form-success');
+                    messageElement.html('<i class="fas fa-check-circle"></i> ' + message);
+                } else {
+                    messageElement.addClass('form-error');
+                    messageElement.html('<i class="fas fa-exclamation-circle"></i> ' + message);
+                }
+                
+                messageElement.slideDown();
+                
+                // Auto-hide success messages after 10 seconds
+                if (type === 'success') {
+                    setTimeout(function() {
+                        messageElement.slideUp();
+                    }, 10000);
+                }
+                
+                // Scroll to message
+                $('html, body').animate({
+                    scrollTop: messageElement.offset().top - 100
+                }, 500);
+            }
+            
             // Contact Form Submission
             $('#contact-form').submit(function(e) {
                 e.preventDefault();
+                console.log('Form submit triggered');
                 
-                // Simple form validation
-                const name = $('#name').val();
-                const email = $('#email').val();
-                const subject = $('#subject').val();
-                const message = $('#message').val();
-                const department = $('#department').val();
-                
-                if (!name || !email || !subject || !message || !department) {
-                    alert('Please fill in all required fields.');
+                // Check if Google Script URL is set
+                if (!GOOGLE_SCRIPT_URL || GOOGLE_SCRIPT_URL === 'https://script.google.com/macros/s/AKfycbz4gpwSoRd4Mdf1mAul2E7U9qUmhBjCJW6CmSSvvzDk_CzpEYPF0Fd_Jw0BCewYMvpKrw/exec') {
+                    showFormMessage('⚠️ Form submission is not configured. Please contact us directly at info@yacexim.com', 'error');
                     return;
                 }
                 
-                // In a real application, you would send this data to a server
-                // For now, we'll just show a success message
-                alert('Thank you for your message! We will get back to you soon.');
-                $('#contact-form')[0].reset();
+                // Get form values
+                const name = $('#name').val().trim();
+                const email = $('#email').val().trim();
+                const subject = $('#subject').val().trim();
+                const message = $('#message').val().trim();
+                const department = $('#department').val();
+                const phone = $('#phone').val().trim();
+                
+                // Validation
+                let errors = [];
+                if (!name) errors.push('Name is required');
+                if (!email) errors.push('Email is required');
+                if (!subject) errors.push('Subject is required');
+                if (!message) errors.push('Message is required');
+                if (!department) errors.push('Department is required');
+                
+                if (email && !isValidEmail(email)) {
+                    errors.push('Please enter a valid email address');
+                }
+                
+                if (errors.length > 0) {
+                    showFormMessage(errors.join('<br>'), 'error');
+                    return;
+                }
+                
+                // Show loading state
+                const submitBtn = $('#submit-btn');
+                const submitText = $('#submit-text');
+                const submitSpinner = $('#submit-spinner');
+                
+                submitBtn.prop('disabled', true);
+                submitText.hide();
+                submitSpinner.show();
+                
+                // Prepare form data
+                const formData = {
+                    name: name,
+                    email: email,
+                    phone: phone || '',
+                    subject: subject,
+                    department: department,
+                    message: message,
+                    timestamp: new Date().toISOString()
+                };
+                
+                console.log('Sending form data:', formData);
+                console.log('To URL:', GOOGLE_SCRIPT_URL);
+                
+                // Send the data to Google Apps Script
+                $.ajax({
+                    url: GOOGLE_SCRIPT_URL,
+                    method: 'POST',
+                    data: formData,
+                    dataType: 'json',
+                    timeout: 15000, // 15 second timeout
+                    success: function(response, status, xhr) {
+                        console.log('Success! Response:', response);
+                        
+                        if (response && response.success) {
+                            showFormMessage(response.message, 'success');
+                            $('#contact-form')[0].reset(); // Clear form
+                            
+                            // Add to Google Analytics or other tracking if needed
+                            if (typeof gtag !== 'undefined') {
+                                gtag('event', 'contact_form_submit', {
+                                    'event_category': 'Contact',
+                                    'event_label': 'Form Submission'
+                                });
+                            }
+                        } else {
+                            const errorMsg = response ? response.message : 'Unknown error occurred';
+                            showFormMessage('Error: ' + errorMsg, 'error');
+                        }
+                    },
+                    error: function(xhr, status, error) {
+                        console.error('AJAX Error Details:');
+                        console.error('Status:', status);
+                        console.error('Error:', error);
+                        console.error('XHR status:', xhr.status);
+                        console.error('XHR response:', xhr.responseText);
+                        
+                        let errorMessage = 'Unable to send message. ';
+                        
+                        if (xhr.status === 0) {
+                            errorMessage += 'Network error. Check your internet connection.';
+                        } else if (xhr.status === 404) {
+                            errorMessage += 'Server not found (404). Please check your Google Apps Script URL.';
+                        } else if (xhr.status === 500) {
+                            errorMessage += 'Server error (500). Please check your Google Apps Script code.';
+                        } else {
+                            errorMessage += 'Please try again or contact us directly at info@yacexim.com';
+                        }
+                        
+                        showFormMessage(errorMessage, 'error');
+                    },
+                    complete: function() {
+                        // Reset button
+                        submitBtn.prop('disabled', false);
+                        submitSpinner.hide();
+                        submitText.show();
+                    }
+                });
             });
+            
+            // Initialize form validation on input
+            $('#email').on('blur', function() {
+                const email = $(this).val().trim();
+                if (email && !isValidEmail(email)) {
+                    $(this).css('border-color', '#dc3545');
+                } else {
+                    $(this).css('border-color', '#ddd');
+                }
+            });
+            
+            // Check if URL is set
+            if (!GOOGLE_SCRIPT_URL || GOOGLE_SCRIPT_URL === 'https://script.google.com/macros/s/AKfycbwdm-klL5we7S6kUVsCRwn_35Coa8KLv-3i2nHdcJMVWPt27NIWWwQfUxdnCXvduH-x/exec') {
+                console.warn('Google Apps Script URL is not set! Please update the GOOGLE_SCRIPT_URL variable.');
+            }
         });
     </script>
 </body>
