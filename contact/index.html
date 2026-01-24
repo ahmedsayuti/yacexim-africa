@@ -928,6 +928,11 @@
                                 <i class="fas fa-spinner fa-spin"></i> Sending...
                             </span>
                         </button>
+                        
+                        <!-- Test Connection Button (Optional - can be removed after testing) -->
+                        <button type="button" id="test-connection" class="btn" style="margin-left: 10px; background-color: #6c757d; color: white;">
+                            Test Connection
+                        </button>
                     </form>
                 </div>
                 
@@ -1044,7 +1049,15 @@
     <script src="https://code.jquery.com/jquery-3.6.0.min.js"></script>
     
     <script>
+        // IMPORTANT: Replace this URL with your actual Google Apps Script Web App URL
+        // After deploying your Google Apps Script, you'll get a URL like:
+        // https://script.google.com/macros/s/AKfycby.../exec
+        const GOOGLE_SCRIPT_URL = 'https://script.google.com/macros/s/AKfycbzey55iseh8KSgPTUnR5GglzMQcDholCE8Tp3NPXkxWiDZk8-tt8Xvv2gwQyGtlaJwN/exec';
+        
         $(document).ready(function() {
+            console.log('Contact page loaded');
+            console.log('Google Script URL:', GOOGLE_SCRIPT_URL);
+            
             // Mobile Navigation Toggle
             $('#mobile-toggle').click(function() {
                 $('#nav-menu').toggleClass('active');
@@ -1111,27 +1124,71 @@
                 animateOnScroll();
             });
             
-            // Contact Form Submission - UPDATED FOR GOOGLE APPS SCRIPT
-            $('#contact-form').submit(function(e) {
-                e.preventDefault();
+            // ================ CONTACT FORM HANDLING ================
+            
+            // Email validation function
+            function isValidEmail(email) {
+                const emailRegex = /^[^\s@]+@[^\s@]+\.[^\s@]+$/;
+                return emailRegex.test(email);
+            }
+            
+            // Function to show form messages
+            function showFormMessage(message, type) {
+                const messageElement = $('#form-message');
                 
-                // Simple form validation
-                const name = $('#name').val();
-                const email = $('#email').val();
-                const subject = $('#subject').val();
-                const message = $('#message').val();
-                const department = $('#department').val();
-                const phone = $('#phone').val();
+                messageElement.removeClass('form-success form-error');
+                messageElement.hide();
                 
-                if (!name || !email || !subject || !message || !department) {
-                    showFormMessage('Please fill in all required fields.', 'error');
-                    return;
+                if (type === 'success') {
+                    messageElement.addClass('form-success');
+                    messageElement.html('<i class="fas fa-check-circle"></i> ' + message);
+                } else {
+                    messageElement.addClass('form-error');
+                    messageElement.html('<i class="fas fa-exclamation-circle"></i> ' + message);
                 }
                 
-                // Validate email format
-                const emailRegex = /^[^\s@]+@[^\s@]+\.[^\s@]+$/;
-                if (!emailRegex.test(email)) {
-                    showFormMessage('Please enter a valid email address.', 'error');
+                messageElement.slideDown();
+                
+                // Auto-hide success messages after 10 seconds
+                if (type === 'success') {
+                    setTimeout(function() {
+                        messageElement.slideUp();
+                    }, 10000);
+                }
+                
+                // Scroll to message
+                $('html, body').animate({
+                    scrollTop: messageElement.offset().top - 100
+                }, 500);
+            }
+            
+            // Contact Form Submission
+            $('#contact-form').submit(function(e) {
+                e.preventDefault();
+                console.log('Form submit triggered');
+                
+                // Get form values
+                const name = $('#name').val().trim();
+                const email = $('#email').val().trim();
+                const subject = $('#subject').val().trim();
+                const message = $('#message').val().trim();
+                const department = $('#department').val();
+                const phone = $('#phone').val().trim();
+                
+                // Validation
+                let errors = [];
+                if (!name) errors.push('Name is required');
+                if (!email) errors.push('Email is required');
+                if (!subject) errors.push('Subject is required');
+                if (!message) errors.push('Message is required');
+                if (!department) errors.push('Department is required');
+                
+                if (email && !isValidEmail(email)) {
+                    errors.push('Please enter a valid email address');
+                }
+                
+                if (errors.length > 0) {
+                    showFormMessage(errors.join('<br>'), 'error');
                     return;
                 }
                 
@@ -1154,30 +1211,49 @@
                     message: message
                 };
                 
-                // REPLACE THIS WITH YOUR GOOGLE APPS SCRIPT WEB APP URL
-                // After deploying your Google Apps Script as a web app, copy the URL here
-                const webAppUrl = 'https://script.google.com/macros/s/AKfycbyvCJxPqZuJkMN1WsfuqVhRuMT7yxe9QCXUfPVTXnEfAlDcoYGYNmMLgDqvDcAxbk_7/exec';
+                console.log('Sending form data:', formData);
+                console.log('To URL:', GOOGLE_SCRIPT_URL);
                 
                 // Send the data to Google Apps Script
                 $.ajax({
-                    url: webAppUrl,
+                    url: GOOGLE_SCRIPT_URL,
                     method: 'POST',
                     data: formData,
                     dataType: 'json',
-                    success: function(response) {
-                        if (response.success) {
+                    timeout: 15000, // 15 second timeout
+                    success: function(response, status, xhr) {
+                        console.log('Success! Response:', response);
+                        
+                        if (response && response.success) {
                             showFormMessage(response.message, 'success');
-                            $('#contact-form')[0].reset();
+                            $('#contact-form')[0].reset(); // Clear form
                         } else {
-                            showFormMessage('Error: ' + response.message, 'error');
+                            const errorMsg = response ? response.message : 'Unknown error occurred';
+                            showFormMessage('Error: ' + errorMsg, 'error');
                         }
                     },
                     error: function(xhr, status, error) {
-                        console.error('Form submission error:', error);
-                        showFormMessage(
-                            'Unable to send message. Please try again or contact us directly at info@yacexim.com', 
-                            'error'
-                        );
+                        console.error('AJAX Error Details:');
+                        console.error('Status:', status);
+                        console.error('Error:', error);
+                        console.error('XHR status:', xhr.status);
+                        console.error('XHR response:', xhr.responseText);
+                        
+                        let errorMessage = 'Unable to send message. ';
+                        
+                        if (xhr.status === 0) {
+                            errorMessage += 'Network error. Check your internet connection.';
+                        } else if (xhr.status === 404) {
+                            errorMessage += 'Server not found (404). Please check your Google Apps Script URL.';
+                        } else if (xhr.status === 500) {
+                            errorMessage += 'Server error (500). Please check your Google Apps Script code.';
+                        } else if (xhr.responseText) {
+                            errorMessage += 'Server responded with error.';
+                        } else {
+                            errorMessage += 'Please try again or contact us directly at info@yacexim.com';
+                        }
+                        
+                        showFormMessage(errorMessage, 'error');
                     },
                     complete: function() {
                         // Reset button
@@ -1188,37 +1264,37 @@
                 });
             });
             
-            // Function to show form messages
-            function showFormMessage(message, type) {
-                const messageElement = $('#form-message');
+            // Test Connection Button (Optional - can remove after testing)
+            $('#test-connection').click(function() {
+                console.log('Testing connection to:', GOOGLE_SCRIPT_URL);
                 
-                messageElement.removeClass('form-success form-error');
-                
-                if (type === 'success') {
-                    messageElement.addClass('form-success');
-                } else {
-                    messageElement.addClass('form-error');
+                if (!GOOGLE_SCRIPT_URL || GOOGLE_SCRIPT_URL === 'YOUR_GOOGLE_APPS_SCRIPT_URL_HERE') {
+                    showFormMessage('Please update the GOOGLE_SCRIPT_URL variable in the JavaScript code with your actual Google Apps Script URL.', 'error');
+                    return;
                 }
                 
-                messageElement.html(message);
-                messageElement.slideDown();
+                showFormMessage('Testing connection to Google Apps Script...', 'error');
                 
-                // Auto-hide success messages after 10 seconds
-                if (type === 'success') {
-                    setTimeout(function() {
-                        messageElement.slideUp();
-                    }, 10000);
-                }
-                
-                // Scroll to message if it's not visible
-                const messageTop = messageElement.offset().top;
-                const headerHeight = $('#header').outerHeight();
-                if (messageTop < $(window).scrollTop() + headerHeight || 
-                    messageTop > $(window).scrollTop() + $(window).height()) {
-                    $('html, body').animate({
-                        scrollTop: messageTop - headerHeight - 20
-                    }, 500);
-                }
+                $.ajax({
+                    url: GOOGLE_SCRIPT_URL,
+                    method: 'GET',
+                    dataType: 'json',
+                    timeout: 10000,
+                    success: function(response) {
+                        console.log('Connection test successful:', response);
+                        showFormMessage('✅ Connection successful! Google Apps Script is working. You can now submit the form.', 'success');
+                    },
+                    error: function(xhr, status, error) {
+                        console.error('Connection test failed:', error);
+                        showFormMessage('❌ Connection failed: ' + error + '. Please check your Google Apps Script URL and deployment.', 'error');
+                    }
+                });
+            });
+            
+            // Check if URL is set
+            if (!GOOGLE_SCRIPT_URL || GOOGLE_SCRIPT_URL === 'YOUR_GOOGLE_APPS_SCRIPT_URL_HERE') {
+                console.warn('Google Apps Script URL is not set! Please update the GOOGLE_SCRIPT_URL variable.');
+                showFormMessage('⚠️ Please update the Google Apps Script URL in the code to enable form submissions.', 'error');
             }
         });
     </script>
