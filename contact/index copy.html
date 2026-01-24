@@ -356,6 +356,163 @@
             display: block;
         }
         
+        /* MODAL STYLES */
+        .modal-overlay {
+            position: fixed;
+            top: 0;
+            left: 0;
+            width: 100%;
+            height: 100%;
+            background-color: rgba(0, 0, 0, 0.7);
+            z-index: 9999;
+            display: flex;
+            align-items: center;
+            justify-content: center;
+            animation: fadeIn 0.3s ease;
+            opacity: 0;
+            visibility: hidden;
+            transition: opacity 0.3s ease, visibility 0.3s ease;
+        }
+        
+        .modal-overlay.active {
+            opacity: 1;
+            visibility: visible;
+        }
+        
+        .modal-container {
+            background: white;
+            border-radius: 12px;
+            width: 90%;
+            max-width: 500px;
+            box-shadow: 0 20px 60px rgba(0, 0, 0, 0.3);
+            overflow: hidden;
+            transform: translateY(30px) scale(0.95);
+            opacity: 0;
+            transition: transform 0.4s cubic-bezier(0.175, 0.885, 0.32, 1.275), opacity 0.4s ease;
+        }
+        
+        .modal-overlay.active .modal-container {
+            transform: translateY(0) scale(1);
+            opacity: 1;
+        }
+        
+        .modal-header {
+            padding: 20px 25px;
+            display: flex;
+            justify-content: space-between;
+            align-items: center;
+            color: white;
+        }
+        
+        .modal-header.success {
+            background: linear-gradient(135deg, var(--primary-green), var(--primary-dark));
+        }
+        
+        .modal-header.error {
+            background: linear-gradient(135deg, #dc3545, #c82333);
+        }
+        
+        .modal-header.warning {
+            background: linear-gradient(135deg, #ffc107, #e0a800);
+        }
+        
+        .modal-header h3 {
+            margin: 0;
+            font-size: 1.5rem;
+        }
+        
+        .modal-close {
+            background: none;
+            border: none;
+            color: white;
+            font-size: 1.8rem;
+            cursor: pointer;
+            line-height: 1;
+            padding: 0;
+            width: 30px;
+            height: 30px;
+            display: flex;
+            align-items: center;
+            justify-content: center;
+            border-radius: 50%;
+            transition: var(--transition);
+        }
+        
+        .modal-close:hover {
+            background: rgba(255, 255, 255, 0.2);
+        }
+        
+        .modal-body {
+            padding: 30px 25px;
+            text-align: center;
+        }
+        
+        .modal-icon {
+            font-size: 4rem;
+            margin-bottom: 20px;
+            animation: popIn 0.5s cubic-bezier(0.175, 0.885, 0.32, 1.275);
+        }
+        
+        .modal-icon.success {
+            color: var(--primary-green);
+        }
+        
+        .modal-icon.error {
+            color: #dc3545;
+        }
+        
+        .modal-icon.warning {
+            color: #ffc107;
+        }
+        
+        .modal-body p {
+            font-size: 1.1rem;
+            line-height: 1.6;
+            color: #333;
+            margin: 0;
+        }
+        
+        .modal-footer {
+            padding: 20px 25px;
+            text-align: right;
+            background: #f8f9fa;
+            border-top: 1px solid #eee;
+        }
+        
+        @keyframes fadeIn {
+            from { opacity: 0; }
+            to { opacity: 1; }
+        }
+        
+        @keyframes popIn {
+            0% {
+                transform: scale(0);
+            }
+            70% {
+                transform: scale(1.2);
+            }
+            100% {
+                transform: scale(1);
+            }
+        }
+        
+        .modal-ok-btn {
+            padding: 12px 30px;
+            font-size: 1rem;
+            background-color: var(--primary-green);
+            color: white;
+            border: none;
+            border-radius: 50px;
+            cursor: pointer;
+            font-weight: 600;
+            transition: var(--transition);
+        }
+        
+        .modal-ok-btn:hover {
+            background-color: var(--primary-dark);
+            transform: translateY(-2px);
+        }
+        
         /* CONTACT PAGE SPECIFIC STYLES */
         
         /* Contact Hero Section */
@@ -589,26 +746,6 @@
             resize: vertical;
         }
         
-        /* Form success/error messages */
-        .form-message {
-            padding: 15px;
-            margin: 20px 0;
-            border-radius: 5px;
-            display: none;
-        }
-        
-        .form-success {
-            background-color: #d4edda;
-            color: #155724;
-            border: 1px solid #c3e6cb;
-        }
-        
-        .form-error {
-            background-color: #f8d7da;
-            color: #721c24;
-            border: 1px solid #f5c6cb;
-        }
-        
         /* Map Container */
         .map-container {
             border-radius: 10px;
@@ -756,6 +893,11 @@
             .contact-form-container {
                 padding: 30px;
             }
+            
+            .modal-container {
+                width: 95%;
+                max-width: 95%;
+            }
         }
         
         @media (max-width: 576px) {
@@ -777,6 +919,18 @@
             
             .contact-form-container {
                 padding: 25px;
+            }
+            
+            .modal-body {
+                padding: 20px 15px;
+            }
+            
+            .modal-header {
+                padding: 15px 20px;
+            }
+            
+            .modal-header h3 {
+                font-size: 1.3rem;
             }
         }
     </style>
@@ -882,9 +1036,6 @@
                 <!-- Contact Form -->
                 <div class="contact-form-container animate-on-scroll">
                     <h3>Contact Form</h3>
-                    
-                    <!-- Success/Error Message Container -->
-                    <div id="form-message" class="form-message"></div>
                     
                     <form id="contact-form" action="#" method="POST">
                         <div class="form-group">
@@ -1040,13 +1191,30 @@
         </div>
     </footer>
 
+    <!-- Modal Structure -->
+    <div id="modal-overlay" class="modal-overlay">
+        <div class="modal-container">
+            <div class="modal-header success">
+                <h3>Success!</h3>
+                <button class="modal-close">&times;</button>
+            </div>
+            <div class="modal-body">
+                <div class="modal-icon success">
+                    <i class="fas fa-check-circle"></i>
+                </div>
+                <p id="modal-message">Your message has been submitted successfully!</p>
+            </div>
+            <div class="modal-footer">
+                <button class="modal-ok-btn">OK</button>
+            </div>
+        </div>
+    </div>
+
     <!-- JavaScript Libraries -->
     <script src="https://code.jquery.com/jquery-3.6.0.min.js"></script>
     
     <script>
         // REPLACE THIS URL WITH YOUR ACTUAL GOOGLE APPS SCRIPT WEB APP URL
-        // After deploying your Google Apps Script, you'll get a URL like:
-        // https://script.google.com/macros/s/AKfycby.../exec
         const GOOGLE_SCRIPT_URL = 'https://script.google.com/macros/s/AKfycbz4gpwSoRd4Mdf1mAul2E7U9qUmhBjCJW6CmSSvvzDk_CzpEYPF0Fd_Jw0BCewYMvpKrw/exec';
         
         $(document).ready(function() {
@@ -1119,6 +1287,71 @@
                 animateOnScroll();
             });
             
+            // ================ MODAL FUNCTIONS ================
+            
+            // Show modal function
+            function showModal(title, message, type = 'success') {
+                const modal = $('#modal-overlay');
+                const modalHeader = modal.find('.modal-header');
+                const modalIcon = modal.find('.modal-icon');
+                const modalTitle = modal.find('.modal-header h3');
+                const modalMessage = modal.find('#modal-message');
+                
+                // Update modal content
+                modalTitle.text(title);
+                modalMessage.html(message.replace(/\n/g, '<br>'));
+                
+                // Update styling based on type
+                modalHeader.removeClass('success error warning').addClass(type);
+                modalIcon.removeClass('success error warning').addClass(type);
+                
+                // Update icon
+                const icon = modalIcon.find('i');
+                icon.removeClass();
+                
+                switch(type) {
+                    case 'success':
+                        icon.addClass('fas fa-check-circle');
+                        break;
+                    case 'error':
+                        icon.addClass('fas fa-exclamation-circle');
+                        break;
+                    case 'warning':
+                        icon.addClass('fas fa-exclamation-triangle');
+                        break;
+                }
+                
+                // Show modal with animation
+                modal.addClass('active');
+                
+                // Prevent body scrolling when modal is open
+                $('body').css('overflow', 'hidden');
+            }
+            
+            // Close modal function
+            function closeModal() {
+                $('#modal-overlay').removeClass('active');
+                $('body').css('overflow', 'auto');
+            }
+            
+            // Modal event handlers
+            $(document).on('click', '.modal-close, .modal-ok-btn', function() {
+                closeModal();
+            });
+            
+            $(document).on('click', '#modal-overlay', function(e) {
+                if (e.target === this) {
+                    closeModal();
+                }
+            });
+            
+            // Close modal on Escape key
+            $(document).on('keydown', function(e) {
+                if (e.key === 'Escape' && $('#modal-overlay').hasClass('active')) {
+                    closeModal();
+                }
+            });
+            
             // ================ CONTACT FORM HANDLING ================
             
             // Email validation function
@@ -1127,44 +1360,16 @@
                 return emailRegex.test(email);
             }
             
-            // Function to show form messages
-            function showFormMessage(message, type) {
-                const messageElement = $('#form-message');
-                
-                messageElement.removeClass('form-success form-error');
-                messageElement.hide();
-                
-                if (type === 'success') {
-                    messageElement.addClass('form-success');
-                    messageElement.html('<i class="fas fa-check-circle"></i> ' + message);
-                } else {
-                    messageElement.addClass('form-error');
-                    messageElement.html('<i class="fas fa-exclamation-circle"></i> ' + message);
-                }
-                
-                messageElement.slideDown();
-                
-                // Auto-hide success messages after 10 seconds
-                if (type === 'success') {
-                    setTimeout(function() {
-                        messageElement.slideUp();
-                    }, 10000);
-                }
-                
-                // Scroll to message
-                $('html, body').animate({
-                    scrollTop: messageElement.offset().top - 100
-                }, 500);
-            }
-            
             // Contact Form Submission
             $('#contact-form').submit(function(e) {
                 e.preventDefault();
                 console.log('Form submit triggered');
                 
                 // Check if Google Script URL is set
-                if (!GOOGLE_SCRIPT_URL || GOOGLE_SCRIPT_URL === 'YOUR_GOOGLE_SCRIPT_URL_HERE') {
-                    showFormMessage('⚠️ Form submission is not configured. Please contact us directly at info@yacexim.com', 'error');
+                if (!GOOGLE_SCRIPT_URL || GOOGLE_SCRIPT_URL.includes('YOUR_GOOGLE_SCRIPT_URL_HERE')) {
+                    showModal('Configuration Required', 
+                        '⚠️ Form submission is not configured. Please contact us directly at info@yacexim.com', 
+                        'warning');
                     return;
                 }
                 
@@ -1189,7 +1394,7 @@
                 }
                 
                 if (errors.length > 0) {
-                    showFormMessage(errors.join('<br>'), 'error');
+                    showModal('Validation Error', errors.join('<br>'), 'error');
                     return;
                 }
                 
@@ -1210,7 +1415,8 @@
                     subject: subject,
                     department: department,
                     message: message,
-                    timestamp: new Date().toISOString()
+                    timestamp: new Date().toISOString(),
+                    source: 'YACEXIM Contact Page'
                 };
                 
                 console.log('Sending form data:', formData);
@@ -1220,17 +1426,34 @@
                 $.ajax({
                     url: GOOGLE_SCRIPT_URL,
                     method: 'POST',
-                    data: formData,
+                    data: JSON.stringify(formData),
+                    contentType: 'application/json',
                     dataType: 'json',
-                    timeout: 15000, // 15 second timeout
+                    timeout: 15000,
+                    
                     success: function(response, status, xhr) {
                         console.log('Success! Response:', response);
                         
-                        if (response && response.success) {
-                            showFormMessage(response.message, 'success');
+                        // Handle string responses (Google Apps Script sometimes returns string)
+                        let parsedResponse = response;
+                        if (typeof response === 'string') {
+                            try {
+                                parsedResponse = JSON.parse(response);
+                            } catch (e) {
+                                console.error('Failed to parse response:', e);
+                                parsedResponse = { success: false, message: 'Invalid server response' };
+                            }
+                        }
+                        
+                        if (parsedResponse && parsedResponse.success) {
+                            // SUCCESS - Show success modal
+                            const successMessage = parsedResponse.message || 
+                                `Thank you ${name}! Your message has been submitted successfully. We will contact you within 24 hours.`;
+                            
+                            showModal('Success!', successMessage, 'success');
                             $('#contact-form')[0].reset(); // Clear form
                             
-                            // Add to Google Analytics or other tracking if needed
+                            // Add to Google Analytics if available
                             if (typeof gtag !== 'undefined') {
                                 gtag('event', 'contact_form_submit', {
                                     'event_category': 'Contact',
@@ -1238,10 +1461,11 @@
                                 });
                             }
                         } else {
-                            const errorMsg = response ? response.message : 'Unknown error occurred';
-                            showFormMessage('Error: ' + errorMsg, 'error');
+                            const errorMsg = parsedResponse ? parsedResponse.message : 'Unknown error occurred';
+                            showModal('Submission Error', errorMsg, 'error');
                         }
                     },
+                    
                     error: function(xhr, status, error) {
                         console.error('AJAX Error Details:');
                         console.error('Status:', status);
@@ -1249,22 +1473,38 @@
                         console.error('XHR status:', xhr.status);
                         console.error('XHR response:', xhr.responseText);
                         
-                        let errorMessage = 'Unable to send message. ';
+                        let errorMessage = 'Unable to send message at this time. ';
                         
+                        // Try to parse error response
+                        if (xhr.responseText) {
+                            try {
+                                const errorResponse = JSON.parse(xhr.responseText);
+                                if (errorResponse && errorResponse.message) {
+                                    errorMessage = errorResponse.message;
+                                }
+                            } catch (e) {
+                                // Not JSON, use default message
+                            }
+                        }
+                        
+                        // Default error messages based on status
                         if (xhr.status === 0) {
-                            errorMessage += 'Network error. Check your internet connection.';
+                            errorMessage = 'Network error. Please check your internet connection and try again.';
                         } else if (xhr.status === 404) {
-                            errorMessage += 'Server not found (404). Please check your Google Apps Script URL.';
+                            errorMessage = 'Server not found (404). Please contact support.';
                         } else if (xhr.status === 500) {
-                            errorMessage += 'Server error (500). Please check your Google Apps Script code.';
+                            errorMessage = 'Server error (500). Our team has been notified.';
+                        } else if (xhr.status === 429) {
+                            errorMessage = 'Too many submissions. Please try again in an hour.';
                         } else {
                             errorMessage += 'Please try again or contact us directly at info@yacexim.com';
                         }
                         
-                        showFormMessage(errorMessage, 'error');
+                        showModal('Submission Error', errorMessage, 'error');
                     },
+                    
                     complete: function() {
-                        // Reset button
+                        // Reset button state
                         submitBtn.prop('disabled', false);
                         submitSpinner.hide();
                         submitText.show();
@@ -1272,18 +1512,28 @@
                 });
             });
             
-            // Initialize form validation on input
+            // Real-time email validation
             $('#email').on('blur', function() {
                 const email = $(this).val().trim();
                 if (email && !isValidEmail(email)) {
+                    $(this).addClass('error');
                     $(this).css('border-color', '#dc3545');
                 } else {
+                    $(this).removeClass('error');
+                    $(this).css('border-color', '#ddd');
+                }
+            });
+            
+            // Form field validation styling
+            $('.form-control').on('input', function() {
+                if ($(this).val().trim()) {
+                    $(this).removeClass('error');
                     $(this).css('border-color', '#ddd');
                 }
             });
             
             // Check if URL is set
-            if (!GOOGLE_SCRIPT_URL || GOOGLE_SCRIPT_URL === 'https://script.google.com/macros/s/AKfycbwdm-klL5we7S6kUVsCRwn_35Coa8KLv-3i2nHdcJMVWPt27NIWWwQfUxdnCXvduH-x/exec') {
+            if (!GOOGLE_SCRIPT_URL || GOOGLE_SCRIPT_URL.includes('YOUR_GOOGLE_SCRIPT_URL_HERE')) {
                 console.warn('Google Apps Script URL is not set! Please update the GOOGLE_SCRIPT_URL variable.');
             }
         });
