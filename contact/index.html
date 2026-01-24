@@ -1052,7 +1052,7 @@
         // IMPORTANT: Replace this URL with your actual Google Apps Script Web App URL
         // After deploying your Google Apps Script, you'll get a URL like:
         // https://script.google.com/macros/s/AKfycby.../exec
-        const GOOGLE_SCRIPT_URL = 'https://script.google.com/macros/s/AKfycbzey55iseh8KSgPTUnR5GglzMQcDholCE8Tp3NPXkxWiDZk8-tt8Xvv2gwQyGtlaJwN/exec';
+        const GOOGLE_SCRIPT_URL = 'https://script.google.com/macros/s/AKfycbyghq4Ql_7qKsVYjJ2sBEGzY2FV31B_xr2R5AMZ-InjDIiOcfjrDgz-Tlp2-gepB7Q/exec';
         
         $(document).ready(function() {
             console.log('Contact page loaded');
@@ -1268,7 +1268,7 @@
             $('#test-connection').click(function() {
                 console.log('Testing connection to:', GOOGLE_SCRIPT_URL);
                 
-                if (!GOOGLE_SCRIPT_URL || GOOGLE_SCRIPT_URL === 'YOUR_GOOGLE_APPS_SCRIPT_URL_HERE') {
+                if (!GOOGLE_SCRIPT_URL || GOOGLE_SCRIPT_URL === 'https://script.google.com/macros/s/AKfycbyghq4Ql_7qKsVYjJ2sBEGzY2FV31B_xr2R5AMZ-InjDIiOcfjrDgz-Tlp2-gepB7Q/exec') {
                     showFormMessage('Please update the GOOGLE_SCRIPT_URL variable in the JavaScript code with your actual Google Apps Script URL.', 'error');
                     return;
                 }
@@ -1292,7 +1292,7 @@
             });
             
             // Check if URL is set
-            if (!GOOGLE_SCRIPT_URL || GOOGLE_SCRIPT_URL === 'YOUR_GOOGLE_APPS_SCRIPT_URL_HERE') {
+            if (!GOOGLE_SCRIPT_URL || GOOGLE_SCRIPT_URL === 'https://script.google.com/macros/s/AKfycbyghq4Ql_7qKsVYjJ2sBEGzY2FV31B_xr2R5AMZ-InjDIiOcfjrDgz-Tlp2-gepB7Q/exec') {
                 console.warn('Google Apps Script URL is not set! Please update the GOOGLE_SCRIPT_URL variable.');
                 showFormMessage('⚠️ Please update the Google Apps Script URL in the code to enable form submissions.', 'error');
             }
